@@ -1,65 +1,66 @@
-import cv2
 import os
-import argparse
+import uuid
+from flask import Flask, request, jsonify, render_template_string
+from werkzeug.utils import secure_filename
 
-def get_video_stream(video_path):
-    """
-    Safely opens the video file and yields frames one by one.
-    """
-    if not os.path.exists(video_path):
-        raise FileNotFoundError(f"Video not found at {video_path}")
-        
-    cap = cv2.VideoCapture(video_path)
-    if not cap.isOpened():
-        raise IOError(f"Failed to open video: {video_path}")
+app = Flask(__name__)
+UPLOAD_DIR = "temp_video_staging"
+ALLOWED_EXTENSIONS = {'.mp4', '.mov', '.avi'}
 
-    try:
-        while True:
-            success, frame = cap.read()
-            if not success:
-                break 
-            
-            # Hand the raw pixel data out to whoever called this function
-            yield frame 
-            
-    finally:
-        # Guarantee the file is released from memory when the video ends or on error
-        cap.release()
+os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-def logic_manager(frame_stream):
-    """
-    A generic logic manager. 
-    Receives the raw video frames and applies whatever custom processing is needed.
-    """
-    print("Logic manager received the stream. Starting processing...")
-    frame_count = 0
+# The HTML interface
+UPLOAD_PAGE = """
+<!DOCTYPE html>
+<html>
+<head><title>Upload Cat Video</title></head>
+<body style="font-family: Arial, sans-serif; padding: 2rem;">
+    <h2>Cat Behavior AI: Video Upload</h2>
+    <form action="/api/ingest_video" method="POST" enctype="multipart/form-data">
+        <input type="file" name="video" accept="video/mp4,video/x-m4v,video/*" required>
+        <br><br>
+        <button type="submit" style="padding: 10px 20px;">Upload to Pipeline</button>
+    </form>
+</body>
+</html>
+"""
+
+def stage_uploaded_video(file_object):
+    if not file_object or file_object.filename == '':
+        raise ValueError("No video file provided.")
+
+    filename = secure_filename(file_object.filename)
+    name, ext = os.path.splitext(filename)
     
-    # Iterate directly over the generator stream
-    for frame in frame_stream:
-        frame_count += 1
-        
-        # --- Your custom logic or downstream functions go here ---
-        # The 'frame' variable contains the raw image matrix.
-        
-        if frame_count % 30 == 0:
-            print(f"Logic Manager processed {frame_count} frames...")
-            
-    print(f"Logic Manager finished. Total frames processed: {frame_count}")
+    if ext.lower() not in ALLOWED_EXTENSIONS:
+        raise ValueError(f"Unsupported format '{ext}'. Allowed: {ALLOWED_EXTENSIONS}")
 
-def main():
-    parser = argparse.ArgumentParser(description="Ingest a video and pass to logic manager.")
-    parser.add_argument("video_path", type=str, help="The path to the input video file")
-    args = parser.parse_args()
+    unique_id = uuid.uuid4().hex[:8]
+    unique_filename = f"{name}_{unique_id}{ext}"
+    safe_path = os.path.abspath(os.path.join(UPLOAD_DIR, unique_filename))
+    
+    file_object.save(safe_path)
+    return safe_path
 
+@app.route('/', methods=['GET'])
+def index():
+    # Renders the HTML page at http://127.0.0.1:5001/
+    return render_template_string(UPLOAD_PAGE)
+
+@app.route('/api/ingest_video', methods=['POST'])
+def ingest_video():
+    # Receives the video from either the HTML page or the iOS app
+    if 'video' not in request.files:
+        return jsonify({"error": "Missing 'video' in form data"}), 400
+        
     try:
-        # 1. Create the stream generator
-        stream = get_video_stream(args.video_path)
-        
-        # 2. Pass the stream directly into the logic manager
-        logic_manager(stream)
-        
-    except (FileNotFoundError, IOError) as e:
-        print(f"Pipeline Halted: {e}")
+        staged_filepath = stage_uploaded_video(request.files['video'])
+        print(f"[IO Manager] Video ready for Compute Team at: {staged_filepath}")
+        return jsonify({"status": "success", "file_path": staged_filepath}), 200
+    except ValueError as ve:
+        return jsonify({"error": str(ve)}), 400
+    except Exception as e:
+        return jsonify({"error": f"Internal Server Error: {str(e)}"}), 500
 
 if __name__ == "__main__":
-    main()
+    app.run(host='0.0.0.0', port=5001, debug=True)
