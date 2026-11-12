@@ -1,4 +1,4 @@
-# Logic Manager
+﻿# Logic Manager
 
 `analysis/logic_manager.py` connects the DLC processing section to a future AI
 section. It accepts the dictionary returned by `process_video()` or a saved
@@ -79,6 +79,9 @@ summary = manager.analyze(dataset)
 6. Aggregate a whole-video summary and three-second intervals. Activity changes
    are compared between adjacent intervals only when both labels are known.
    Long videos use at most 60 intervals, widening them automatically.
+7. Emit per-interval `behavior_candidates` for simple body and relative-tail
+   movement. Each result is quality-gated and includes the rule and measurements
+   used; these are motion events, not semantic cat behaviors or emotions.
 
 The input dictionary is not modified. Each landmark uses one source label for
 the whole video; the implementation does not switch aliases between frames.
@@ -106,6 +109,8 @@ does not establish whether a cat is standing, sitting or crouching.
 | `observed_features` | Head, ear, eye, tail and body geometry/activity |
 | `movement_metrics` | Displacement, speed, coverage and counts for each canonical landmark |
 | `temporal_patterns` | Interval activity, quality and changes from the preceding interval |
+| `temporal_patterns.measurements` | Per-window movement for every canonical landmark plus head, ear, eye, tail and body features |
+| `behavior_candidates` | Per-interval `body_moving` and `tail_moving` rule outcomes with evidence |
 | `analysis_settings` | Configuration, exact label mapping, units and references |
 | `warnings` | Frame-count discrepancies and excluded temporal gaps |
 | `limitations` | Missing evidence and constraints the AI should retain |
@@ -121,6 +126,26 @@ than included in the denominator. Therefore a `good` quality rating does not
 mean every required feature is measurable; always check the per-feature
 coverage and limitations. `good` is at least 80%, `limited` is at least 50%,
 and lower percentages are `poor`.
+
+Each temporal interval contains its `behavior_candidates`; the same results are
+also flattened into a top-level list for consumers that want a simple event
+stream. The current candidates are deliberately narrow:
+
+- `body_moving` is detected when the body-anchor mean normalized speed reaches
+  the configured low-speed threshold.
+- `tail_moving` is detected when tail-tip motion relative to the tail base is
+  in the moderate or high activity band.
+
+Candidate `status` is `detected`, `not_detected`, or `insufficient_data`.
+Insufficient coverage or fewer than two reliable movement comparisons produces
+`insufficient_data`; windows shorter than one second are also insufficient. It
+must not be interpreted as evidence that movement was absent. `score` is
+currently `null`, because these rules have not been calibrated as probabilities.
+Evidence includes measured speed, movement band, coverage, valid comparison
+count, window duration, and required coverage. These labels report visible motion
+only; they do not classify walking, grooming, kneading, belly exposure,
+attention, emotion, or intent. Add those only after defining observable criteria
+and validating them against human-labeled clips.
 
 ## Configuration
 

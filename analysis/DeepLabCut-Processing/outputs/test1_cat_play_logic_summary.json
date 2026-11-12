@@ -336,6 +336,344 @@
         "tail": "unknown",
         "body": "unknown"
       },
+      "measurements": {
+        "landmark_movement": {
+          "nose": {
+            "movement": "high",
+            "average_displacement_pixels": 4.048236,
+            "maximum_displacement_pixels": 8.799757,
+            "average_speed_pixels_per_second": 121.445705,
+            "maximum_speed_pixels_per_second": 263.465786,
+            "average_speed_diagonals_per_second": 0.10537,
+            "valid_measurement_count": 89,
+            "valid_frame_percentage": 100.0,
+            "observed_pair_seconds": 2.9667,
+            "movement_direction_changes": 1,
+            "movement_bout_count": 2
+          },
+          "left_eye": {
+            "movement": "high",
+            "average_displacement_pixels": 4.135703,
+            "maximum_displacement_pixels": 8.871413,
+            "average_speed_pixels_per_second": 124.06969,
+            "maximum_speed_pixels_per_second": 265.611161,
+            "average_speed_diagonals_per_second": 0.107647,
+            "valid_measurement_count": 89,
+            "valid_frame_percentage": 100.0,
+            "observed_pair_seconds": 2.9667,
+            "movement_direction_changes": 1,
+            "movement_bout_count": 3
+          },
+          "right_eye": {
+            "movement": "high",
+            "average_displacement_pixels": 4.044583,
+            "maximum_displacement_pixels": 8.68447,
+            "average_speed_pixels_per_second": 121.33613,
+            "maximum_speed_pixels_per_second": 260.014073,
+            "average_speed_diagonals_per_second": 0.105275,
+            "valid_measurement_count": 89,
+            "valid_frame_percentage": 100.0,
+            "observed_pair_seconds": 2.9667,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 3
+          },
+          "left_ear_base": {
+            "movement": "moderate",
+            "average_displacement_pixels": 3.451453,
+            "maximum_displacement_pixels": 7.884746,
+            "average_speed_pixels_per_second": 103.543581,
+            "maximum_speed_pixels_per_second": 236.779162,
+            "average_speed_diagonals_per_second": 0.089838,
+            "valid_measurement_count": 78,
+            "valid_frame_percentage": 93.333333,
+            "observed_pair_seconds": 2.6,
+            "movement_direction_changes": 5,
+            "movement_bout_count": 8
+          },
+          "right_ear_base": {
+            "movement": "moderate",
+            "average_displacement_pixels": 3.342924,
+            "maximum_displacement_pixels": 6.364785,
+            "average_speed_pixels_per_second": 100.287707,
+            "maximum_speed_pixels_per_second": 190.562412,
+            "average_speed_diagonals_per_second": 0.087013,
+            "valid_measurement_count": 51,
+            "valid_frame_percentage": 57.777778,
+            "observed_pair_seconds": 1.7,
+            "movement_direction_changes": 1,
+            "movement_bout_count": 2
+          },
+          "left_ear_tip": {
+            "movement": "moderate",
+            "average_displacement_pixels": 2.400752,
+            "maximum_displacement_pixels": 4.771204,
+            "average_speed_pixels_per_second": 72.026799,
+            "maximum_speed_pixels_per_second": 142.850432,
+            "average_speed_diagonals_per_second": 0.062493,
+            "valid_measurement_count": 51,
+            "valid_frame_percentage": 62.222222,
+            "observed_pair_seconds": 1.6999,
+            "movement_direction_changes": 1,
+            "movement_bout_count": 6
+          },
+          "right_ear_tip": {
+            "movement": "moderate",
+            "average_displacement_pixels": 3.454063,
+            "maximum_displacement_pixels": 7.319733,
+            "average_speed_pixels_per_second": 103.621879,
+            "maximum_speed_pixels_per_second": 219.811795,
+            "average_speed_diagonals_per_second": 0.089906,
+            "valid_measurement_count": 51,
+            "valid_frame_percentage": 58.888889,
+            "observed_pair_seconds": 1.7,
+            "movement_direction_changes": 1,
+            "movement_bout_count": 2
+          },
+          "shoulder": {
+            "movement": "unknown",
+            "average_displacement_pixels": 1.73,
+            "maximum_displacement_pixels": 5.326309,
+            "average_speed_pixels_per_second": 51.902742,
+            "maximum_speed_pixels_per_second": 159.949208,
+            "average_speed_diagonals_per_second": 0.045032,
+            "valid_measurement_count": 19,
+            "valid_frame_percentage": 26.666667,
+            "observed_pair_seconds": 0.6333,
+            "movement_direction_changes": 2,
+            "movement_bout_count": 4
+          },
+          "spine_mid": {
+            "movement": "moderate",
+            "average_displacement_pixels": 2.770162,
+            "maximum_displacement_pixels": 6.902043,
+            "average_speed_pixels_per_second": 83.106779,
+            "maximum_speed_pixels_per_second": 206.647995,
+            "average_speed_diagonals_per_second": 0.072106,
+            "valid_measurement_count": 43,
+            "valid_frame_percentage": 56.666667,
+            "observed_pair_seconds": 1.4333,
+            "movement_direction_changes": 1,
+            "movement_bout_count": 4
+          },
+          "hip": {
+            "movement": "moderate",
+            "average_displacement_pixels": 3.109658,
+            "maximum_displacement_pixels": 12.222287,
+            "average_speed_pixels_per_second": 93.288413,
+            "maximum_speed_pixels_per_second": 367.035641,
+            "average_speed_diagonals_per_second": 0.08094,
+            "valid_measurement_count": 71,
+            "valid_frame_percentage": 83.333333,
+            "observed_pair_seconds": 2.3667,
+            "movement_direction_changes": 4,
+            "movement_bout_count": 9
+          },
+          "tail_base": {
+            "movement": "moderate",
+            "average_displacement_pixels": 3.109658,
+            "maximum_displacement_pixels": 12.222287,
+            "average_speed_pixels_per_second": 93.288413,
+            "maximum_speed_pixels_per_second": 367.035641,
+            "average_speed_diagonals_per_second": 0.08094,
+            "valid_measurement_count": 71,
+            "valid_frame_percentage": 83.333333,
+            "observed_pair_seconds": 2.3667,
+            "movement_direction_changes": 4,
+            "movement_bout_count": 9
+          },
+          "tail_mid": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 0.0,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "tail_tip": {
+            "movement": "unknown",
+            "average_displacement_pixels": 1.602619,
+            "maximum_displacement_pixels": 13.444853,
+            "average_speed_pixels_per_second": 48.079981,
+            "maximum_speed_pixels_per_second": 403.749347,
+            "average_speed_diagonals_per_second": 0.041716,
+            "valid_measurement_count": 34,
+            "valid_frame_percentage": 44.444444,
+            "observed_pair_seconds": 1.1333,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 12
+          }
+        },
+        "observed_features": {
+          "head": {
+            "movement": "high",
+            "movement_direction_changes": 1,
+            "orientation_in_image": {
+              "mean_angle_degrees": 99.353591,
+              "circular_concentration": 0.91641,
+              "average_angular_speed_degrees_per_second": 44.765487,
+              "angular_direction_changes": 0,
+              "angular_direction_changes_per_second": 0.0,
+              "valid_frame_percentage": 53.333333,
+              "valid_measurement_count": 44
+            }
+          },
+          "ears": {
+            "left": {
+              "relative_movement": {
+                "movement": "moderate",
+                "average_displacement_pixels": 1.444125,
+                "maximum_displacement_pixels": 5.716929,
+                "average_speed_pixels_per_second": 43.326285,
+                "maximum_speed_pixels_per_second": 171.679558,
+                "average_speed_diagonals_per_second": 0.037591,
+                "valid_measurement_count": 51,
+                "valid_frame_percentage": 62.222222,
+                "observed_pair_seconds": 1.6999,
+                "movement_direction_changes": 9,
+                "movement_bout_count": 11
+              },
+              "orientation_in_image": {
+                "mean_angle_degrees": -62.455798,
+                "circular_concentration": 0.981891,
+                "average_angular_speed_degrees_per_second": 74.311132,
+                "angular_direction_changes": 5,
+                "angular_direction_changes_per_second": 2.941349,
+                "valid_frame_percentage": 62.222222,
+                "valid_measurement_count": 51
+              },
+              "mean_angle_to_head_axis_degrees": 151.424437,
+              "head_axis_comparison_count": 41
+            },
+            "right": {
+              "relative_movement": {
+                "movement": "moderate",
+                "average_displacement_pixels": 1.585892,
+                "maximum_displacement_pixels": 3.629107,
+                "average_speed_pixels_per_second": 47.576765,
+                "maximum_speed_pixels_per_second": 108.743907,
+                "average_speed_diagonals_per_second": 0.041279,
+                "valid_measurement_count": 51,
+                "valid_frame_percentage": 57.777778,
+                "observed_pair_seconds": 1.7,
+                "movement_direction_changes": 10,
+                "movement_bout_count": 7
+              },
+              "orientation_in_image": {
+                "mean_angle_degrees": -108.106954,
+                "circular_concentration": 0.953122,
+                "average_angular_speed_degrees_per_second": 86.131171,
+                "angular_direction_changes": 6,
+                "angular_direction_changes_per_second": 3.529412,
+                "valid_frame_percentage": 57.777778,
+                "valid_measurement_count": 51
+              },
+              "mean_angle_to_head_axis_degrees": 150.623705,
+              "head_axis_comparison_count": 48
+            }
+          },
+          "eyes": {
+            "mean_inter_eye_distance_pixels": 16.377585,
+            "valid_frame_percentage": 100.0,
+            "gaze_direction": "not_inferred_from_eye_centers"
+          },
+          "tail": {
+            "movement": {
+              "movement": "unknown",
+              "average_displacement_pixels": 2.553102,
+              "maximum_displacement_pixels": 7.519955,
+              "average_speed_pixels_per_second": 76.603993,
+              "maximum_speed_pixels_per_second": 225.148362,
+              "average_speed_diagonals_per_second": 0.066464,
+              "valid_measurement_count": 21,
+              "valid_frame_percentage": 31.111111,
+              "observed_pair_seconds": 0.6999,
+              "movement_direction_changes": 4,
+              "movement_bout_count": 6
+            },
+            "position_pattern": "unknown",
+            "orientation_in_image": {
+              "mean_angle_degrees": 22.502878,
+              "circular_concentration": 0.810858,
+              "average_angular_speed_degrees_per_second": 22.349476,
+              "angular_direction_changes": 0,
+              "angular_direction_changes_per_second": null,
+              "valid_frame_percentage": 31.111111,
+              "valid_measurement_count": 21
+            }
+          },
+          "body": {
+            "movement": {
+              "movement": "unknown",
+              "average_displacement_pixels": 2.232943,
+              "maximum_displacement_pixels": 6.000673,
+              "average_speed_pixels_per_second": 66.997875,
+              "maximum_speed_pixels_per_second": 180.200402,
+              "average_speed_diagonals_per_second": 0.05813,
+              "valid_measurement_count": 14,
+              "valid_frame_percentage": 18.888889,
+              "observed_pair_seconds": 0.4666,
+              "movement_direction_changes": 0,
+              "movement_bout_count": 4
+            },
+            "position_pattern": "unknown",
+            "mean_spine_interior_angle_degrees": 147.620981,
+            "spine_measurement_count": 3
+          }
+        }
+      },
+      "behavior_candidates": [
+        {
+          "label": "body_moving",
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Detected when the body anchor's mean normalized speed is at least the low-speed threshold.",
+          "evidence": {
+            "measurement": "body_anchor_speed",
+            "movement_band": "unknown",
+            "average_speed_diagonals_per_second": 0.05813,
+            "valid_frame_percentage": 18.888889,
+            "valid_measurement_count": 14,
+            "minimum_coverage_required": 50.0,
+            "window_duration_seconds": 3.0,
+            "minimum_duration_seconds": 1.0
+          },
+          "limitations": [
+            "Not enough reliable consecutive landmark measurements to evaluate this rule."
+          ]
+        },
+        {
+          "label": "tail_moving",
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Detected when tail-tip motion relative to the tail base reaches the moderate or high activity band.",
+          "evidence": {
+            "measurement": "tail_tip_relative_to_tail_base_speed",
+            "movement_band": "unknown",
+            "average_speed_diagonals_per_second": 0.066464,
+            "valid_frame_percentage": 31.111111,
+            "valid_measurement_count": 21,
+            "minimum_coverage_required": 50.0,
+            "window_duration_seconds": 3.0,
+            "minimum_duration_seconds": 1.0
+          },
+          "limitations": [
+            "Not enough reliable consecutive landmark measurements to evaluate this rule."
+          ]
+        }
+      ],
       "tail_position_pattern": "unknown",
       "changes_from_previous_interval": []
     },
@@ -352,6 +690,344 @@
         "tail": "unknown",
         "body": "unknown"
       },
+      "measurements": {
+        "landmark_movement": {
+          "nose": {
+            "movement": "moderate",
+            "average_displacement_pixels": 2.888049,
+            "maximum_displacement_pixels": 7.209763,
+            "average_speed_pixels_per_second": 86.640511,
+            "maximum_speed_pixels_per_second": 216.509413,
+            "average_speed_diagonals_per_second": 0.075172,
+            "valid_measurement_count": 89,
+            "valid_frame_percentage": 100.0,
+            "observed_pair_seconds": 2.9667,
+            "movement_direction_changes": 3,
+            "movement_bout_count": 4
+          },
+          "left_eye": {
+            "movement": "moderate",
+            "average_displacement_pixels": 2.976321,
+            "maximum_displacement_pixels": 8.446483,
+            "average_speed_pixels_per_second": 89.288624,
+            "maximum_speed_pixels_per_second": 253.648143,
+            "average_speed_diagonals_per_second": 0.07747,
+            "valid_measurement_count": 89,
+            "valid_frame_percentage": 100.0,
+            "observed_pair_seconds": 2.9667,
+            "movement_direction_changes": 5,
+            "movement_bout_count": 4
+          },
+          "right_eye": {
+            "movement": "moderate",
+            "average_displacement_pixels": 3.172675,
+            "maximum_displacement_pixels": 12.940399,
+            "average_speed_pixels_per_second": 95.179168,
+            "maximum_speed_pixels_per_second": 388.600556,
+            "average_speed_diagonals_per_second": 0.08258,
+            "valid_measurement_count": 89,
+            "valid_frame_percentage": 100.0,
+            "observed_pair_seconds": 2.9667,
+            "movement_direction_changes": 2,
+            "movement_bout_count": 4
+          },
+          "left_ear_base": {
+            "movement": "moderate",
+            "average_displacement_pixels": 2.544969,
+            "maximum_displacement_pixels": 5.563361,
+            "average_speed_pixels_per_second": 76.354072,
+            "maximum_speed_pixels_per_second": 167.067888,
+            "average_speed_diagonals_per_second": 0.066247,
+            "valid_measurement_count": 61,
+            "valid_frame_percentage": 75.555556,
+            "observed_pair_seconds": 2.0332,
+            "movement_direction_changes": 1,
+            "movement_bout_count": 4
+          },
+          "right_ear_base": {
+            "movement": "moderate",
+            "average_displacement_pixels": 2.730452,
+            "maximum_displacement_pixels": 6.768494,
+            "average_speed_pixels_per_second": 81.91839,
+            "maximum_speed_pixels_per_second": 202.649534,
+            "average_speed_diagonals_per_second": 0.071075,
+            "valid_measurement_count": 51,
+            "valid_frame_percentage": 61.111111,
+            "observed_pair_seconds": 1.6999,
+            "movement_direction_changes": 6,
+            "movement_bout_count": 5
+          },
+          "left_ear_tip": {
+            "movement": "moderate",
+            "average_displacement_pixels": 2.968239,
+            "maximum_displacement_pixels": 7.860002,
+            "average_speed_pixels_per_second": 89.049002,
+            "maximum_speed_pixels_per_second": 236.036106,
+            "average_speed_diagonals_per_second": 0.077262,
+            "valid_measurement_count": 49,
+            "valid_frame_percentage": 55.555556,
+            "observed_pair_seconds": 1.6333,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 5
+          },
+          "right_ear_tip": {
+            "movement": "moderate",
+            "average_displacement_pixels": 2.530162,
+            "maximum_displacement_pixels": 9.687505,
+            "average_speed_pixels_per_second": 75.908296,
+            "maximum_speed_pixels_per_second": 290.916061,
+            "average_speed_diagonals_per_second": 0.06586,
+            "valid_measurement_count": 66,
+            "valid_frame_percentage": 77.777778,
+            "observed_pair_seconds": 2.1999,
+            "movement_direction_changes": 2,
+            "movement_bout_count": 8
+          },
+          "shoulder": {
+            "movement": "unknown",
+            "average_displacement_pixels": 0.0,
+            "maximum_displacement_pixels": 0.0,
+            "average_speed_pixels_per_second": 0.0,
+            "maximum_speed_pixels_per_second": 0.0,
+            "average_speed_diagonals_per_second": 0.0,
+            "valid_measurement_count": 1,
+            "valid_frame_percentage": 2.222222,
+            "observed_pair_seconds": 0.0333,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "spine_mid": {
+            "movement": "moderate",
+            "average_displacement_pixels": 1.830066,
+            "maximum_displacement_pixels": 4.667796,
+            "average_speed_pixels_per_second": 54.901995,
+            "maximum_speed_pixels_per_second": 139.754365,
+            "average_speed_diagonals_per_second": 0.047635,
+            "valid_measurement_count": 60,
+            "valid_frame_percentage": 74.444444,
+            "observed_pair_seconds": 2.0,
+            "movement_direction_changes": 4,
+            "movement_bout_count": 13
+          },
+          "hip": {
+            "movement": "moderate",
+            "average_displacement_pixels": 2.165567,
+            "maximum_displacement_pixels": 7.075224,
+            "average_speed_pixels_per_second": 64.966274,
+            "maximum_speed_pixels_per_second": 212.469177,
+            "average_speed_diagonals_per_second": 0.056367,
+            "valid_measurement_count": 89,
+            "valid_frame_percentage": 100.0,
+            "observed_pair_seconds": 2.9667,
+            "movement_direction_changes": 13,
+            "movement_bout_count": 7
+          },
+          "tail_base": {
+            "movement": "moderate",
+            "average_displacement_pixels": 2.165567,
+            "maximum_displacement_pixels": 7.075224,
+            "average_speed_pixels_per_second": 64.966274,
+            "maximum_speed_pixels_per_second": 212.469177,
+            "average_speed_diagonals_per_second": 0.056367,
+            "valid_measurement_count": 89,
+            "valid_frame_percentage": 100.0,
+            "observed_pair_seconds": 2.9667,
+            "movement_direction_changes": 13,
+            "movement_bout_count": 7
+          },
+          "tail_mid": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 0.0,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "tail_tip": {
+            "movement": "unknown",
+            "average_displacement_pixels": 3.810564,
+            "maximum_displacement_pixels": 11.3953,
+            "average_speed_pixels_per_second": 114.306534,
+            "maximum_speed_pixels_per_second": 342.201207,
+            "average_speed_diagonals_per_second": 0.099176,
+            "valid_measurement_count": 22,
+            "valid_frame_percentage": 34.444444,
+            "observed_pair_seconds": 0.7334,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 4
+          }
+        },
+        "observed_features": {
+          "head": {
+            "movement": "moderate",
+            "movement_direction_changes": 3,
+            "orientation_in_image": {
+              "mean_angle_degrees": 122.996064,
+              "circular_concentration": 0.996972,
+              "average_angular_speed_degrees_per_second": 35.616265,
+              "angular_direction_changes": 2,
+              "angular_direction_changes_per_second": null,
+              "valid_frame_percentage": 48.888889,
+              "valid_measurement_count": 40
+            }
+          },
+          "ears": {
+            "left": {
+              "relative_movement": {
+                "movement": "moderate",
+                "average_displacement_pixels": 1.28647,
+                "maximum_displacement_pixels": 6.594279,
+                "average_speed_pixels_per_second": 38.595841,
+                "maximum_speed_pixels_per_second": 198.026397,
+                "average_speed_diagonals_per_second": 0.033487,
+                "valid_measurement_count": 44,
+                "valid_frame_percentage": 51.111111,
+                "observed_pair_seconds": 1.4666,
+                "movement_direction_changes": 9,
+                "movement_bout_count": 12
+              },
+              "orientation_in_image": {
+                "mean_angle_degrees": -87.628464,
+                "circular_concentration": 0.951361,
+                "average_angular_speed_degrees_per_second": 93.184596,
+                "angular_direction_changes": 5,
+                "angular_direction_changes_per_second": 3.409246,
+                "valid_frame_percentage": 51.111111,
+                "valid_measurement_count": 44
+              },
+              "mean_angle_to_head_axis_degrees": 150.771026,
+              "head_axis_comparison_count": 42
+            },
+            "right": {
+              "relative_movement": {
+                "movement": "moderate",
+                "average_displacement_pixels": 1.559584,
+                "maximum_displacement_pixels": 4.845081,
+                "average_speed_pixels_per_second": 46.790434,
+                "maximum_speed_pixels_per_second": 145.062312,
+                "average_speed_diagonals_per_second": 0.040597,
+                "valid_measurement_count": 48,
+                "valid_frame_percentage": 58.888889,
+                "observed_pair_seconds": 1.5999,
+                "movement_direction_changes": 12,
+                "movement_bout_count": 11
+              },
+              "orientation_in_image": {
+                "mean_angle_degrees": -100.612288,
+                "circular_concentration": 0.953451,
+                "average_angular_speed_degrees_per_second": 94.156511,
+                "angular_direction_changes": 8,
+                "angular_direction_changes_per_second": 5.000313,
+                "valid_frame_percentage": 58.888889,
+                "valid_measurement_count": 48
+              },
+              "mean_angle_to_head_axis_degrees": 129.685012,
+              "head_axis_comparison_count": 42
+            }
+          },
+          "eyes": {
+            "mean_inter_eye_distance_pixels": 13.127652,
+            "valid_frame_percentage": 100.0,
+            "gaze_direction": "not_inferred_from_eye_centers"
+          },
+          "tail": {
+            "movement": {
+              "movement": "unknown",
+              "average_displacement_pixels": 3.466694,
+              "maximum_displacement_pixels": 10.624136,
+              "average_speed_pixels_per_second": 103.99138,
+              "maximum_speed_pixels_per_second": 319.043123,
+              "average_speed_diagonals_per_second": 0.090226,
+              "valid_measurement_count": 22,
+              "valid_frame_percentage": 34.444444,
+              "observed_pair_seconds": 0.7334,
+              "movement_direction_changes": 4,
+              "movement_bout_count": 5
+            },
+            "position_pattern": "unknown",
+            "orientation_in_image": {
+              "mean_angle_degrees": -41.016925,
+              "circular_concentration": 0.980187,
+              "average_angular_speed_degrees_per_second": 16.271379,
+              "angular_direction_changes": 0,
+              "angular_direction_changes_per_second": null,
+              "valid_frame_percentage": 34.444444,
+              "valid_measurement_count": 22
+            }
+          },
+          "body": {
+            "movement": {
+              "movement": "unknown",
+              "average_displacement_pixels": 1.26075,
+              "maximum_displacement_pixels": 1.26075,
+              "average_speed_pixels_per_second": 37.860349,
+              "maximum_speed_pixels_per_second": 37.860349,
+              "average_speed_diagonals_per_second": 0.032849,
+              "valid_measurement_count": 1,
+              "valid_frame_percentage": 2.222222,
+              "observed_pair_seconds": 0.0333,
+              "movement_direction_changes": 0,
+              "movement_bout_count": 1
+            },
+            "position_pattern": "unknown",
+            "mean_spine_interior_angle_degrees": 170.385499,
+            "spine_measurement_count": 2
+          }
+        }
+      },
+      "behavior_candidates": [
+        {
+          "label": "body_moving",
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 6.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Detected when the body anchor's mean normalized speed is at least the low-speed threshold.",
+          "evidence": {
+            "measurement": "body_anchor_speed",
+            "movement_band": "unknown",
+            "average_speed_diagonals_per_second": 0.032849,
+            "valid_frame_percentage": 2.222222,
+            "valid_measurement_count": 1,
+            "minimum_coverage_required": 50.0,
+            "window_duration_seconds": 3.0,
+            "minimum_duration_seconds": 1.0
+          },
+          "limitations": [
+            "Not enough reliable consecutive landmark measurements to evaluate this rule."
+          ]
+        },
+        {
+          "label": "tail_moving",
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 6.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Detected when tail-tip motion relative to the tail base reaches the moderate or high activity band.",
+          "evidence": {
+            "measurement": "tail_tip_relative_to_tail_base_speed",
+            "movement_band": "unknown",
+            "average_speed_diagonals_per_second": 0.090226,
+            "valid_frame_percentage": 34.444444,
+            "valid_measurement_count": 22,
+            "minimum_coverage_required": 50.0,
+            "window_duration_seconds": 3.0,
+            "minimum_duration_seconds": 1.0
+          },
+          "limitations": [
+            "Not enough reliable consecutive landmark measurements to evaluate this rule."
+          ]
+        }
+      ],
       "tail_position_pattern": "unknown",
       "changes_from_previous_interval": [
         "head_activity_decreased"
@@ -370,6 +1046,344 @@
         "tail": "unknown",
         "body": "unknown"
       },
+      "measurements": {
+        "landmark_movement": {
+          "nose": {
+            "movement": "high",
+            "average_displacement_pixels": 5.851788,
+            "maximum_displacement_pixels": 16.980963,
+            "average_speed_pixels_per_second": 175.544145,
+            "maximum_speed_pixels_per_second": 509.938823,
+            "average_speed_diagonals_per_second": 0.152308,
+            "valid_measurement_count": 37,
+            "valid_frame_percentage": 50.0,
+            "observed_pair_seconds": 1.2334,
+            "movement_direction_changes": 1,
+            "movement_bout_count": 2
+          },
+          "left_eye": {
+            "movement": "high",
+            "average_displacement_pixels": 5.168529,
+            "maximum_displacement_pixels": 18.544926,
+            "average_speed_pixels_per_second": 155.049893,
+            "maximum_speed_pixels_per_second": 556.904698,
+            "average_speed_diagonals_per_second": 0.134526,
+            "valid_measurement_count": 52,
+            "valid_frame_percentage": 64.444444,
+            "observed_pair_seconds": 1.7334,
+            "movement_direction_changes": 5,
+            "movement_bout_count": 4
+          },
+          "right_eye": {
+            "movement": "high",
+            "average_displacement_pixels": 5.427506,
+            "maximum_displacement_pixels": 14.178849,
+            "average_speed_pixels_per_second": 162.827861,
+            "maximum_speed_pixels_per_second": 425.791254,
+            "average_speed_diagonals_per_second": 0.141275,
+            "valid_measurement_count": 61,
+            "valid_frame_percentage": 76.666667,
+            "observed_pair_seconds": 2.0333,
+            "movement_direction_changes": 2,
+            "movement_bout_count": 3
+          },
+          "left_ear_base": {
+            "movement": "unknown",
+            "average_displacement_pixels": 0.91679,
+            "maximum_displacement_pixels": 2.737611,
+            "average_speed_pixels_per_second": 27.489954,
+            "maximum_speed_pixels_per_second": 81.964412,
+            "average_speed_diagonals_per_second": 0.023851,
+            "valid_measurement_count": 6,
+            "valid_frame_percentage": 11.111111,
+            "observed_pair_seconds": 0.2001,
+            "movement_direction_changes": 1,
+            "movement_bout_count": 2
+          },
+          "right_ear_base": {
+            "movement": "unknown",
+            "average_displacement_pixels": 3.628117,
+            "maximum_displacement_pixels": 8.767201,
+            "average_speed_pixels_per_second": 108.860505,
+            "maximum_speed_pixels_per_second": 263.279307,
+            "average_speed_diagonals_per_second": 0.094451,
+            "valid_measurement_count": 32,
+            "valid_frame_percentage": 41.111111,
+            "observed_pair_seconds": 1.0665,
+            "movement_direction_changes": 2,
+            "movement_bout_count": 3
+          },
+          "left_ear_tip": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 3.333333,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "right_ear_tip": {
+            "movement": "unknown",
+            "average_displacement_pixels": 3.534361,
+            "maximum_displacement_pixels": 9.582152,
+            "average_speed_pixels_per_second": 106.033934,
+            "maximum_speed_pixels_per_second": 287.752322,
+            "average_speed_diagonals_per_second": 0.091998,
+            "valid_measurement_count": 34,
+            "valid_frame_percentage": 48.888889,
+            "observed_pair_seconds": 1.1333,
+            "movement_direction_changes": 1,
+            "movement_bout_count": 4
+          },
+          "shoulder": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 1.111111,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "spine_mid": {
+            "movement": "unknown",
+            "average_displacement_pixels": 2.336483,
+            "maximum_displacement_pixels": 4.997903,
+            "average_speed_pixels_per_second": 70.080479,
+            "maximum_speed_pixels_per_second": 150.087179,
+            "average_speed_diagonals_per_second": 0.060804,
+            "valid_measurement_count": 15,
+            "valid_frame_percentage": 22.222222,
+            "observed_pair_seconds": 0.5001,
+            "movement_direction_changes": 1,
+            "movement_bout_count": 5
+          },
+          "hip": {
+            "movement": "high",
+            "average_displacement_pixels": 4.43375,
+            "maximum_displacement_pixels": 7.045598,
+            "average_speed_pixels_per_second": 133.015228,
+            "maximum_speed_pixels_per_second": 211.579505,
+            "average_speed_diagonals_per_second": 0.115408,
+            "valid_measurement_count": 49,
+            "valid_frame_percentage": 57.777778,
+            "observed_pair_seconds": 1.6333,
+            "movement_direction_changes": 4,
+            "movement_bout_count": 1
+          },
+          "tail_base": {
+            "movement": "high",
+            "average_displacement_pixels": 4.43375,
+            "maximum_displacement_pixels": 7.045598,
+            "average_speed_pixels_per_second": 133.015228,
+            "maximum_speed_pixels_per_second": 211.579505,
+            "average_speed_diagonals_per_second": 0.115408,
+            "valid_measurement_count": 49,
+            "valid_frame_percentage": 58.888889,
+            "observed_pair_seconds": 1.6333,
+            "movement_direction_changes": 4,
+            "movement_bout_count": 1
+          },
+          "tail_mid": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 0.0,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "tail_tip": {
+            "movement": "unknown",
+            "average_displacement_pixels": 0.0,
+            "maximum_displacement_pixels": 0.0,
+            "average_speed_pixels_per_second": 0.0,
+            "maximum_speed_pixels_per_second": 0.0,
+            "average_speed_diagonals_per_second": 0.0,
+            "valid_measurement_count": 5,
+            "valid_frame_percentage": 15.555556,
+            "observed_pair_seconds": 0.1669,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          }
+        },
+        "observed_features": {
+          "head": {
+            "movement": "high",
+            "movement_direction_changes": 1,
+            "orientation_in_image": {
+              "mean_angle_degrees": 119.71245,
+              "circular_concentration": 0.983653,
+              "average_angular_speed_degrees_per_second": 58.930387,
+              "angular_direction_changes": 0,
+              "angular_direction_changes_per_second": null,
+              "valid_frame_percentage": 7.777778,
+              "valid_measurement_count": 3
+            }
+          },
+          "ears": {
+            "left": {
+              "relative_movement": {
+                "movement": "unknown",
+                "average_displacement_pixels": null,
+                "maximum_displacement_pixels": null,
+                "average_speed_pixels_per_second": null,
+                "maximum_speed_pixels_per_second": null,
+                "average_speed_diagonals_per_second": null,
+                "valid_measurement_count": 0,
+                "valid_frame_percentage": 1.111111,
+                "observed_pair_seconds": 0.0,
+                "movement_direction_changes": 0,
+                "movement_bout_count": 0
+              },
+              "orientation_in_image": {
+                "mean_angle_degrees": 0.0,
+                "circular_concentration": 1.0,
+                "average_angular_speed_degrees_per_second": null,
+                "angular_direction_changes": 0,
+                "angular_direction_changes_per_second": null,
+                "valid_frame_percentage": 1.111111,
+                "valid_measurement_count": 0
+              },
+              "mean_angle_to_head_axis_degrees": null,
+              "head_axis_comparison_count": 0
+            },
+            "right": {
+              "relative_movement": {
+                "movement": "unknown",
+                "average_displacement_pixels": 2.253079,
+                "maximum_displacement_pixels": 7.426483,
+                "average_speed_pixels_per_second": 67.60202,
+                "maximum_speed_pixels_per_second": 223.017494,
+                "average_speed_diagonals_per_second": 0.058654,
+                "valid_measurement_count": 28,
+                "valid_frame_percentage": 37.777778,
+                "observed_pair_seconds": 0.9332,
+                "movement_direction_changes": 7,
+                "movement_bout_count": 8
+              },
+              "orientation_in_image": {
+                "mean_angle_degrees": -145.96668,
+                "circular_concentration": 0.975467,
+                "average_angular_speed_degrees_per_second": 99.713994,
+                "angular_direction_changes": 1,
+                "angular_direction_changes_per_second": null,
+                "valid_frame_percentage": 37.777778,
+                "valid_measurement_count": 28
+              },
+              "mean_angle_to_head_axis_degrees": 98.566078,
+              "head_axis_comparison_count": 6
+            }
+          },
+          "eyes": {
+            "mean_inter_eye_distance_pixels": 24.312441,
+            "valid_frame_percentage": 63.333333,
+            "gaze_direction": "not_inferred_from_eye_centers"
+          },
+          "tail": {
+            "movement": {
+              "movement": "unknown",
+              "average_displacement_pixels": 2.070321,
+              "maximum_displacement_pixels": 3.918634,
+              "average_speed_pixels_per_second": 62.047592,
+              "maximum_speed_pixels_per_second": 117.324373,
+              "average_speed_diagonals_per_second": 0.053834,
+              "valid_measurement_count": 3,
+              "valid_frame_percentage": 12.222222,
+              "observed_pair_seconds": 0.1001,
+              "movement_direction_changes": 1,
+              "movement_bout_count": 2
+            },
+            "position_pattern": "unknown",
+            "orientation_in_image": {
+              "mean_angle_degrees": -35.378086,
+              "circular_concentration": 0.912905,
+              "average_angular_speed_degrees_per_second": 15.25586,
+              "angular_direction_changes": 0,
+              "angular_direction_changes_per_second": null,
+              "valid_frame_percentage": 12.222222,
+              "valid_measurement_count": 3
+            }
+          },
+          "body": {
+            "movement": {
+              "movement": "unknown",
+              "average_displacement_pixels": null,
+              "maximum_displacement_pixels": null,
+              "average_speed_pixels_per_second": null,
+              "maximum_speed_pixels_per_second": null,
+              "average_speed_diagonals_per_second": null,
+              "valid_measurement_count": 0,
+              "valid_frame_percentage": 1.111111,
+              "observed_pair_seconds": 0.0,
+              "movement_direction_changes": 0,
+              "movement_bout_count": 0
+            },
+            "position_pattern": "unknown",
+            "mean_spine_interior_angle_degrees": null,
+            "spine_measurement_count": 0
+          }
+        }
+      },
+      "behavior_candidates": [
+        {
+          "label": "body_moving",
+          "interval_seconds": {
+            "start": 6.0,
+            "end": 9.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Detected when the body anchor's mean normalized speed is at least the low-speed threshold.",
+          "evidence": {
+            "measurement": "body_anchor_speed",
+            "movement_band": "unknown",
+            "average_speed_diagonals_per_second": null,
+            "valid_frame_percentage": 1.111111,
+            "valid_measurement_count": 0,
+            "minimum_coverage_required": 50.0,
+            "window_duration_seconds": 3.0,
+            "minimum_duration_seconds": 1.0
+          },
+          "limitations": [
+            "Not enough reliable consecutive landmark measurements to evaluate this rule."
+          ]
+        },
+        {
+          "label": "tail_moving",
+          "interval_seconds": {
+            "start": 6.0,
+            "end": 9.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Detected when tail-tip motion relative to the tail base reaches the moderate or high activity band.",
+          "evidence": {
+            "measurement": "tail_tip_relative_to_tail_base_speed",
+            "movement_band": "unknown",
+            "average_speed_diagonals_per_second": 0.053834,
+            "valid_frame_percentage": 12.222222,
+            "valid_measurement_count": 3,
+            "minimum_coverage_required": 50.0,
+            "window_duration_seconds": 3.0,
+            "minimum_duration_seconds": 1.0
+          },
+          "limitations": [
+            "Not enough reliable consecutive landmark measurements to evaluate this rule."
+          ]
+        }
+      ],
       "tail_position_pattern": "unknown",
       "changes_from_previous_interval": [
         "head_activity_increased"
@@ -388,8 +1402,532 @@
         "tail": "unknown",
         "body": "unknown"
       },
+      "measurements": {
+        "landmark_movement": {
+          "nose": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 14.285714,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "left_eye": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 14.285714,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "right_eye": {
+            "movement": "low",
+            "average_displacement_pixels": 0.0,
+            "maximum_displacement_pixels": 0.0,
+            "average_speed_pixels_per_second": 0.0,
+            "maximum_speed_pixels_per_second": 0.0,
+            "average_speed_diagonals_per_second": 0.0,
+            "valid_measurement_count": 2,
+            "valid_frame_percentage": 57.142857,
+            "observed_pair_seconds": 0.0666,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "left_ear_base": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 0.0,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "right_ear_base": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 0.0,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "left_ear_tip": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 0.0,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "right_ear_tip": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 0.0,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "shoulder": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 0.0,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "spine_mid": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 0.0,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "hip": {
+            "movement": "unknown",
+            "average_displacement_pixels": 0.0,
+            "maximum_displacement_pixels": 0.0,
+            "average_speed_pixels_per_second": 0.0,
+            "maximum_speed_pixels_per_second": 0.0,
+            "average_speed_diagonals_per_second": 0.0,
+            "valid_measurement_count": 1,
+            "valid_frame_percentage": 42.857143,
+            "observed_pair_seconds": 0.0333,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "tail_base": {
+            "movement": "unknown",
+            "average_displacement_pixels": 0.0,
+            "maximum_displacement_pixels": 0.0,
+            "average_speed_pixels_per_second": 0.0,
+            "maximum_speed_pixels_per_second": 0.0,
+            "average_speed_diagonals_per_second": 0.0,
+            "valid_measurement_count": 1,
+            "valid_frame_percentage": 42.857143,
+            "observed_pair_seconds": 0.0333,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "tail_mid": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 0.0,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "tail_tip": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 0.0,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          }
+        },
+        "observed_features": {
+          "head": {
+            "movement": "unknown",
+            "movement_direction_changes": 0,
+            "orientation_in_image": {
+              "mean_angle_degrees": null,
+              "circular_concentration": null,
+              "average_angular_speed_degrees_per_second": null,
+              "angular_direction_changes": 0,
+              "angular_direction_changes_per_second": null,
+              "valid_frame_percentage": 0.0,
+              "valid_measurement_count": 0
+            }
+          },
+          "ears": {
+            "left": {
+              "relative_movement": {
+                "movement": "unknown",
+                "average_displacement_pixels": null,
+                "maximum_displacement_pixels": null,
+                "average_speed_pixels_per_second": null,
+                "maximum_speed_pixels_per_second": null,
+                "average_speed_diagonals_per_second": null,
+                "valid_measurement_count": 0,
+                "valid_frame_percentage": 0.0,
+                "observed_pair_seconds": 0.0,
+                "movement_direction_changes": 0,
+                "movement_bout_count": 0
+              },
+              "orientation_in_image": {
+                "mean_angle_degrees": null,
+                "circular_concentration": null,
+                "average_angular_speed_degrees_per_second": null,
+                "angular_direction_changes": 0,
+                "angular_direction_changes_per_second": null,
+                "valid_frame_percentage": 0.0,
+                "valid_measurement_count": 0
+              },
+              "mean_angle_to_head_axis_degrees": null,
+              "head_axis_comparison_count": 0
+            },
+            "right": {
+              "relative_movement": {
+                "movement": "unknown",
+                "average_displacement_pixels": null,
+                "maximum_displacement_pixels": null,
+                "average_speed_pixels_per_second": null,
+                "maximum_speed_pixels_per_second": null,
+                "average_speed_diagonals_per_second": null,
+                "valid_measurement_count": 0,
+                "valid_frame_percentage": 0.0,
+                "observed_pair_seconds": 0.0,
+                "movement_direction_changes": 0,
+                "movement_bout_count": 0
+              },
+              "orientation_in_image": {
+                "mean_angle_degrees": null,
+                "circular_concentration": null,
+                "average_angular_speed_degrees_per_second": null,
+                "angular_direction_changes": 0,
+                "angular_direction_changes_per_second": null,
+                "valid_frame_percentage": 0.0,
+                "valid_measurement_count": 0
+              },
+              "mean_angle_to_head_axis_degrees": null,
+              "head_axis_comparison_count": 0
+            }
+          },
+          "eyes": {
+            "mean_inter_eye_distance_pixels": 32.579359,
+            "valid_frame_percentage": 14.285714,
+            "gaze_direction": "not_inferred_from_eye_centers"
+          },
+          "tail": {
+            "movement": {
+              "movement": "unknown",
+              "average_displacement_pixels": null,
+              "maximum_displacement_pixels": null,
+              "average_speed_pixels_per_second": null,
+              "maximum_speed_pixels_per_second": null,
+              "average_speed_diagonals_per_second": null,
+              "valid_measurement_count": 0,
+              "valid_frame_percentage": 0.0,
+              "observed_pair_seconds": 0.0,
+              "movement_direction_changes": 0,
+              "movement_bout_count": 0
+            },
+            "position_pattern": "unknown",
+            "orientation_in_image": {
+              "mean_angle_degrees": null,
+              "circular_concentration": null,
+              "average_angular_speed_degrees_per_second": null,
+              "angular_direction_changes": 0,
+              "angular_direction_changes_per_second": null,
+              "valid_frame_percentage": 0.0,
+              "valid_measurement_count": 0
+            }
+          },
+          "body": {
+            "movement": {
+              "movement": "unknown",
+              "average_displacement_pixels": null,
+              "maximum_displacement_pixels": null,
+              "average_speed_pixels_per_second": null,
+              "maximum_speed_pixels_per_second": null,
+              "average_speed_diagonals_per_second": null,
+              "valid_measurement_count": 0,
+              "valid_frame_percentage": 0.0,
+              "observed_pair_seconds": 0.0,
+              "movement_direction_changes": 0,
+              "movement_bout_count": 0
+            },
+            "position_pattern": "unknown",
+            "mean_spine_interior_angle_degrees": null,
+            "spine_measurement_count": 0
+          }
+        }
+      },
+      "behavior_candidates": [
+        {
+          "label": "body_moving",
+          "interval_seconds": {
+            "start": 9.0,
+            "end": 9.233333
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Detected when the body anchor's mean normalized speed is at least the low-speed threshold.",
+          "evidence": {
+            "measurement": "body_anchor_speed",
+            "movement_band": "unknown",
+            "average_speed_diagonals_per_second": null,
+            "valid_frame_percentage": 0.0,
+            "valid_measurement_count": 0,
+            "minimum_coverage_required": 50.0,
+            "window_duration_seconds": 0.233333,
+            "minimum_duration_seconds": 1.0
+          },
+          "limitations": [
+            "Time window is shorter than the 1-second minimum for a motion candidate."
+          ]
+        },
+        {
+          "label": "tail_moving",
+          "interval_seconds": {
+            "start": 9.0,
+            "end": 9.233333
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Detected when tail-tip motion relative to the tail base reaches the moderate or high activity band.",
+          "evidence": {
+            "measurement": "tail_tip_relative_to_tail_base_speed",
+            "movement_band": "unknown",
+            "average_speed_diagonals_per_second": null,
+            "valid_frame_percentage": 0.0,
+            "valid_measurement_count": 0,
+            "minimum_coverage_required": 50.0,
+            "window_duration_seconds": 0.233333,
+            "minimum_duration_seconds": 1.0
+          },
+          "limitations": [
+            "Time window is shorter than the 1-second minimum for a motion candidate."
+          ]
+        }
+      ],
       "tail_position_pattern": "unknown",
       "changes_from_previous_interval": []
+    }
+  ],
+  "behavior_candidates": [
+    {
+      "label": "body_moving",
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 3.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Detected when the body anchor's mean normalized speed is at least the low-speed threshold.",
+      "evidence": {
+        "measurement": "body_anchor_speed",
+        "movement_band": "unknown",
+        "average_speed_diagonals_per_second": 0.05813,
+        "valid_frame_percentage": 18.888889,
+        "valid_measurement_count": 14,
+        "minimum_coverage_required": 50.0,
+        "window_duration_seconds": 3.0,
+        "minimum_duration_seconds": 1.0
+      },
+      "limitations": [
+        "Not enough reliable consecutive landmark measurements to evaluate this rule."
+      ]
+    },
+    {
+      "label": "tail_moving",
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 3.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Detected when tail-tip motion relative to the tail base reaches the moderate or high activity band.",
+      "evidence": {
+        "measurement": "tail_tip_relative_to_tail_base_speed",
+        "movement_band": "unknown",
+        "average_speed_diagonals_per_second": 0.066464,
+        "valid_frame_percentage": 31.111111,
+        "valid_measurement_count": 21,
+        "minimum_coverage_required": 50.0,
+        "window_duration_seconds": 3.0,
+        "minimum_duration_seconds": 1.0
+      },
+      "limitations": [
+        "Not enough reliable consecutive landmark measurements to evaluate this rule."
+      ]
+    },
+    {
+      "label": "body_moving",
+      "interval_seconds": {
+        "start": 3.0,
+        "end": 6.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Detected when the body anchor's mean normalized speed is at least the low-speed threshold.",
+      "evidence": {
+        "measurement": "body_anchor_speed",
+        "movement_band": "unknown",
+        "average_speed_diagonals_per_second": 0.032849,
+        "valid_frame_percentage": 2.222222,
+        "valid_measurement_count": 1,
+        "minimum_coverage_required": 50.0,
+        "window_duration_seconds": 3.0,
+        "minimum_duration_seconds": 1.0
+      },
+      "limitations": [
+        "Not enough reliable consecutive landmark measurements to evaluate this rule."
+      ]
+    },
+    {
+      "label": "tail_moving",
+      "interval_seconds": {
+        "start": 3.0,
+        "end": 6.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Detected when tail-tip motion relative to the tail base reaches the moderate or high activity band.",
+      "evidence": {
+        "measurement": "tail_tip_relative_to_tail_base_speed",
+        "movement_band": "unknown",
+        "average_speed_diagonals_per_second": 0.090226,
+        "valid_frame_percentage": 34.444444,
+        "valid_measurement_count": 22,
+        "minimum_coverage_required": 50.0,
+        "window_duration_seconds": 3.0,
+        "minimum_duration_seconds": 1.0
+      },
+      "limitations": [
+        "Not enough reliable consecutive landmark measurements to evaluate this rule."
+      ]
+    },
+    {
+      "label": "body_moving",
+      "interval_seconds": {
+        "start": 6.0,
+        "end": 9.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Detected when the body anchor's mean normalized speed is at least the low-speed threshold.",
+      "evidence": {
+        "measurement": "body_anchor_speed",
+        "movement_band": "unknown",
+        "average_speed_diagonals_per_second": null,
+        "valid_frame_percentage": 1.111111,
+        "valid_measurement_count": 0,
+        "minimum_coverage_required": 50.0,
+        "window_duration_seconds": 3.0,
+        "minimum_duration_seconds": 1.0
+      },
+      "limitations": [
+        "Not enough reliable consecutive landmark measurements to evaluate this rule."
+      ]
+    },
+    {
+      "label": "tail_moving",
+      "interval_seconds": {
+        "start": 6.0,
+        "end": 9.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Detected when tail-tip motion relative to the tail base reaches the moderate or high activity band.",
+      "evidence": {
+        "measurement": "tail_tip_relative_to_tail_base_speed",
+        "movement_band": "unknown",
+        "average_speed_diagonals_per_second": 0.053834,
+        "valid_frame_percentage": 12.222222,
+        "valid_measurement_count": 3,
+        "minimum_coverage_required": 50.0,
+        "window_duration_seconds": 3.0,
+        "minimum_duration_seconds": 1.0
+      },
+      "limitations": [
+        "Not enough reliable consecutive landmark measurements to evaluate this rule."
+      ]
+    },
+    {
+      "label": "body_moving",
+      "interval_seconds": {
+        "start": 9.0,
+        "end": 9.233333
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Detected when the body anchor's mean normalized speed is at least the low-speed threshold.",
+      "evidence": {
+        "measurement": "body_anchor_speed",
+        "movement_band": "unknown",
+        "average_speed_diagonals_per_second": null,
+        "valid_frame_percentage": 0.0,
+        "valid_measurement_count": 0,
+        "minimum_coverage_required": 50.0,
+        "window_duration_seconds": 0.233333,
+        "minimum_duration_seconds": 1.0
+      },
+      "limitations": [
+        "Time window is shorter than the 1-second minimum for a motion candidate."
+      ]
+    },
+    {
+      "label": "tail_moving",
+      "interval_seconds": {
+        "start": 9.0,
+        "end": 9.233333
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Detected when tail-tip motion relative to the tail base reaches the moderate or high activity band.",
+      "evidence": {
+        "measurement": "tail_tip_relative_to_tail_base_speed",
+        "movement_band": "unknown",
+        "average_speed_diagonals_per_second": null,
+        "valid_frame_percentage": 0.0,
+        "valid_measurement_count": 0,
+        "minimum_coverage_required": 50.0,
+        "window_duration_seconds": 0.233333,
+        "minimum_duration_seconds": 1.0
+      },
+      "limitations": [
+        "Time window is shorter than the 1-second minimum for a motion candidate."
+      ]
     }
   ],
   "analysis_settings": {

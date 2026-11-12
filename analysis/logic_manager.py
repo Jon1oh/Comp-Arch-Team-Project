@@ -1,4 +1,4 @@
-"""Convert single-animal DLC predictions into compact, measurable AI input.
+﻿"""Convert single-animal DLC predictions into compact, measurable AI input.
 
 Supports both this project's SuperAnimal JSON and the proposed standardized JSON.
 No DeepLabCut, OpenCV, pandas, network access, or AI calls are needed here.
@@ -464,6 +464,80 @@ def _activity_labels(features):
     }
 
 
+def _movement_candidate(label, rule, measurement, stats, start, end, config):
+    """Turn a measured movement band into a quality-gated, auditable result."""
+    coverage = stats["valid_frame_percentage"] / 100.0
+    movement = stats["movement"]
+    duration = end - start
+    minimum_duration = 1.0
+    sufficient = (
+        duration >= minimum_duration
+        and movement != "unknown"
+        and coverage >= config.minimum_coverage
+        and stats["valid_measurement_count"] >= 2
+        and stats["average_speed_diagonals_per_second"] is not None
+    )
+    if not sufficient:
+        status = "insufficient_data"
+        limitation = (
+            "Time window is shorter than the 1-second minimum for a motion candidate."
+            if duration < minimum_duration
+            else "Not enough reliable consecutive landmark measurements to evaluate this rule."
+        )
+    elif movement in ("moderate", "high"):
+        status = "detected"
+        limitation = None
+    else:
+        status = "not_detected"
+        limitation = None
+
+    result = {
+        "label": label,
+        "interval_seconds": {"start": start, "end": end},
+        "status": status,
+        "score": None,
+        "rule": rule,
+        "evidence": {
+            "measurement": measurement,
+            "movement_band": movement,
+            "average_speed_diagonals_per_second": stats["average_speed_diagonals_per_second"],
+            "valid_frame_percentage": stats["valid_frame_percentage"],
+            "valid_measurement_count": stats["valid_measurement_count"],
+            "minimum_coverage_required": config.minimum_coverage * 100,
+            "window_duration_seconds": duration,
+            "minimum_duration_seconds": minimum_duration,
+        },
+        "limitations": [],
+    }
+    if limitation:
+        result["limitations"].append(limitation)
+    return result
+
+
+def _behavior_candidates(features, start, end, config):
+    """Report simple visible-motion candidates, not semantic behavior or emotion."""
+    return [
+        _movement_candidate(
+            "body_moving",
+            "Detected when the body anchor's mean normalized speed is at least the low-speed threshold.",
+            "body_anchor_speed",
+            features["body"]["movement"],
+            start,
+            end,
+            config,
+        ),
+        _movement_candidate(
+            "tail_moving",
+            "Detected when tail-tip motion relative to the tail base reaches the moderate or high activity band.",
+            "tail_tip_relative_to_tail_base_speed",
+            features["tail"]["movement"],
+            start,
+            end,
+            config,
+        ),
+    ]
+
+
 def analyze_temporal_patterns(frames, cleaned_frames, mapping, info, config):
     """Summarize up to 60 time windows, including windows with no valid points."""
     duration = info["end"] - info["start"]
@@ -486,13 +560,20 @@ def analyze_temporal_patterns(frames, cleaned_frames, mapping, info, config):
                 if label in ranks and previous in ranks and label != previous:
                     changes.append(f"{name}_activity_{'increased' if ranks[label] > ranks[previous] else 'decreased'}")
         quality = _quality(clean_group, mapping)
+        start_seconds = info["start"] + index * interval
+        end_seconds = min(info["end"], info["start"] + (index + 1) * interval)
         result.append({
-            "start_seconds": info["start"] + index * interval,
-            "end_seconds": min(info["end"], info["start"] + (index + 1) * interval),
+            "start_seconds": start_seconds,
+            "end_seconds": end_seconds,
             "frames_processed": len(group),
             "data_quality": quality["rating"],
             "reliable_detection_percentage": quality["reliable_detection_percentage"],
             "movement": labels,
+            "measurements": {
+                "landmark_movement": calculate_movement(group, info, config),
+                "observed_features": features,
+            },
+            "behavior_candidates": _behavior_candidates(features, start_seconds, end_seconds, config),
             "tail_position_pattern": features["tail"]["position_pattern"],
             "changes_from_previous_interval": changes,
         })
@@ -545,6 +626,12 @@ class LogicManager:
         gaps = sum(not _adjacent(first, second, info, self.config) for first, second in zip(cleaned, cleaned[1:]))
         if gaps:
             info["warnings"].append(f"{gaps} frame/time gaps were excluded from movement and smoothing.")
+        temporal_patterns = analyze_temporal_patterns(smoothed, cleaned, mapping, info, self.config)
+        behavior_candidates = [
+            candidate
+            for window in temporal_patterns
+            for candidate in window["behavior_candidates"]
+        ]
         return _rounded({
             "schema_version": "1.0",
             "video_summary": {
@@ -556,7 +643,8 @@ class LogicManager:
             "data_quality": quality,
             "observed_features": features,
             "movement_metrics": movement,
-            "temporal_patterns": analyze_temporal_patterns(smoothed, cleaned, mapping, info, self.config),
+            "temporal_patterns": temporal_patterns,
+            "behavior_candidates": behavior_candidates,
             "analysis_settings": {
                 **asdict(self.config), "keypoint_mapping": mapping,
                 "normalization": "pixel distance / image diagonal; speed uses timestamp differences",
