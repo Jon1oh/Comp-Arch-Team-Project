@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "video_summary": {
     "video_name": "test1_cat_play_prepared",
     "duration_seconds": 9.233,
@@ -13,8 +13,8 @@
   },
   "data_quality": {
     "rating": "limited",
-    "reliable_detection_percentage": 59.897714,
-    "mapped_keypoint_count": 12,
+    "reliable_detection_percentage": 63.563693,
+    "mapped_keypoint_count": 14,
     "missing_keypoints": [
       "tail_mid"
     ],
@@ -31,7 +31,9 @@
       "hip": 79.422383,
       "tail_base": 79.783394,
       "tail_mid": 0.0,
-      "tail_tip": 30.685921
+      "tail_tip": 30.685921,
+      "front_left_paw": 87.725632,
+      "front_right_paw": 83.393502
     }
   },
   "observed_features": {
@@ -149,6 +151,12 @@
       "position_pattern": "unknown",
       "mean_spine_interior_angle_degrees": 156.726788,
       "spine_measurement_count": 5
+    },
+    "grooming_cues": {
+      "nose_near_front_paw_body_lengths": 0.765896,
+      "nose_near_front_paw_frame_percentage": 0.0,
+      "valid_nose_paw_frames": 19,
+      "valid_frame_percentage": 6.859206
     }
   },
   "movement_metrics": {
@@ -320,6 +328,32 @@
       "observed_pair_seconds": 2.0336,
       "movement_direction_changes": 0,
       "movement_bout_count": 16
+    },
+    "front_left_paw": {
+      "movement": "moderate",
+      "average_displacement_pixels": 3.386771,
+      "maximum_displacement_pixels": 21.791753,
+      "average_speed_pixels_per_second": 101.603965,
+      "maximum_speed_pixels_per_second": 654.406999,
+      "average_speed_diagonals_per_second": 0.088155,
+      "valid_measurement_count": 239,
+      "valid_frame_percentage": 87.725632,
+      "observed_pair_seconds": 7.9666,
+      "movement_direction_changes": 17,
+      "movement_bout_count": 30
+    },
+    "front_right_paw": {
+      "movement": "moderate",
+      "average_displacement_pixels": 2.788182,
+      "maximum_displacement_pixels": 16.192765,
+      "average_speed_pixels_per_second": 83.643524,
+      "maximum_speed_pixels_per_second": 486.269217,
+      "average_speed_diagonals_per_second": 0.072572,
+      "valid_measurement_count": 217,
+      "valid_frame_percentage": 83.393502,
+      "observed_pair_seconds": 7.2335,
+      "movement_direction_changes": 22,
+      "movement_bout_count": 26
     }
   },
   "temporal_patterns": [
@@ -328,7 +362,7 @@
       "end_seconds": 3.0,
       "frames_processed": 90,
       "data_quality": "limited",
-      "reliable_detection_percentage": 72.222222,
+      "reliable_detection_percentage": 75.47619,
       "movement": {
         "head": "high",
         "left_ear": "moderate",
@@ -506,6 +540,32 @@
             "observed_pair_seconds": 1.1333,
             "movement_direction_changes": 0,
             "movement_bout_count": 12
+          },
+          "front_left_paw": {
+            "movement": "high",
+            "average_displacement_pixels": 4.65503,
+            "maximum_displacement_pixels": 21.791753,
+            "average_speed_pixels_per_second": 139.649332,
+            "maximum_speed_pixels_per_second": 654.406999,
+            "average_speed_diagonals_per_second": 0.121164,
+            "valid_measurement_count": 89,
+            "valid_frame_percentage": 100.0,
+            "observed_pair_seconds": 2.9667,
+            "movement_direction_changes": 5,
+            "movement_bout_count": 8
+          },
+          "front_right_paw": {
+            "movement": "moderate",
+            "average_displacement_pixels": 3.426639,
+            "maximum_displacement_pixels": 16.192765,
+            "average_speed_pixels_per_second": 102.793605,
+            "maximum_speed_pixels_per_second": 486.269217,
+            "average_speed_diagonals_per_second": 0.089187,
+            "valid_measurement_count": 74,
+            "valid_frame_percentage": 90.0,
+            "observed_pair_seconds": 2.4668,
+            "movement_direction_changes": 5,
+            "movement_bout_count": 7
           }
         },
         "observed_features": {
@@ -623,6 +683,12 @@
             "position_pattern": "unknown",
             "mean_spine_interior_angle_degrees": 147.620981,
             "spine_measurement_count": 3
+          },
+          "grooming_cues": {
+            "nose_near_front_paw_body_lengths": 0.768073,
+            "nose_near_front_paw_frame_percentage": 0.0,
+            "valid_nose_paw_frames": 17,
+            "valid_frame_percentage": 18.888889
           }
         }
       },
@@ -672,6 +738,107 @@
           "limitations": [
             "Not enough reliable consecutive landmark measurements to evaluate this rule."
           ]
+        },
+        {
+          "label": "possible_tail_swishing",
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "At least 3 angular direction reversals and mean angular speed of at least 25 degrees/second in the window.",
+          "evidence": {
+            "angular_direction_changes": 0,
+            "average_angular_speed_degrees_per_second": 22.349476,
+            "tail_tip_base_coverage_percentage": 31.111111,
+            "minimum_coverage_required": 50.0
+          },
+          "limitations": [
+            "Tail landmarks or window duration are insufficient to evaluate this rule."
+          ]
+        },
+        {
+          "label": "possible_grooming",
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Nose is within 0.25 body lengths of a front paw in at least 30% of valid frames, with moderate/high head motion and low body motion.",
+          "evidence": {
+            "mean_nose_to_nearest_front_paw_body_lengths": 0.768073,
+            "nose_near_paw_frame_percentage": 0.0,
+            "valid_nose_paw_frame_percentage": 18.888889,
+            "head_movement": "high",
+            "body_movement": "unknown",
+            "minimum_coverage_required": 50.0
+          },
+          "limitations": [
+            "Reliable nose, front-paw, shoulder and hip measurements are required."
+          ]
+        },
+        {
+          "label": "possible_repetitive_front_paw_motion",
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Both front paws show at least 3 movement direction changes while the body anchor remains in the low movement band.",
+          "evidence": {
+            "front_left_paw": {
+              "movement": "high",
+              "average_displacement_pixels": 4.65503,
+              "maximum_displacement_pixels": 21.791753,
+              "average_speed_pixels_per_second": 139.649332,
+              "maximum_speed_pixels_per_second": 654.406999,
+              "average_speed_diagonals_per_second": 0.121164,
+              "valid_measurement_count": 89,
+              "valid_frame_percentage": 100.0,
+              "observed_pair_seconds": 2.9667,
+              "movement_direction_changes": 5,
+              "movement_bout_count": 8
+            },
+            "front_right_paw": {
+              "movement": "moderate",
+              "average_displacement_pixels": 3.426639,
+              "maximum_displacement_pixels": 16.192765,
+              "average_speed_pixels_per_second": 102.793605,
+              "maximum_speed_pixels_per_second": 486.269217,
+              "average_speed_diagonals_per_second": 0.089187,
+              "valid_measurement_count": 74,
+              "valid_frame_percentage": 90.0,
+              "observed_pair_seconds": 2.4668,
+              "movement_direction_changes": 5,
+              "movement_bout_count": 7
+            },
+            "body_movement": "unknown"
+          },
+          "limitations": [
+            "Both front paws and the body anchor need adequate coverage; repetitive paw motion alone does not prove kneading."
+          ]
+        },
+        {
+          "label": "possible_play_like_activity",
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Body movement is moderate/high with at least 2 direction changes and at least one moving front paw.",
+          "evidence": {
+            "body_movement": "unknown",
+            "body_direction_changes": 0,
+            "front_left_paw_movement": "high",
+            "front_right_paw_movement": "moderate"
+          },
+          "limitations": [
+            "Body and both front paws need adequate coverage; this pattern is not proof that the cat is playing."
+          ]
         }
       ],
       "tail_position_pattern": "unknown",
@@ -682,7 +849,7 @@
       "end_seconds": 6.0,
       "frames_processed": 90,
       "data_quality": "limited",
-      "reliable_detection_percentage": 73.425926,
+      "reliable_detection_percentage": 77.222222,
       "movement": {
         "head": "moderate",
         "left_ear": "moderate",
@@ -860,6 +1027,32 @@
             "observed_pair_seconds": 0.7334,
             "movement_direction_changes": 0,
             "movement_bout_count": 4
+          },
+          "front_left_paw": {
+            "movement": "moderate",
+            "average_displacement_pixels": 1.509001,
+            "maximum_displacement_pixels": 3.342727,
+            "average_speed_pixels_per_second": 45.269519,
+            "maximum_speed_pixels_per_second": 100.382183,
+            "average_speed_diagonals_per_second": 0.039277,
+            "valid_measurement_count": 89,
+            "valid_frame_percentage": 100.0,
+            "observed_pair_seconds": 2.9667,
+            "movement_direction_changes": 6,
+            "movement_bout_count": 15
+          },
+          "front_right_paw": {
+            "movement": "moderate",
+            "average_displacement_pixels": 1.476987,
+            "maximum_displacement_pixels": 4.399017,
+            "average_speed_pixels_per_second": 44.309106,
+            "maximum_speed_pixels_per_second": 131.707084,
+            "average_speed_diagonals_per_second": 0.038444,
+            "valid_measurement_count": 89,
+            "valid_frame_percentage": 100.0,
+            "observed_pair_seconds": 2.9667,
+            "movement_direction_changes": 6,
+            "movement_bout_count": 14
           }
         },
         "observed_features": {
@@ -977,6 +1170,12 @@
             "position_pattern": "unknown",
             "mean_spine_interior_angle_degrees": 170.385499,
             "spine_measurement_count": 2
+          },
+          "grooming_cues": {
+            "nose_near_front_paw_body_lengths": 0.747398,
+            "nose_near_front_paw_frame_percentage": 0.0,
+            "valid_nose_paw_frames": 2,
+            "valid_frame_percentage": 2.222222
           }
         }
       },
@@ -1026,6 +1225,107 @@
           "limitations": [
             "Not enough reliable consecutive landmark measurements to evaluate this rule."
           ]
+        },
+        {
+          "label": "possible_tail_swishing",
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 6.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "At least 3 angular direction reversals and mean angular speed of at least 25 degrees/second in the window.",
+          "evidence": {
+            "angular_direction_changes": 0,
+            "average_angular_speed_degrees_per_second": 16.271379,
+            "tail_tip_base_coverage_percentage": 34.444444,
+            "minimum_coverage_required": 50.0
+          },
+          "limitations": [
+            "Tail landmarks or window duration are insufficient to evaluate this rule."
+          ]
+        },
+        {
+          "label": "possible_grooming",
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 6.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Nose is within 0.25 body lengths of a front paw in at least 30% of valid frames, with moderate/high head motion and low body motion.",
+          "evidence": {
+            "mean_nose_to_nearest_front_paw_body_lengths": 0.747398,
+            "nose_near_paw_frame_percentage": 0.0,
+            "valid_nose_paw_frame_percentage": 2.222222,
+            "head_movement": "moderate",
+            "body_movement": "unknown",
+            "minimum_coverage_required": 50.0
+          },
+          "limitations": [
+            "Reliable nose, front-paw, shoulder and hip measurements are required."
+          ]
+        },
+        {
+          "label": "possible_repetitive_front_paw_motion",
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 6.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Both front paws show at least 3 movement direction changes while the body anchor remains in the low movement band.",
+          "evidence": {
+            "front_left_paw": {
+              "movement": "moderate",
+              "average_displacement_pixels": 1.509001,
+              "maximum_displacement_pixels": 3.342727,
+              "average_speed_pixels_per_second": 45.269519,
+              "maximum_speed_pixels_per_second": 100.382183,
+              "average_speed_diagonals_per_second": 0.039277,
+              "valid_measurement_count": 89,
+              "valid_frame_percentage": 100.0,
+              "observed_pair_seconds": 2.9667,
+              "movement_direction_changes": 6,
+              "movement_bout_count": 15
+            },
+            "front_right_paw": {
+              "movement": "moderate",
+              "average_displacement_pixels": 1.476987,
+              "maximum_displacement_pixels": 4.399017,
+              "average_speed_pixels_per_second": 44.309106,
+              "maximum_speed_pixels_per_second": 131.707084,
+              "average_speed_diagonals_per_second": 0.038444,
+              "valid_measurement_count": 89,
+              "valid_frame_percentage": 100.0,
+              "observed_pair_seconds": 2.9667,
+              "movement_direction_changes": 6,
+              "movement_bout_count": 14
+            },
+            "body_movement": "unknown"
+          },
+          "limitations": [
+            "Both front paws and the body anchor need adequate coverage; repetitive paw motion alone does not prove kneading."
+          ]
+        },
+        {
+          "label": "possible_play_like_activity",
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 6.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Body movement is moderate/high with at least 2 direction changes and at least one moving front paw.",
+          "evidence": {
+            "body_movement": "unknown",
+            "body_direction_changes": 0,
+            "front_left_paw_movement": "moderate",
+            "front_right_paw_movement": "moderate"
+          },
+          "limitations": [
+            "Body and both front paws need adequate coverage; this pattern is not proof that the cat is playing."
+          ]
         }
       ],
       "tail_position_pattern": "unknown",
@@ -1038,7 +1338,7 @@
       "end_seconds": 9.0,
       "frames_processed": 90,
       "data_quality": "poor",
-      "reliable_detection_percentage": 37.592593,
+      "reliable_detection_percentage": 41.507937,
       "movement": {
         "head": "high",
         "left_ear": "unknown",
@@ -1216,6 +1516,32 @@
             "observed_pair_seconds": 0.1669,
             "movement_direction_changes": 0,
             "movement_bout_count": 0
+          },
+          "front_left_paw": {
+            "movement": "high",
+            "average_displacement_pixels": 4.367885,
+            "maximum_displacement_pixels": 21.014132,
+            "average_speed_pixels_per_second": 131.040986,
+            "maximum_speed_pixels_per_second": 631.055024,
+            "average_speed_diagonals_per_second": 0.113695,
+            "valid_measurement_count": 59,
+            "valid_frame_percentage": 70.0,
+            "observed_pair_seconds": 1.9666,
+            "movement_direction_changes": 6,
+            "movement_bout_count": 8
+          },
+          "front_right_paw": {
+            "movement": "high",
+            "average_displacement_pixels": 4.296694,
+            "maximum_displacement_pixels": 13.850087,
+            "average_speed_pixels_per_second": 128.898082,
+            "maximum_speed_pixels_per_second": 415.918523,
+            "average_speed_diagonals_per_second": 0.111836,
+            "valid_measurement_count": 47,
+            "valid_frame_percentage": 60.0,
+            "observed_pair_seconds": 1.5667,
+            "movement_direction_changes": 8,
+            "movement_bout_count": 6
           }
         },
         "observed_features": {
@@ -1333,6 +1659,12 @@
             "position_pattern": "unknown",
             "mean_spine_interior_angle_degrees": null,
             "spine_measurement_count": 0
+          },
+          "grooming_cues": {
+            "nose_near_front_paw_body_lengths": null,
+            "nose_near_front_paw_frame_percentage": 0.0,
+            "valid_nose_paw_frames": 0,
+            "valid_frame_percentage": 0.0
           }
         }
       },
@@ -1382,6 +1714,107 @@
           "limitations": [
             "Not enough reliable consecutive landmark measurements to evaluate this rule."
           ]
+        },
+        {
+          "label": "possible_tail_swishing",
+          "interval_seconds": {
+            "start": 6.0,
+            "end": 9.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "At least 3 angular direction reversals and mean angular speed of at least 25 degrees/second in the window.",
+          "evidence": {
+            "angular_direction_changes": 0,
+            "average_angular_speed_degrees_per_second": 15.25586,
+            "tail_tip_base_coverage_percentage": 12.222222,
+            "minimum_coverage_required": 50.0
+          },
+          "limitations": [
+            "Tail landmarks or window duration are insufficient to evaluate this rule."
+          ]
+        },
+        {
+          "label": "possible_grooming",
+          "interval_seconds": {
+            "start": 6.0,
+            "end": 9.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Nose is within 0.25 body lengths of a front paw in at least 30% of valid frames, with moderate/high head motion and low body motion.",
+          "evidence": {
+            "mean_nose_to_nearest_front_paw_body_lengths": null,
+            "nose_near_paw_frame_percentage": 0.0,
+            "valid_nose_paw_frame_percentage": 0.0,
+            "head_movement": "high",
+            "body_movement": "unknown",
+            "minimum_coverage_required": 50.0
+          },
+          "limitations": [
+            "Reliable nose, front-paw, shoulder and hip measurements are required."
+          ]
+        },
+        {
+          "label": "possible_repetitive_front_paw_motion",
+          "interval_seconds": {
+            "start": 6.0,
+            "end": 9.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Both front paws show at least 3 movement direction changes while the body anchor remains in the low movement band.",
+          "evidence": {
+            "front_left_paw": {
+              "movement": "high",
+              "average_displacement_pixels": 4.367885,
+              "maximum_displacement_pixels": 21.014132,
+              "average_speed_pixels_per_second": 131.040986,
+              "maximum_speed_pixels_per_second": 631.055024,
+              "average_speed_diagonals_per_second": 0.113695,
+              "valid_measurement_count": 59,
+              "valid_frame_percentage": 70.0,
+              "observed_pair_seconds": 1.9666,
+              "movement_direction_changes": 6,
+              "movement_bout_count": 8
+            },
+            "front_right_paw": {
+              "movement": "high",
+              "average_displacement_pixels": 4.296694,
+              "maximum_displacement_pixels": 13.850087,
+              "average_speed_pixels_per_second": 128.898082,
+              "maximum_speed_pixels_per_second": 415.918523,
+              "average_speed_diagonals_per_second": 0.111836,
+              "valid_measurement_count": 47,
+              "valid_frame_percentage": 60.0,
+              "observed_pair_seconds": 1.5667,
+              "movement_direction_changes": 8,
+              "movement_bout_count": 6
+            },
+            "body_movement": "unknown"
+          },
+          "limitations": [
+            "Both front paws and the body anchor need adequate coverage; repetitive paw motion alone does not prove kneading."
+          ]
+        },
+        {
+          "label": "possible_play_like_activity",
+          "interval_seconds": {
+            "start": 6.0,
+            "end": 9.0
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Body movement is moderate/high with at least 2 direction changes and at least one moving front paw.",
+          "evidence": {
+            "body_movement": "unknown",
+            "body_direction_changes": 0,
+            "front_left_paw_movement": "high",
+            "front_right_paw_movement": "high"
+          },
+          "limitations": [
+            "Body and both front paws need adequate coverage; this pattern is not proof that the cat is playing."
+          ]
         }
       ],
       "tail_position_pattern": "unknown",
@@ -1394,7 +1827,7 @@
       "end_seconds": 9.233333,
       "frames_processed": 7,
       "data_quality": "poor",
-      "reliable_detection_percentage": 14.285714,
+      "reliable_detection_percentage": 18.367347,
       "movement": {
         "head": "unknown",
         "left_ear": "unknown",
@@ -1572,6 +2005,32 @@
             "observed_pair_seconds": 0.0,
             "movement_direction_changes": 0,
             "movement_bout_count": 0
+          },
+          "front_left_paw": {
+            "movement": "unknown",
+            "average_displacement_pixels": null,
+            "maximum_displacement_pixels": null,
+            "average_speed_pixels_per_second": null,
+            "maximum_speed_pixels_per_second": null,
+            "average_speed_diagonals_per_second": null,
+            "valid_measurement_count": 0,
+            "valid_frame_percentage": 0.0,
+            "observed_pair_seconds": 0.0,
+            "movement_direction_changes": 0,
+            "movement_bout_count": 0
+          },
+          "front_right_paw": {
+            "movement": "moderate",
+            "average_displacement_pixels": 2.803882,
+            "maximum_displacement_pixels": 4.056572,
+            "average_speed_pixels_per_second": 84.099648,
+            "maximum_speed_pixels_per_second": 121.818978,
+            "average_speed_diagonals_per_second": 0.072968,
+            "valid_measurement_count": 5,
+            "valid_frame_percentage": 85.714286,
+            "observed_pair_seconds": 0.1667,
+            "movement_direction_changes": 1,
+            "movement_bout_count": 1
           }
         },
         "observed_features": {
@@ -1689,6 +2148,12 @@
             "position_pattern": "unknown",
             "mean_spine_interior_angle_degrees": null,
             "spine_measurement_count": 0
+          },
+          "grooming_cues": {
+            "nose_near_front_paw_body_lengths": null,
+            "nose_near_front_paw_frame_percentage": 0.0,
+            "valid_nose_paw_frames": 0,
+            "valid_frame_percentage": 0.0
           }
         }
       },
@@ -1737,6 +2202,107 @@
           },
           "limitations": [
             "Time window is shorter than the 1-second minimum for a motion candidate."
+          ]
+        },
+        {
+          "label": "possible_tail_swishing",
+          "interval_seconds": {
+            "start": 9.0,
+            "end": 9.233333
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "At least 3 angular direction reversals and mean angular speed of at least 25 degrees/second in the window.",
+          "evidence": {
+            "angular_direction_changes": 0,
+            "average_angular_speed_degrees_per_second": null,
+            "tail_tip_base_coverage_percentage": 0.0,
+            "minimum_coverage_required": 50.0
+          },
+          "limitations": [
+            "Tail landmarks or window duration are insufficient to evaluate this rule."
+          ]
+        },
+        {
+          "label": "possible_grooming",
+          "interval_seconds": {
+            "start": 9.0,
+            "end": 9.233333
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Nose is within 0.25 body lengths of a front paw in at least 30% of valid frames, with moderate/high head motion and low body motion.",
+          "evidence": {
+            "mean_nose_to_nearest_front_paw_body_lengths": null,
+            "nose_near_paw_frame_percentage": 0.0,
+            "valid_nose_paw_frame_percentage": 0.0,
+            "head_movement": "unknown",
+            "body_movement": "unknown",
+            "minimum_coverage_required": 50.0
+          },
+          "limitations": [
+            "Reliable nose, front-paw, shoulder and hip measurements are required."
+          ]
+        },
+        {
+          "label": "possible_repetitive_front_paw_motion",
+          "interval_seconds": {
+            "start": 9.0,
+            "end": 9.233333
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Both front paws show at least 3 movement direction changes while the body anchor remains in the low movement band.",
+          "evidence": {
+            "front_left_paw": {
+              "movement": "unknown",
+              "average_displacement_pixels": null,
+              "maximum_displacement_pixels": null,
+              "average_speed_pixels_per_second": null,
+              "maximum_speed_pixels_per_second": null,
+              "average_speed_diagonals_per_second": null,
+              "valid_measurement_count": 0,
+              "valid_frame_percentage": 0.0,
+              "observed_pair_seconds": 0.0,
+              "movement_direction_changes": 0,
+              "movement_bout_count": 0
+            },
+            "front_right_paw": {
+              "movement": "moderate",
+              "average_displacement_pixels": 2.803882,
+              "maximum_displacement_pixels": 4.056572,
+              "average_speed_pixels_per_second": 84.099648,
+              "maximum_speed_pixels_per_second": 121.818978,
+              "average_speed_diagonals_per_second": 0.072968,
+              "valid_measurement_count": 5,
+              "valid_frame_percentage": 85.714286,
+              "observed_pair_seconds": 0.1667,
+              "movement_direction_changes": 1,
+              "movement_bout_count": 1
+            },
+            "body_movement": "unknown"
+          },
+          "limitations": [
+            "Both front paws and the body anchor need adequate coverage; repetitive paw motion alone does not prove kneading."
+          ]
+        },
+        {
+          "label": "possible_play_like_activity",
+          "interval_seconds": {
+            "start": 9.0,
+            "end": 9.233333
+          },
+          "status": "insufficient_data",
+          "score": null,
+          "rule": "Body movement is moderate/high with at least 2 direction changes and at least one moving front paw.",
+          "evidence": {
+            "body_movement": "unknown",
+            "body_direction_changes": 0,
+            "front_left_paw_movement": "unknown",
+            "front_right_paw_movement": "moderate"
+          },
+          "limitations": [
+            "Body and both front paws need adequate coverage; this pattern is not proof that the cat is playing."
           ]
         }
       ],
@@ -1792,6 +2358,107 @@
       ]
     },
     {
+      "label": "possible_tail_swishing",
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 3.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "At least 3 angular direction reversals and mean angular speed of at least 25 degrees/second in the window.",
+      "evidence": {
+        "angular_direction_changes": 0,
+        "average_angular_speed_degrees_per_second": 22.349476,
+        "tail_tip_base_coverage_percentage": 31.111111,
+        "minimum_coverage_required": 50.0
+      },
+      "limitations": [
+        "Tail landmarks or window duration are insufficient to evaluate this rule."
+      ]
+    },
+    {
+      "label": "possible_grooming",
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 3.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Nose is within 0.25 body lengths of a front paw in at least 30% of valid frames, with moderate/high head motion and low body motion.",
+      "evidence": {
+        "mean_nose_to_nearest_front_paw_body_lengths": 0.768073,
+        "nose_near_paw_frame_percentage": 0.0,
+        "valid_nose_paw_frame_percentage": 18.888889,
+        "head_movement": "high",
+        "body_movement": "unknown",
+        "minimum_coverage_required": 50.0
+      },
+      "limitations": [
+        "Reliable nose, front-paw, shoulder and hip measurements are required."
+      ]
+    },
+    {
+      "label": "possible_repetitive_front_paw_motion",
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 3.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Both front paws show at least 3 movement direction changes while the body anchor remains in the low movement band.",
+      "evidence": {
+        "front_left_paw": {
+          "movement": "high",
+          "average_displacement_pixels": 4.65503,
+          "maximum_displacement_pixels": 21.791753,
+          "average_speed_pixels_per_second": 139.649332,
+          "maximum_speed_pixels_per_second": 654.406999,
+          "average_speed_diagonals_per_second": 0.121164,
+          "valid_measurement_count": 89,
+          "valid_frame_percentage": 100.0,
+          "observed_pair_seconds": 2.9667,
+          "movement_direction_changes": 5,
+          "movement_bout_count": 8
+        },
+        "front_right_paw": {
+          "movement": "moderate",
+          "average_displacement_pixels": 3.426639,
+          "maximum_displacement_pixels": 16.192765,
+          "average_speed_pixels_per_second": 102.793605,
+          "maximum_speed_pixels_per_second": 486.269217,
+          "average_speed_diagonals_per_second": 0.089187,
+          "valid_measurement_count": 74,
+          "valid_frame_percentage": 90.0,
+          "observed_pair_seconds": 2.4668,
+          "movement_direction_changes": 5,
+          "movement_bout_count": 7
+        },
+        "body_movement": "unknown"
+      },
+      "limitations": [
+        "Both front paws and the body anchor need adequate coverage; repetitive paw motion alone does not prove kneading."
+      ]
+    },
+    {
+      "label": "possible_play_like_activity",
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 3.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Body movement is moderate/high with at least 2 direction changes and at least one moving front paw.",
+      "evidence": {
+        "body_movement": "unknown",
+        "body_direction_changes": 0,
+        "front_left_paw_movement": "high",
+        "front_right_paw_movement": "moderate"
+      },
+      "limitations": [
+        "Body and both front paws need adequate coverage; this pattern is not proof that the cat is playing."
+      ]
+    },
+    {
       "label": "body_moving",
       "interval_seconds": {
         "start": 3.0,
@@ -1835,6 +2502,107 @@
       },
       "limitations": [
         "Not enough reliable consecutive landmark measurements to evaluate this rule."
+      ]
+    },
+    {
+      "label": "possible_tail_swishing",
+      "interval_seconds": {
+        "start": 3.0,
+        "end": 6.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "At least 3 angular direction reversals and mean angular speed of at least 25 degrees/second in the window.",
+      "evidence": {
+        "angular_direction_changes": 0,
+        "average_angular_speed_degrees_per_second": 16.271379,
+        "tail_tip_base_coverage_percentage": 34.444444,
+        "minimum_coverage_required": 50.0
+      },
+      "limitations": [
+        "Tail landmarks or window duration are insufficient to evaluate this rule."
+      ]
+    },
+    {
+      "label": "possible_grooming",
+      "interval_seconds": {
+        "start": 3.0,
+        "end": 6.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Nose is within 0.25 body lengths of a front paw in at least 30% of valid frames, with moderate/high head motion and low body motion.",
+      "evidence": {
+        "mean_nose_to_nearest_front_paw_body_lengths": 0.747398,
+        "nose_near_paw_frame_percentage": 0.0,
+        "valid_nose_paw_frame_percentage": 2.222222,
+        "head_movement": "moderate",
+        "body_movement": "unknown",
+        "minimum_coverage_required": 50.0
+      },
+      "limitations": [
+        "Reliable nose, front-paw, shoulder and hip measurements are required."
+      ]
+    },
+    {
+      "label": "possible_repetitive_front_paw_motion",
+      "interval_seconds": {
+        "start": 3.0,
+        "end": 6.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Both front paws show at least 3 movement direction changes while the body anchor remains in the low movement band.",
+      "evidence": {
+        "front_left_paw": {
+          "movement": "moderate",
+          "average_displacement_pixels": 1.509001,
+          "maximum_displacement_pixels": 3.342727,
+          "average_speed_pixels_per_second": 45.269519,
+          "maximum_speed_pixels_per_second": 100.382183,
+          "average_speed_diagonals_per_second": 0.039277,
+          "valid_measurement_count": 89,
+          "valid_frame_percentage": 100.0,
+          "observed_pair_seconds": 2.9667,
+          "movement_direction_changes": 6,
+          "movement_bout_count": 15
+        },
+        "front_right_paw": {
+          "movement": "moderate",
+          "average_displacement_pixels": 1.476987,
+          "maximum_displacement_pixels": 4.399017,
+          "average_speed_pixels_per_second": 44.309106,
+          "maximum_speed_pixels_per_second": 131.707084,
+          "average_speed_diagonals_per_second": 0.038444,
+          "valid_measurement_count": 89,
+          "valid_frame_percentage": 100.0,
+          "observed_pair_seconds": 2.9667,
+          "movement_direction_changes": 6,
+          "movement_bout_count": 14
+        },
+        "body_movement": "unknown"
+      },
+      "limitations": [
+        "Both front paws and the body anchor need adequate coverage; repetitive paw motion alone does not prove kneading."
+      ]
+    },
+    {
+      "label": "possible_play_like_activity",
+      "interval_seconds": {
+        "start": 3.0,
+        "end": 6.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Body movement is moderate/high with at least 2 direction changes and at least one moving front paw.",
+      "evidence": {
+        "body_movement": "unknown",
+        "body_direction_changes": 0,
+        "front_left_paw_movement": "moderate",
+        "front_right_paw_movement": "moderate"
+      },
+      "limitations": [
+        "Body and both front paws need adequate coverage; this pattern is not proof that the cat is playing."
       ]
     },
     {
@@ -1884,6 +2652,107 @@
       ]
     },
     {
+      "label": "possible_tail_swishing",
+      "interval_seconds": {
+        "start": 6.0,
+        "end": 9.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "At least 3 angular direction reversals and mean angular speed of at least 25 degrees/second in the window.",
+      "evidence": {
+        "angular_direction_changes": 0,
+        "average_angular_speed_degrees_per_second": 15.25586,
+        "tail_tip_base_coverage_percentage": 12.222222,
+        "minimum_coverage_required": 50.0
+      },
+      "limitations": [
+        "Tail landmarks or window duration are insufficient to evaluate this rule."
+      ]
+    },
+    {
+      "label": "possible_grooming",
+      "interval_seconds": {
+        "start": 6.0,
+        "end": 9.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Nose is within 0.25 body lengths of a front paw in at least 30% of valid frames, with moderate/high head motion and low body motion.",
+      "evidence": {
+        "mean_nose_to_nearest_front_paw_body_lengths": null,
+        "nose_near_paw_frame_percentage": 0.0,
+        "valid_nose_paw_frame_percentage": 0.0,
+        "head_movement": "high",
+        "body_movement": "unknown",
+        "minimum_coverage_required": 50.0
+      },
+      "limitations": [
+        "Reliable nose, front-paw, shoulder and hip measurements are required."
+      ]
+    },
+    {
+      "label": "possible_repetitive_front_paw_motion",
+      "interval_seconds": {
+        "start": 6.0,
+        "end": 9.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Both front paws show at least 3 movement direction changes while the body anchor remains in the low movement band.",
+      "evidence": {
+        "front_left_paw": {
+          "movement": "high",
+          "average_displacement_pixels": 4.367885,
+          "maximum_displacement_pixels": 21.014132,
+          "average_speed_pixels_per_second": 131.040986,
+          "maximum_speed_pixels_per_second": 631.055024,
+          "average_speed_diagonals_per_second": 0.113695,
+          "valid_measurement_count": 59,
+          "valid_frame_percentage": 70.0,
+          "observed_pair_seconds": 1.9666,
+          "movement_direction_changes": 6,
+          "movement_bout_count": 8
+        },
+        "front_right_paw": {
+          "movement": "high",
+          "average_displacement_pixels": 4.296694,
+          "maximum_displacement_pixels": 13.850087,
+          "average_speed_pixels_per_second": 128.898082,
+          "maximum_speed_pixels_per_second": 415.918523,
+          "average_speed_diagonals_per_second": 0.111836,
+          "valid_measurement_count": 47,
+          "valid_frame_percentage": 60.0,
+          "observed_pair_seconds": 1.5667,
+          "movement_direction_changes": 8,
+          "movement_bout_count": 6
+        },
+        "body_movement": "unknown"
+      },
+      "limitations": [
+        "Both front paws and the body anchor need adequate coverage; repetitive paw motion alone does not prove kneading."
+      ]
+    },
+    {
+      "label": "possible_play_like_activity",
+      "interval_seconds": {
+        "start": 6.0,
+        "end": 9.0
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Body movement is moderate/high with at least 2 direction changes and at least one moving front paw.",
+      "evidence": {
+        "body_movement": "unknown",
+        "body_direction_changes": 0,
+        "front_left_paw_movement": "high",
+        "front_right_paw_movement": "high"
+      },
+      "limitations": [
+        "Body and both front paws need adequate coverage; this pattern is not proof that the cat is playing."
+      ]
+    },
+    {
       "label": "body_moving",
       "interval_seconds": {
         "start": 9.0,
@@ -1928,6 +2797,107 @@
       "limitations": [
         "Time window is shorter than the 1-second minimum for a motion candidate."
       ]
+    },
+    {
+      "label": "possible_tail_swishing",
+      "interval_seconds": {
+        "start": 9.0,
+        "end": 9.233333
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "At least 3 angular direction reversals and mean angular speed of at least 25 degrees/second in the window.",
+      "evidence": {
+        "angular_direction_changes": 0,
+        "average_angular_speed_degrees_per_second": null,
+        "tail_tip_base_coverage_percentage": 0.0,
+        "minimum_coverage_required": 50.0
+      },
+      "limitations": [
+        "Tail landmarks or window duration are insufficient to evaluate this rule."
+      ]
+    },
+    {
+      "label": "possible_grooming",
+      "interval_seconds": {
+        "start": 9.0,
+        "end": 9.233333
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Nose is within 0.25 body lengths of a front paw in at least 30% of valid frames, with moderate/high head motion and low body motion.",
+      "evidence": {
+        "mean_nose_to_nearest_front_paw_body_lengths": null,
+        "nose_near_paw_frame_percentage": 0.0,
+        "valid_nose_paw_frame_percentage": 0.0,
+        "head_movement": "unknown",
+        "body_movement": "unknown",
+        "minimum_coverage_required": 50.0
+      },
+      "limitations": [
+        "Reliable nose, front-paw, shoulder and hip measurements are required."
+      ]
+    },
+    {
+      "label": "possible_repetitive_front_paw_motion",
+      "interval_seconds": {
+        "start": 9.0,
+        "end": 9.233333
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Both front paws show at least 3 movement direction changes while the body anchor remains in the low movement band.",
+      "evidence": {
+        "front_left_paw": {
+          "movement": "unknown",
+          "average_displacement_pixels": null,
+          "maximum_displacement_pixels": null,
+          "average_speed_pixels_per_second": null,
+          "maximum_speed_pixels_per_second": null,
+          "average_speed_diagonals_per_second": null,
+          "valid_measurement_count": 0,
+          "valid_frame_percentage": 0.0,
+          "observed_pair_seconds": 0.0,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0
+        },
+        "front_right_paw": {
+          "movement": "moderate",
+          "average_displacement_pixels": 2.803882,
+          "maximum_displacement_pixels": 4.056572,
+          "average_speed_pixels_per_second": 84.099648,
+          "maximum_speed_pixels_per_second": 121.818978,
+          "average_speed_diagonals_per_second": 0.072968,
+          "valid_measurement_count": 5,
+          "valid_frame_percentage": 85.714286,
+          "observed_pair_seconds": 0.1667,
+          "movement_direction_changes": 1,
+          "movement_bout_count": 1
+        },
+        "body_movement": "unknown"
+      },
+      "limitations": [
+        "Both front paws and the body anchor need adequate coverage; repetitive paw motion alone does not prove kneading."
+      ]
+    },
+    {
+      "label": "possible_play_like_activity",
+      "interval_seconds": {
+        "start": 9.0,
+        "end": 9.233333
+      },
+      "status": "insufficient_data",
+      "score": null,
+      "rule": "Body movement is moderate/high with at least 2 direction changes and at least one moving front paw.",
+      "evidence": {
+        "body_movement": "unknown",
+        "body_direction_changes": 0,
+        "front_left_paw_movement": "unknown",
+        "front_right_paw_movement": "moderate"
+      },
+      "limitations": [
+        "Body and both front paws need adequate coverage; this pattern is not proof that the cat is playing."
+      ]
     }
   ],
   "analysis_settings": {
@@ -1953,7 +2923,9 @@
       "hip": "back_end",
       "tail_base": "tail_base",
       "tail_mid": null,
-      "tail_tip": "tail_end"
+      "tail_tip": "tail_end",
+      "front_left_paw": "front_left_paw",
+      "front_right_paw": "front_right_paw"
     },
     "normalization": "pixel distance / image diagonal; speed uses timestamp differences",
     "angle_convention": "degrees in image plane; 0=right, +90=down",

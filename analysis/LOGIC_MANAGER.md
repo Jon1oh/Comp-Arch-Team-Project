@@ -79,9 +79,10 @@ summary = manager.analyze(dataset)
 6. Aggregate a whole-video summary and three-second intervals. Activity changes
    are compared between adjacent intervals only when both labels are known.
    Long videos use at most 60 intervals, widening them automatically.
-7. Emit per-interval `behavior_candidates` for simple body and relative-tail
-   movement. Each result is quality-gated and includes the rule and measurements
-   used; these are motion events, not semantic cat behaviors or emotions.
+7. Emit per-interval `behavior_candidates` for body motion, tail motion,
+   grooming-like cues, repetitive front-paw motion, and play-like activity.
+   Each result is quality-gated and includes the rule and measurements used;
+   these are unvalidated heuristics, not definitive behavior or emotion labels.
 
 The input dictionary is not modified. Each landmark uses one source label for
 the whole video; the implementation does not switch aliases between frames.
@@ -110,7 +111,7 @@ does not establish whether a cat is standing, sitting or crouching.
 | `movement_metrics` | Displacement, speed, coverage and counts for each canonical landmark |
 | `temporal_patterns` | Interval activity, quality and changes from the preceding interval |
 | `temporal_patterns.measurements` | Per-window movement for every canonical landmark plus head, ear, eye, tail and body features |
-| `behavior_candidates` | Per-interval `body_moving` and `tail_moving` rule outcomes with evidence |
+| `behavior_candidates` | Per-interval movement and behavior-like rule outcomes with evidence |
 | `analysis_settings` | Configuration, exact label mapping, units and references |
 | `warnings` | Frame-count discrepancies and excluded temporal gaps |
 | `limitations` | Missing evidence and constraints the AI should retain |
@@ -129,12 +130,24 @@ and lower percentages are `poor`.
 
 Each temporal interval contains its `behavior_candidates`; the same results are
 also flattened into a top-level list for consumers that want a simple event
-stream. The current candidates are deliberately narrow:
+stream. The current candidates use fixed starter thresholds that need validation
+on human-labeled clips:
 
 - `body_moving` is detected when the body-anchor mean normalized speed reaches
   the configured low-speed threshold.
 - `tail_moving` is detected when tail-tip motion relative to the tail base is
   in the moderate or high activity band.
+- `possible_tail_swishing` requires at least three angular direction reversals
+  and mean angular speed of at least 25 degrees per second.
+- `possible_grooming` requires the nose to be within 0.25 body lengths of a
+  front paw in at least 30% of valid frames, moderate/high head movement, and
+  low body movement.
+- `possible_repetitive_front_paw_motion` requires both front paws to show at
+  least three movement direction changes while the body anchor has low motion.
+  This is not enough by itself to prove kneading.
+- `possible_play_like_activity` requires moderate/high body movement, at least
+  two body direction changes, and movement of at least one front paw. It is not
+  proof that the cat is playing.
 
 Candidate `status` is `detected`, `not_detected`, or `insufficient_data`.
 Insufficient coverage or fewer than two reliable movement comparisons produces
@@ -142,10 +155,13 @@ Insufficient coverage or fewer than two reliable movement comparisons produces
 must not be interpreted as evidence that movement was absent. `score` is
 currently `null`, because these rules have not been calibrated as probabilities.
 Evidence includes measured speed, movement band, coverage, valid comparison
-count, window duration, and required coverage. These labels report visible motion
-only; they do not classify walking, grooming, kneading, belly exposure,
-attention, emotion, or intent. Add those only after defining observable criteria
-and validating them against human-labeled clips.
+count, window duration, and required coverage. DLC paw points are mapped from
+`front_left_paw` and `front_right_paw`; low paw coverage makes grooming,
+repetitive-paw, and play-like results `insufficient_data`. Eating and head
+rubbing need known bowl/surface locations, slow blinking needs eyelid landmarks,
+and belly exposure cannot be reliably determined from the current 2D landmarks
+alone. Validate all behavior rules against human-labeled clips before relying on
+their results.
 
 ## Configuration
 

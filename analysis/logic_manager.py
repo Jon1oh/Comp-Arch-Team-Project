@@ -41,6 +41,8 @@ KEYPOINT_ALIASES = {
     "tail_base": ("tail_base",),
     "tail_mid": ("tail_mid",),
     "tail_tip": ("tail_tip", "tail_end"),
+    "front_left_paw": ("front_left_paw",),
+    "front_right_paw": ("front_right_paw",),
 }
 
 
@@ -391,6 +393,7 @@ def extract_features(frames, info, config, movement=None):
     movement = calculate_movement(frames, info, config) if movement is None else movement
     body, tail_relative, tail_angles, tail_positions = [], [], [], []
     head_angles, spine_angles, eye_distances = [], [], []
+    nose_to_front_paws_body_lengths = []
     ear_relative = {side: [] for side in ("left", "right")}
     ear_angles = {side: [] for side in ear_relative}
     ear_head_angles = {side: [] for side in ear_relative}
@@ -400,6 +403,14 @@ def extract_features(frames, info, config, movement=None):
         shoulder, hip, spine = (points.get(name) for name in ("shoulder", "hip", "spine_mid"))
         body.append(_midpoint(shoulder, hip) if shoulder and hip else None)
         nose, left_base, right_base = (points.get(name) for name in ("nose", "left_ear_base", "right_ear_base"))
+        body_length = calculate_distance(shoulder, hip) if shoulder and hip else None
+        paw_distances = []
+        if nose and body_length and body_length > 1e-9:
+            for paw_name in ("front_left_paw", "front_right_paw"):
+                paw = points.get(paw_name)
+                if paw:
+                    paw_distances.append(calculate_distance(nose, paw) / body_length)
+        nose_to_front_paws_body_lengths.append(min(paw_distances) if paw_distances else None)
         head_angle = _angle(_midpoint(left_base, right_base), nose) if nose and left_base and right_base else None
         head_angles.append(head_angle)
         for side in ear_relative:
@@ -427,6 +438,8 @@ def extract_features(frames, info, config, movement=None):
         name, count = Counter(tail_positions).most_common(1)[0]
         tail_pattern = f"mostly_{name}" if count / len(tail_positions) >= 0.70 else "variable_in_image"
     body_stats = _movement_stats(frames, body, info, config)
+    nose_paw_distances = [value for value in nose_to_front_paws_body_lengths if value is not None]
+    grooming_near_paw_frames = sum(value <= 0.25 for value in nose_paw_distances)
     ears = {}
     for side in ear_relative:
         offsets = [value for value in ear_head_angles[side] if value is not None]
@@ -451,6 +464,12 @@ def extract_features(frames, info, config, movement=None):
                  "position_pattern": "low_displacement_in_image" if body_stats["movement"] == "low" else "moving_in_image" if body_stats["movement"] in ("moderate", "high") else "unknown",
                  "mean_spine_interior_angle_degrees": _mean(spine_angles),
                  "spine_measurement_count": len(spine_angles)},
+        "grooming_cues": {
+            "nose_near_front_paw_body_lengths": _mean(nose_paw_distances),
+            "nose_near_front_paw_frame_percentage": _percent(grooming_near_paw_frames, len(nose_paw_distances)),
+            "valid_nose_paw_frames": len(nose_paw_distances),
+            "valid_frame_percentage": _percent(len(nose_paw_distances), len(frames)),
+        },
     }
 
 
@@ -514,9 +533,22 @@ def _movement_candidate(label, rule, measurement, stats, start, end, config):
     return result
 
 
-def _behavior_candidates(features, start, end, config):
-    """Report simple visible-motion candidates, not semantic behavior or emotion."""
-    return [
+def _rule_candidate(label, rule, status, start, end, evidence, limitation=None):
+    return {
+        "label": label,
+        "interval_seconds": {"start": start, "end": end},
+        "status": status,
+        "score": None,
+        "rule": rule,
+        "evidence": evidence,
+        "limitations": [limitation] if limitation else [],
+    }
+
+
+def _behavior_candidates(features, landmark_movement, start, end, config):
+    """Apply starter motion rules; these are not validated semantic behaviors."""
+    duration = end - start
+    candidates = [
         _movement_candidate(
             "body_moving",
             "Detected when the body anchor's mean normalized speed is at least the low-speed threshold.",
@@ -536,6 +568,111 @@ def _behavior_candidates(features, start, end, config):
             config,
         ),
     ]
+    tail_angle = features["tail"]["orientation_in_image"]
+    tail_movement = features["tail"]["movement"]
+    tail_coverage = min(tail_angle["valid_frame_percentage"], tail_movement["valid_frame_percentage"])
+    tail_enough = duration >= 1.0 and tail_coverage / 100 >= config.minimum_coverage
+    tail_swishing = (
+        tail_angle["angular_direction_changes"] >= 3
+        and (tail_angle["average_angular_speed_degrees_per_second"] or 0) >= 25.0
+    )
+    candidates.append(_rule_candidate(
+        "possible_tail_swishing",
+        "At least 3 angular direction reversals and mean angular speed of at least 25 degrees/second in the window.",
+        "insufficient_data" if not tail_enough else "detected" if tail_swishing else "not_detected",
+        start,
+        end,
+        {
+            "angular_direction_changes": tail_angle["angular_direction_changes"],
+            "average_angular_speed_degrees_per_second": tail_angle["average_angular_speed_degrees_per_second"],
+            "tail_tip_base_coverage_percentage": tail_coverage,
+            "minimum_coverage_required": config.minimum_coverage * 100,
+        },
+        None if tail_enough else "Tail landmarks or window duration are insufficient to evaluate this rule.",
+    ))
+
+    grooming = features["grooming_cues"]
+    body_movement = features["body"]["movement"]
+    head_movement = features["head"]["movement"]
+    grooming_enough = (
+        duration >= 1.0
+        and grooming["valid_frame_percentage"] / 100 >= config.minimum_coverage
+        and grooming["valid_nose_paw_frames"] >= 2
+        and body_movement["movement"] != "unknown"
+        and head_movement in ("low", "moderate", "high")
+    )
+    grooming_detected = (
+        grooming["nose_near_front_paw_frame_percentage"] is not None
+        and grooming["nose_near_front_paw_frame_percentage"] >= 30.0
+        and head_movement in ("moderate", "high")
+        and body_movement["movement"] == "low"
+    )
+    candidates.append(_rule_candidate(
+        "possible_grooming",
+        "Nose is within 0.25 body lengths of a front paw in at least 30% of valid frames, with moderate/high head motion and low body motion.",
+        "insufficient_data" if not grooming_enough else "detected" if grooming_detected else "not_detected",
+        start,
+        end,
+        {
+            "mean_nose_to_nearest_front_paw_body_lengths": grooming["nose_near_front_paw_body_lengths"],
+            "nose_near_paw_frame_percentage": grooming["nose_near_front_paw_frame_percentage"],
+            "valid_nose_paw_frame_percentage": grooming["valid_frame_percentage"],
+            "head_movement": head_movement,
+            "body_movement": body_movement["movement"],
+            "minimum_coverage_required": config.minimum_coverage * 100,
+        },
+        None if grooming_enough else "Reliable nose, front-paw, shoulder and hip measurements are required.",
+    ))
+
+    left_paw, right_paw = landmark_movement["front_left_paw"], landmark_movement["front_right_paw"]
+    paws_enough = (
+        duration >= 1.0
+        and left_paw["movement"] != "unknown"
+        and right_paw["movement"] != "unknown"
+        and body_movement["movement"] != "unknown"
+    )
+    kneading_detected = (
+        left_paw["movement"] in ("moderate", "high")
+        and right_paw["movement"] in ("moderate", "high")
+        and left_paw["movement_direction_changes"] >= 3
+        and right_paw["movement_direction_changes"] >= 3
+        and body_movement["movement"] == "low"
+    )
+    candidates.append(_rule_candidate(
+        "possible_repetitive_front_paw_motion",
+        "Both front paws show at least 3 movement direction changes while the body anchor remains in the low movement band.",
+        "insufficient_data" if not paws_enough else "detected" if kneading_detected else "not_detected",
+        start,
+        end,
+        {
+            "front_left_paw": left_paw,
+            "front_right_paw": right_paw,
+            "body_movement": body_movement["movement"],
+        },
+        None if paws_enough else "Both front paws and the body anchor need adequate coverage; repetitive paw motion alone does not prove kneading.",
+    ))
+
+    play_enough = paws_enough and body_movement["movement"] in ("low", "moderate", "high")
+    play_detected = (
+        body_movement["movement"] in ("moderate", "high")
+        and body_movement["movement_direction_changes"] >= 2
+        and (left_paw["movement"] in ("moderate", "high") or right_paw["movement"] in ("moderate", "high"))
+    )
+    candidates.append(_rule_candidate(
+        "possible_play_like_activity",
+        "Body movement is moderate/high with at least 2 direction changes and at least one moving front paw.",
+        "insufficient_data" if not play_enough else "detected" if play_detected else "not_detected",
+        start,
+        end,
+        {
+            "body_movement": body_movement["movement"],
+            "body_direction_changes": body_movement["movement_direction_changes"],
+            "front_left_paw_movement": left_paw["movement"],
+            "front_right_paw_movement": right_paw["movement"],
+        },
+        None if play_enough else "Body and both front paws need adequate coverage; this pattern is not proof that the cat is playing.",
+    ))
+    return candidates
 
 
 def analyze_temporal_patterns(frames, cleaned_frames, mapping, info, config):
@@ -551,7 +688,8 @@ def analyze_temporal_patterns(frames, cleaned_frames, mapping, info, config):
     result, previous_labels = [], None
     ranks = {"low": 0, "moderate": 1, "high": 2}
     for index, (group, clean_group) in enumerate(zip(groups, clean_groups)):
-        features = extract_features(group, info, config)
+        landmark_movement = calculate_movement(group, info, config)
+        features = extract_features(group, info, config, landmark_movement)
         labels = _activity_labels(features)
         changes = []
         if previous_labels is not None:
@@ -570,10 +708,10 @@ def analyze_temporal_patterns(frames, cleaned_frames, mapping, info, config):
             "reliable_detection_percentage": quality["reliable_detection_percentage"],
             "movement": labels,
             "measurements": {
-                "landmark_movement": calculate_movement(group, info, config),
+                "landmark_movement": landmark_movement,
                 "observed_features": features,
             },
-            "behavior_candidates": _behavior_candidates(features, start_seconds, end_seconds, config),
+            "behavior_candidates": _behavior_candidates(features, landmark_movement, start_seconds, end_seconds, config),
             "tail_position_pattern": features["tail"]["position_pattern"],
             "changes_from_previous_interval": changes,
         })
@@ -633,7 +771,7 @@ class LogicManager:
             for candidate in window["behavior_candidates"]
         ]
         return _rounded({
-            "schema_version": "1.0",
+            "schema_version": "1.1",
             "video_summary": {
                 "video_name": info["video_name"], "duration_seconds": info["duration"],
                 "analysis_start_seconds": info["start"], "analysis_end_seconds": info["end"],

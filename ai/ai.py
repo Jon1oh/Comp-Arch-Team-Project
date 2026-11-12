@@ -1,4 +1,5 @@
 from google import genai
+from google.genai import types
 from dotenv import load_dotenv
 import os, logging, json
 
@@ -36,20 +37,29 @@ def build_prompt(behaviour_data):
 
 
 def get_ai_output(prompt):
-    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+    api_key = os.getenv("GEMINI_API_KEY")
+    model = os.getenv("GEMINI_MODEL")
+    if not api_key or not model:
+        raise RuntimeError("Set GEMINI_API_KEY and GEMINI_MODEL in the project .env file.")
+    client = genai.Client(api_key=api_key)
     response = client.models.generate_content(
-        model=os.getenv("GEMINI_MODEL"),
-        contents=prompt
+        model=model,
+        contents=prompt,
+        config=types.GenerateContentConfig(response_mime_type="application/json"),
     )
-    return response.text
+    text = (response.text or "").strip()
+    if not text:
+        raise RuntimeError("Gemini returned an empty response instead of JSON.")
+    return text
 
 def get_ai_output_retry(prompt):
-    print(f"Retrying connection to Google {os.getenv("GEMINI_MODEL")} API once...")
+    model = os.getenv("GEMINI_MODEL") or "(model not configured)"
+    print(f"Retrying connection to Google {model} API once...")
     try:
         return get_ai_output(prompt)
     except Exception as error:
-        print("The API is still unavailable.")
-        return False
+        print(f"Gemini retry failed ({type(error).__name__}): {error}")
+        return None
 
 def validate_ai_output(ai_output):
     try:
@@ -97,6 +107,15 @@ def read_json(data_file):
 def analyze_data(behaviour_data):
     if not isinstance(behaviour_data, dict):
         raise TypeError("behaviour_data must be a dictionary")
+    missing_settings = [
+        name for name in ("GEMINI_API_KEY", "GEMINI_MODEL")
+        if not os.getenv(name)
+    ]
+    if missing_settings:
+        raise RuntimeError(
+            "Missing Gemini settings: " + ", ".join(missing_settings)
+            + ". Add them to the project-root .env file."
+        )
     
     prompt = build_prompt(behaviour_data) # get the prompt
     
@@ -104,12 +123,12 @@ def analyze_data(behaviour_data):
         print("Analyzing cat behavior data...")        
         ai_output = get_ai_output(prompt) # get the AI output from Gemini
         print("Cat behavior analysis complete. Here is the output:\n")
-    except Exception:
-        print("Gemini failed to interpret the data!")
+    except Exception as error:
+        print(f"Gemini request failed ({type(error).__name__}): {error}")
         ai_output = get_ai_output_retry(prompt)
     
     # when Gemini API is unavailable to use after retry attempt, pass None to IO side to display on Tinycircuit
-    if ai_output is None:
+    if not isinstance(ai_output, str):
         return None
         
     result = validate_ai_output(ai_output) # validate AI output when it is valid
