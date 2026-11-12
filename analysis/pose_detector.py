@@ -1,1 +1,0 @@
-# determines position of animal's body parts in the video and generates coordinates for each body part

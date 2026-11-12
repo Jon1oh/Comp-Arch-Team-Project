@@ -1,1 +1,0 @@
-# takes the coordinates from the pose detector and converts it into a human-readable format for humans to understand
