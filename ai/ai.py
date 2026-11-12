@@ -19,7 +19,7 @@ def build_prompt(behaviour_data):
     
     Return your interpretation in the following JSON format:
 
-    {
+    {{
     "behaviour": "What the animal appears to be doing",
     "body_language_meaning": "What its body language might be expressing",
     "explanation": "A short, user-friendly interpretation (maximum 25 words)",
@@ -28,7 +28,7 @@ def build_prompt(behaviour_data):
     ],
     "confidence": "High | Medium | Low",
     "data_quality": "Good | Limited | Poor"
-    }
+    }}
 
     Return only a valid JSON object without additional text.
     """
@@ -41,10 +41,15 @@ def get_ai_output(prompt):
         model=os.getenv("GEMINI_MODEL"),
         contents=prompt
     )
-    if not response.text:
-        raise ValueError("Gemini returned an empty response!")
     return response.text
 
+def get_ai_output_retry(prompt):
+    print(f"Retrying connection to Google {os.getenv("GEMINI_MODEL")} API once...")
+    try:
+        return get_ai_output(prompt)
+    except Exception as error:
+        print("The API is still unavailable.")
+        return False
 
 def validate_ai_output(ai_output):
     try:
@@ -67,6 +72,28 @@ def validate_ai_output(ai_output):
         logging.error("Failed to parse AI response: %s", error)
         return None
     
+
+def find_json_file():
+    project_root = os.path.dirname(
+        os.path.dirname(os.path.abspath(__file__))
+    )
+    for root, dirs, files in os.walk(project_root):
+        for file in files:
+            if file.endswith("summary.json"):
+                return os.path.join(root, file)
+    return None    
+
+
+def read_json(data_file):
+    try:
+        with open(data_file, "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        print("JSON file not found.")
+    except json.JSONDecodeError:
+        print("Invalid JSON format.")
+        
+    
 def analyze_data(behaviour_data):
     if not isinstance(behaviour_data, dict):
         raise TypeError("behaviour_data must be a dictionary")
@@ -74,13 +101,19 @@ def analyze_data(behaviour_data):
     prompt = build_prompt(behaviour_data) # get the prompt
     
     try:
+        print("Analyzing cat behavior data...")        
         ai_output = get_ai_output(prompt) # get the AI output from Gemini
+        print("Cat behavior analysis complete. Here is the output:\n")
     except Exception:
         print("Gemini failed to interpret the data!")
+        ai_output = get_ai_output_retry(prompt)
+    
+    # when Gemini API is unavailable to use after retry attempt, pass None to IO side to display on Tinycircuit
+    if ai_output is None:
+        return None
         
     result = validate_ai_output(ai_output) # validate AI output when it is valid
     
     if result:
-        print(result["behaviour"])
-        print(result["body_language_meaning"])
-        print(result["explanation"])
+        # print(result)
+        return result
