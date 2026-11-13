@@ -1,6 +1,8 @@
 """Build evidence for any supported single-cat clip, using only the standard library.
 
-Run: python -m logic.movement_summary input_keypoints.json --output summary.json
+Run: python -m logic.movement_summary input_keypoints.json
+Summaries default to analysis/DeepLabCut-Processing/outputs/summaries/.
+Use --output to choose a different destination.
 Rules describe projected movement, not confirmed behavior, emotion, or health.
 """
 
@@ -18,6 +20,12 @@ import sys
 
 SCHEMA_VERSION = "movement-summary/1"
 RULE_VERSION = "1"
+DEFAULT_OUTPUT_DIR = (
+    Path(__file__).resolve().parents[1]
+    / "analysis"
+    / "DeepLabCut-Processing"
+    / "outputs"
+)
 ALIASES = {
     "torso_front": ("back_base", "shoulder"),
     "torso_rear": ("back_end", "hip"),
@@ -660,6 +668,7 @@ def validate_summary(summary):
 
 
 def analyze_file(input_path, output_path=None, *, config=None, landmark_map=None):
+    """Analyze a saved dataset and save the summary when output_path is provided."""
     source = Path(input_path)
     if output_path is not None and Path(output_path).resolve() == source.resolve():
         raise ValueError("Summary output must differ from the input keypoint file")
@@ -707,22 +716,26 @@ def to_ai_evidence(summary):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", type=Path)
-    parser.add_argument("--output", type=Path)
+    parser.add_argument(
+        "--output", type=Path,
+        help=f"Summary file path; defaults to <video>_summary.json in {DEFAULT_OUTPUT_DIR}",
+    )
     parser.add_argument("--confidence", type=float, default=0.6)
     parser.add_argument("--segment-seconds", type=float, default=3.0)
     parser.add_argument("--smoothing-window", type=int, default=3)
     parser.add_argument("--experimental-behaviors", action="store_true",
                         help="Include unvalidated grooming-like and play-like hypotheses")
     args = parser.parse_args(argv)
+    output_path = args.output
+    if output_path is None:
+        video_name = args.input.stem.removesuffix("_keypoints")
+        output_path = DEFAULT_OUTPUT_DIR / f"{video_name}_summary.json"
     try:
-        summary = analyze_file(args.input, args.output, config=MovementConfig(
+        analyze_file(args.input, output_path, config=MovementConfig(
             confidence_threshold=args.confidence, segment_seconds=args.segment_seconds,
             smoothing_window=args.smoothing_window,
             experimental_behavior_candidates=args.experimental_behaviors))
-        if args.output:
-            print(f"Summary saved to {args.output}")
-        else:
-            print(json.dumps(summary, indent=2, allow_nan=False))
+        print(f"Summary saved to {output_path}")
     except (OSError, ValueError, TypeError) as error:
         parser.exit(1, f"Movement analysis failed: {error}\n")
     return 0
