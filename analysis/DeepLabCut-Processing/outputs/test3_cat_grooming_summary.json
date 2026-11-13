@@ -1,0 +1,2349 @@
+{
+  "schema_version": "movement-summary/1",
+  "video": {
+    "name": "test3_cat_grooming_prepared",
+    "fps": 30.0,
+    "width": 1280.0,
+    "height": 720.0,
+    "frames_received": 176,
+    "analysis_start_seconds": 0.0,
+    "analysis_end_seconds": 5.866633,
+    "duration_seconds": 5.866633,
+    "assumed_animal_count": 1
+  },
+  "data_quality": {
+    "rating": "limited",
+    "landmark_coverage_percentage": {
+      "torso_front": 59.090909,
+      "torso_rear": 19.886364,
+      "nose": 75.0,
+      "left_ear_base": 78.409091,
+      "right_ear_base": 80.113636,
+      "left_ear_tip": 80.681818,
+      "right_ear_tip": 88.068182,
+      "tail_base": 20.454545,
+      "tail_tip": 9.090909,
+      "front_left_paw": 6.818182,
+      "front_right_paw": 44.318182,
+      "back_left_paw": 0.0,
+      "back_right_paw": 0.568182
+    },
+    "unavailable_landmarks": [],
+    "rejected_landmark_counts": {
+      "exporter_invalid": 1298
+    },
+    "isolated_spikes_removed": {},
+    "frame_time_gaps": 0,
+    "sufficient_feature_count": 3,
+    "feature_count": 12,
+    "rating_definition": "All/any/no features pass their own quality gates; consult each feature individually."
+  },
+  "measurements": {
+    "body": {
+      "data_sufficient": false,
+      "insufficient_data_reasons": [
+        "Required landmarks have insufficient joint frame coverage",
+        "Insufficient consecutive-pair coverage",
+        "Too little observed pair time",
+        "Observed pair time covers too little of the interval"
+      ],
+      "valid_frame_percentage": 11.931818,
+      "valid_pair_percentage": 6.857143,
+      "valid_measurement_count": 12,
+      "observed_pair_seconds": 0.4002,
+      "observed_time_percentage": 6.860611,
+      "movement_direction_changes": 3,
+      "movement_bout_count": 0,
+      "active_time_percentage": 50.0,
+      "longest_stationary_duration_seconds": 0.0667,
+      "motion_threshold": 0.02,
+      "threshold_units": "image diagonals/second",
+      "average_displacement_pixels": 2.046926,
+      "maximum_displacement_pixels": 6.560295,
+      "total_distance_pixels": 24.563115,
+      "maximum_excursion_pixels": 6.391596,
+      "average_speed_pixels_per_second": 61.377099,
+      "maximum_speed_pixels_per_second": 197.005848,
+      "median_speed_pixels_per_second": 29.320853,
+      "average_speed_diagonals_per_second": 0.041793
+    },
+    "head_relative": {
+      "data_sufficient": false,
+      "insufficient_data_reasons": [
+        "Required landmarks have insufficient joint frame coverage",
+        "Insufficient consecutive-pair coverage",
+        "Too little observed pair time",
+        "Observed pair time covers too little of the interval"
+      ],
+      "valid_frame_percentage": 11.931818,
+      "valid_pair_percentage": 6.857143,
+      "valid_measurement_count": 12,
+      "observed_pair_seconds": 0.4002,
+      "observed_time_percentage": 6.860611,
+      "movement_direction_changes": 3,
+      "movement_bout_count": 0,
+      "active_time_percentage": 100.0,
+      "longest_stationary_duration_seconds": 0.0,
+      "motion_threshold": 0.01,
+      "threshold_units": "image diagonals/second",
+      "average_displacement_pixels": 9.375082,
+      "maximum_displacement_pixels": 16.24603,
+      "total_distance_pixels": 112.500983,
+      "maximum_excursion_pixels": 38.034363,
+      "average_speed_pixels_per_second": 281.111901,
+      "maximum_speed_pixels_per_second": 486.408085,
+      "median_speed_pixels_per_second": 274.597206,
+      "average_speed_diagonals_per_second": 0.191414
+    },
+    "head_orientation": {
+      "data_sufficient": true,
+      "insufficient_data_reasons": [],
+      "valid_frame_percentage": 67.045455,
+      "valid_pair_percentage": 62.285714,
+      "valid_measurement_count": 109,
+      "observed_pair_seconds": 3.6331,
+      "observed_time_percentage": 62.28207,
+      "movement_direction_changes": 13,
+      "movement_bout_count": 6,
+      "active_time_percentage": 86.240401,
+      "longest_stationary_duration_seconds": 0.0667,
+      "motion_threshold": 15.0,
+      "threshold_units": "degrees/second",
+      "average_angular_speed_degrees_per_second": 129.126701,
+      "maximum_angular_speed_degrees_per_second": 763.618947,
+      "maximum_excursion_degrees": 50.241074,
+      "angular_direction_reversals": 13
+    },
+    "head_orientation_relative_to_body": {
+      "data_sufficient": false,
+      "insufficient_data_reasons": [
+        "Required landmarks have insufficient joint frame coverage",
+        "Insufficient consecutive-pair coverage",
+        "Too little observed pair time",
+        "Observed pair time covers too little of the interval"
+      ],
+      "valid_frame_percentage": 11.931818,
+      "valid_pair_percentage": 6.857143,
+      "valid_measurement_count": 12,
+      "observed_pair_seconds": 0.4002,
+      "observed_time_percentage": 6.860611,
+      "movement_direction_changes": 1,
+      "movement_bout_count": 0,
+      "active_time_percentage": 100.0,
+      "longest_stationary_duration_seconds": 0.0,
+      "motion_threshold": 15.0,
+      "threshold_units": "degrees/second",
+      "average_angular_speed_degrees_per_second": 117.925449,
+      "maximum_angular_speed_degrees_per_second": 286.030734,
+      "maximum_excursion_degrees": 12.018571,
+      "angular_direction_reversals": 1
+    },
+    "left_ear_orientation_relative_to_head": {
+      "data_sufficient": true,
+      "insufficient_data_reasons": [],
+      "valid_frame_percentage": 66.477273,
+      "valid_pair_percentage": 61.714286,
+      "valid_measurement_count": 108,
+      "observed_pair_seconds": 3.5998,
+      "observed_time_percentage": 61.71121,
+      "movement_direction_changes": 38,
+      "movement_bout_count": 8,
+      "active_time_percentage": 96.294239,
+      "longest_stationary_duration_seconds": 0.0334,
+      "motion_threshold": 15.0,
+      "threshold_units": "degrees/second",
+      "average_angular_speed_degrees_per_second": 247.630413,
+      "maximum_angular_speed_degrees_per_second": 868.436106,
+      "maximum_excursion_degrees": 43.760201,
+      "angular_direction_reversals": 38
+    },
+    "right_ear_orientation_relative_to_head": {
+      "data_sufficient": true,
+      "insufficient_data_reasons": [],
+      "valid_frame_percentage": 65.909091,
+      "valid_pair_percentage": 61.142857,
+      "valid_measurement_count": 107,
+      "observed_pair_seconds": 3.5665,
+      "observed_time_percentage": 61.140349,
+      "movement_direction_changes": 38,
+      "movement_bout_count": 6,
+      "active_time_percentage": 90.657507,
+      "longest_stationary_duration_seconds": 0.0334,
+      "motion_threshold": 15.0,
+      "threshold_units": "degrees/second",
+      "average_angular_speed_degrees_per_second": 180.581625,
+      "maximum_angular_speed_degrees_per_second": 774.617214,
+      "maximum_excursion_degrees": 50.985669,
+      "angular_direction_reversals": 38
+    },
+    "tail_relative": {
+      "data_sufficient": false,
+      "insufficient_data_reasons": [
+        "Required landmarks have insufficient joint frame coverage",
+        "Insufficient consecutive-pair coverage",
+        "Too little observed pair time",
+        "Observed pair time covers too little of the interval"
+      ],
+      "valid_frame_percentage": 5.681818,
+      "valid_pair_percentage": 4.0,
+      "valid_measurement_count": 7,
+      "observed_pair_seconds": 0.2333,
+      "observed_time_percentage": 3.999451,
+      "movement_direction_changes": 3,
+      "movement_bout_count": 1,
+      "active_time_percentage": 100.0,
+      "longest_stationary_duration_seconds": 0.0334,
+      "motion_threshold": 0.01,
+      "threshold_units": "image diagonals/second",
+      "average_displacement_pixels": 4.190973,
+      "maximum_displacement_pixels": 11.354206,
+      "total_distance_pixels": 29.33681,
+      "maximum_excursion_pixels": 6.670578,
+      "average_speed_pixels_per_second": 125.74715,
+      "maximum_speed_pixels_per_second": 340.967147,
+      "median_speed_pixels_per_second": 116.366366,
+      "average_speed_diagonals_per_second": 0.085624
+    },
+    "tail_orientation_relative_to_body": {
+      "data_sufficient": false,
+      "insufficient_data_reasons": [
+        "Required landmarks have insufficient joint frame coverage",
+        "Insufficient consecutive-pair coverage",
+        "Too little observed pair time",
+        "Observed pair time covers too little of the interval"
+      ],
+      "valid_frame_percentage": 3.409091,
+      "valid_pair_percentage": 1.714286,
+      "valid_measurement_count": 3,
+      "observed_pair_seconds": 0.1,
+      "observed_time_percentage": 1.714296,
+      "movement_direction_changes": 0,
+      "movement_bout_count": 0,
+      "active_time_percentage": 66.6,
+      "longest_stationary_duration_seconds": 0.0334,
+      "motion_threshold": 15.0,
+      "threshold_units": "degrees/second",
+      "average_angular_speed_degrees_per_second": 52.358234,
+      "maximum_angular_speed_degrees_per_second": 87.059538,
+      "maximum_excursion_degrees": 5.235823,
+      "angular_direction_reversals": 0
+    },
+    "front_left_paw": {
+      "data_sufficient": false,
+      "insufficient_data_reasons": [
+        "Required landmarks have insufficient joint frame coverage",
+        "Insufficient consecutive-pair coverage",
+        "Too few valid consecutive measurements",
+        "Too little observed pair time",
+        "Observed pair time covers too little of the interval"
+      ],
+      "valid_frame_percentage": 0.0,
+      "valid_pair_percentage": 0.0,
+      "valid_measurement_count": 0,
+      "observed_pair_seconds": 0,
+      "observed_time_percentage": 0.0,
+      "movement_direction_changes": 0,
+      "movement_bout_count": 0,
+      "active_time_percentage": null,
+      "longest_stationary_duration_seconds": null,
+      "motion_threshold": 0.01,
+      "threshold_units": "image diagonals/second",
+      "average_displacement_pixels": null,
+      "maximum_displacement_pixels": null,
+      "total_distance_pixels": null,
+      "maximum_excursion_pixels": null,
+      "average_speed_pixels_per_second": null,
+      "maximum_speed_pixels_per_second": null,
+      "median_speed_pixels_per_second": null,
+      "average_speed_diagonals_per_second": null
+    },
+    "front_right_paw": {
+      "data_sufficient": false,
+      "insufficient_data_reasons": [
+        "Required landmarks have insufficient joint frame coverage",
+        "Insufficient consecutive-pair coverage",
+        "Too few valid consecutive measurements",
+        "Too little observed pair time",
+        "Observed pair time covers too little of the interval"
+      ],
+      "valid_frame_percentage": 2.272727,
+      "valid_pair_percentage": 0.571429,
+      "valid_measurement_count": 1,
+      "observed_pair_seconds": 0.0334,
+      "observed_time_percentage": 0.572575,
+      "movement_direction_changes": 0,
+      "movement_bout_count": 0,
+      "active_time_percentage": 100.0,
+      "longest_stationary_duration_seconds": 0.0,
+      "motion_threshold": 0.01,
+      "threshold_units": "image diagonals/second",
+      "average_displacement_pixels": 8.777976,
+      "maximum_displacement_pixels": 8.777976,
+      "total_distance_pixels": 8.777976,
+      "maximum_excursion_pixels": 8.777976,
+      "average_speed_pixels_per_second": 262.81365,
+      "maximum_speed_pixels_per_second": 262.81365,
+      "median_speed_pixels_per_second": 262.81365,
+      "average_speed_diagonals_per_second": 0.178955
+    },
+    "back_left_paw": {
+      "data_sufficient": false,
+      "insufficient_data_reasons": [
+        "Required landmarks have insufficient joint frame coverage",
+        "Insufficient consecutive-pair coverage",
+        "Too few valid consecutive measurements",
+        "Too little observed pair time",
+        "Observed pair time covers too little of the interval"
+      ],
+      "valid_frame_percentage": 0.0,
+      "valid_pair_percentage": 0.0,
+      "valid_measurement_count": 0,
+      "observed_pair_seconds": 0,
+      "observed_time_percentage": 0.0,
+      "movement_direction_changes": 0,
+      "movement_bout_count": 0,
+      "active_time_percentage": null,
+      "longest_stationary_duration_seconds": null,
+      "motion_threshold": 0.01,
+      "threshold_units": "image diagonals/second",
+      "average_displacement_pixels": null,
+      "maximum_displacement_pixels": null,
+      "total_distance_pixels": null,
+      "maximum_excursion_pixels": null,
+      "average_speed_pixels_per_second": null,
+      "maximum_speed_pixels_per_second": null,
+      "median_speed_pixels_per_second": null,
+      "average_speed_diagonals_per_second": null
+    },
+    "back_right_paw": {
+      "data_sufficient": false,
+      "insufficient_data_reasons": [
+        "Required landmarks have insufficient joint frame coverage",
+        "Insufficient consecutive-pair coverage",
+        "Too few valid consecutive measurements",
+        "Too little observed pair time",
+        "Observed pair time covers too little of the interval"
+      ],
+      "valid_frame_percentage": 0.0,
+      "valid_pair_percentage": 0.0,
+      "valid_measurement_count": 0,
+      "observed_pair_seconds": 0,
+      "observed_time_percentage": 0.0,
+      "movement_direction_changes": 0,
+      "movement_bout_count": 0,
+      "active_time_percentage": null,
+      "longest_stationary_duration_seconds": null,
+      "motion_threshold": 0.01,
+      "threshold_units": "image diagonals/second",
+      "average_displacement_pixels": null,
+      "maximum_displacement_pixels": null,
+      "total_distance_pixels": null,
+      "maximum_excursion_pixels": null,
+      "average_speed_pixels_per_second": null,
+      "maximum_speed_pixels_per_second": null,
+      "median_speed_pixels_per_second": null,
+      "average_speed_diagonals_per_second": null
+    }
+  },
+  "candidates": [
+    {
+      "label": "body_moving",
+      "rule_id": "body_moving",
+      "rule_version": "1",
+      "status": "insufficient_data",
+      "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+      "score": null,
+      "evidence": {
+        "measurement": "body",
+        "valid_frame_percentage": 11.931818,
+        "valid_pair_percentage": 6.857143,
+        "valid_measurement_count": 12,
+        "observed_pair_seconds": 0.4002,
+        "movement_bout_count": 0,
+        "motion_threshold": 0.02,
+        "threshold_units": "image diagonals/second",
+        "average_speed": 0.041793
+      },
+      "limitations": [
+        "Projected motion is not a confirmed behavior.",
+        "Insufficient consecutive-pair coverage",
+        "Observed pair time covers too little of the interval",
+        "Required landmarks have insufficient joint frame coverage",
+        "Too little observed pair time"
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    },
+    {
+      "label": "head_relative_motion",
+      "rule_id": "head_relative_motion",
+      "rule_version": "1",
+      "status": "insufficient_data",
+      "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+      "score": null,
+      "evidence": {
+        "measurement": "head_relative",
+        "valid_frame_percentage": 11.931818,
+        "valid_pair_percentage": 6.857143,
+        "valid_measurement_count": 12,
+        "observed_pair_seconds": 0.4002,
+        "movement_bout_count": 0,
+        "motion_threshold": 0.01,
+        "threshold_units": "image diagonals/second",
+        "average_speed": 0.191414
+      },
+      "limitations": [
+        "Projected motion is not a confirmed behavior.",
+        "Insufficient consecutive-pair coverage",
+        "Observed pair time covers too little of the interval",
+        "Required landmarks have insufficient joint frame coverage",
+        "Too little observed pair time"
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    },
+    {
+      "label": "head_orientation_change_in_image",
+      "rule_id": "head_orientation_change_in_image",
+      "rule_version": "1",
+      "status": "detected",
+      "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+      "score": null,
+      "evidence": {
+        "measurement": "head_orientation",
+        "valid_frame_percentage": 67.045455,
+        "valid_pair_percentage": 62.285714,
+        "valid_measurement_count": 109,
+        "observed_pair_seconds": 3.6331,
+        "movement_bout_count": 6,
+        "motion_threshold": 15.0,
+        "threshold_units": "degrees/second",
+        "average_speed": 129.126701
+      },
+      "limitations": [
+        "Projected motion is not a confirmed behavior."
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    },
+    {
+      "label": "head_orientation_change_relative_to_body",
+      "rule_id": "head_orientation_change_relative_to_body",
+      "rule_version": "1",
+      "status": "insufficient_data",
+      "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+      "score": null,
+      "evidence": {
+        "measurement": "head_orientation_relative_to_body",
+        "valid_frame_percentage": 11.931818,
+        "valid_pair_percentage": 6.857143,
+        "valid_measurement_count": 12,
+        "observed_pair_seconds": 0.4002,
+        "movement_bout_count": 0,
+        "motion_threshold": 15.0,
+        "threshold_units": "degrees/second",
+        "average_speed": 117.925449
+      },
+      "limitations": [
+        "Projected motion is not a confirmed behavior.",
+        "Insufficient consecutive-pair coverage",
+        "Observed pair time covers too little of the interval",
+        "Required landmarks have insufficient joint frame coverage",
+        "Too little observed pair time"
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    },
+    {
+      "label": "left_ear_relative_motion",
+      "rule_id": "left_ear_relative_motion",
+      "rule_version": "1",
+      "status": "detected",
+      "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+      "score": null,
+      "evidence": {
+        "measurement": "left_ear_orientation_relative_to_head",
+        "valid_frame_percentage": 66.477273,
+        "valid_pair_percentage": 61.714286,
+        "valid_measurement_count": 108,
+        "observed_pair_seconds": 3.5998,
+        "movement_bout_count": 8,
+        "motion_threshold": 15.0,
+        "threshold_units": "degrees/second",
+        "average_speed": 247.630413
+      },
+      "limitations": [
+        "Projected motion is not a confirmed behavior."
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    },
+    {
+      "label": "right_ear_relative_motion",
+      "rule_id": "right_ear_relative_motion",
+      "rule_version": "1",
+      "status": "detected",
+      "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+      "score": null,
+      "evidence": {
+        "measurement": "right_ear_orientation_relative_to_head",
+        "valid_frame_percentage": 65.909091,
+        "valid_pair_percentage": 61.142857,
+        "valid_measurement_count": 107,
+        "observed_pair_seconds": 3.5665,
+        "movement_bout_count": 6,
+        "motion_threshold": 15.0,
+        "threshold_units": "degrees/second",
+        "average_speed": 180.581625
+      },
+      "limitations": [
+        "Projected motion is not a confirmed behavior."
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    },
+    {
+      "label": "tail_relative_motion",
+      "rule_id": "tail_relative_motion",
+      "rule_version": "1",
+      "status": "insufficient_data",
+      "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+      "score": null,
+      "evidence": {
+        "measurement": "tail_relative",
+        "valid_frame_percentage": 5.681818,
+        "valid_pair_percentage": 4.0,
+        "valid_measurement_count": 7,
+        "observed_pair_seconds": 0.2333,
+        "movement_bout_count": 1,
+        "motion_threshold": 0.01,
+        "threshold_units": "image diagonals/second",
+        "average_speed": 0.085624
+      },
+      "limitations": [
+        "Projected motion is not a confirmed behavior.",
+        "Tail-base subtraction removes translation, but body rotation can still move this vector.",
+        "Insufficient consecutive-pair coverage",
+        "Observed pair time covers too little of the interval",
+        "Required landmarks have insufficient joint frame coverage",
+        "Too little observed pair time"
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    },
+    {
+      "label": "front_left_paw_relative_motion",
+      "rule_id": "front_left_paw_relative_motion",
+      "rule_version": "1",
+      "status": "insufficient_data",
+      "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+      "score": null,
+      "evidence": {
+        "measurement": "front_left_paw",
+        "valid_frame_percentage": 0.0,
+        "valid_pair_percentage": 0.0,
+        "valid_measurement_count": 0,
+        "observed_pair_seconds": 0,
+        "movement_bout_count": 0,
+        "motion_threshold": 0.01,
+        "threshold_units": "image diagonals/second",
+        "average_speed": null
+      },
+      "limitations": [
+        "Projected motion is not a confirmed behavior.",
+        "Insufficient consecutive-pair coverage",
+        "Observed pair time covers too little of the interval",
+        "Required landmarks have insufficient joint frame coverage",
+        "Too few valid consecutive measurements",
+        "Too little observed pair time"
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    },
+    {
+      "label": "front_right_paw_relative_motion",
+      "rule_id": "front_right_paw_relative_motion",
+      "rule_version": "1",
+      "status": "insufficient_data",
+      "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+      "score": null,
+      "evidence": {
+        "measurement": "front_right_paw",
+        "valid_frame_percentage": 2.272727,
+        "valid_pair_percentage": 0.571429,
+        "valid_measurement_count": 1,
+        "observed_pair_seconds": 0.0334,
+        "movement_bout_count": 0,
+        "motion_threshold": 0.01,
+        "threshold_units": "image diagonals/second",
+        "average_speed": 0.178955
+      },
+      "limitations": [
+        "Projected motion is not a confirmed behavior.",
+        "Insufficient consecutive-pair coverage",
+        "Observed pair time covers too little of the interval",
+        "Required landmarks have insufficient joint frame coverage",
+        "Too few valid consecutive measurements",
+        "Too little observed pair time"
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    },
+    {
+      "label": "back_left_paw_relative_motion",
+      "rule_id": "back_left_paw_relative_motion",
+      "rule_version": "1",
+      "status": "insufficient_data",
+      "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+      "score": null,
+      "evidence": {
+        "measurement": "back_left_paw",
+        "valid_frame_percentage": 0.0,
+        "valid_pair_percentage": 0.0,
+        "valid_measurement_count": 0,
+        "observed_pair_seconds": 0,
+        "movement_bout_count": 0,
+        "motion_threshold": 0.01,
+        "threshold_units": "image diagonals/second",
+        "average_speed": null
+      },
+      "limitations": [
+        "Projected motion is not a confirmed behavior.",
+        "Insufficient consecutive-pair coverage",
+        "Observed pair time covers too little of the interval",
+        "Required landmarks have insufficient joint frame coverage",
+        "Too few valid consecutive measurements",
+        "Too little observed pair time"
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    },
+    {
+      "label": "back_right_paw_relative_motion",
+      "rule_id": "back_right_paw_relative_motion",
+      "rule_version": "1",
+      "status": "insufficient_data",
+      "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+      "score": null,
+      "evidence": {
+        "measurement": "back_right_paw",
+        "valid_frame_percentage": 0.0,
+        "valid_pair_percentage": 0.0,
+        "valid_measurement_count": 0,
+        "observed_pair_seconds": 0,
+        "movement_bout_count": 0,
+        "motion_threshold": 0.01,
+        "threshold_units": "image diagonals/second",
+        "average_speed": null
+      },
+      "limitations": [
+        "Projected motion is not a confirmed behavior.",
+        "Insufficient consecutive-pair coverage",
+        "Observed pair time covers too little of the interval",
+        "Required landmarks have insufficient joint frame coverage",
+        "Too few valid consecutive measurements",
+        "Too little observed pair time"
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    },
+    {
+      "label": "body_stationary",
+      "rule_id": "body_stationary",
+      "rule_version": "1",
+      "status": "insufficient_data",
+      "rule": "A continuous low-speed run stays within the configured radius for the minimum duration.",
+      "score": null,
+      "evidence": {
+        "measurement": "body",
+        "longest_stationary_duration_seconds": 0.0667,
+        "minimum_duration_seconds": 1.0,
+        "maximum_radius_diagonals": 0.01,
+        "speed_threshold_diagonals_per_second": 0.02,
+        "valid_frame_percentage": 11.931818
+      },
+      "limitations": [
+        "This describes a stationary interval, not stillness throughout the clip or inactivity of all body parts.",
+        "Insufficient consecutive-pair coverage",
+        "Observed pair time covers too little of the interval",
+        "Required landmarks have insufficient joint frame coverage",
+        "Too little observed pair time"
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    },
+    {
+      "label": "tail_oscillation_candidate",
+      "rule_id": "tail_oscillation_candidate",
+      "rule_version": "1",
+      "status": "insufficient_data",
+      "rule": "Body-relative tail angle has enough reversals, excursion and sustained motion.",
+      "score": null,
+      "evidence": {
+        "measurement": "tail_orientation_relative_to_body",
+        "valid_frame_percentage": 3.409091,
+        "valid_pair_percentage": 1.714286,
+        "valid_measurement_count": 3,
+        "observed_pair_seconds": 0.1,
+        "movement_bout_count": 0,
+        "motion_threshold": 15.0,
+        "threshold_units": "degrees/second",
+        "average_speed": 52.358234,
+        "angular_direction_reversals": 0,
+        "maximum_excursion_degrees": 5.235823,
+        "minimum_reversals": 3,
+        "minimum_excursion_degrees": 20.0
+      },
+      "limitations": [
+        "An exploratory oscillation cue; it does not establish tail swishing, emotion, or intent.",
+        "Insufficient consecutive-pair coverage",
+        "Observed pair time covers too little of the interval",
+        "Required landmarks have insufficient joint frame coverage",
+        "Too little observed pair time"
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    },
+    {
+      "label": "repetitive_front_paw_motion_candidate",
+      "rule_id": "repetitive_front_paw_motion_candidate",
+      "rule_version": "1",
+      "status": "insufficient_data",
+      "rule": "Both torso-relative front paws repeatedly change direction in sustained movement bouts.",
+      "score": null,
+      "evidence": {
+        "front_left_paw": {
+          "measurement": "front_left_paw",
+          "valid_frame_percentage": 0.0,
+          "valid_pair_percentage": 0.0,
+          "valid_measurement_count": 0,
+          "observed_pair_seconds": 0,
+          "movement_bout_count": 0,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_speed": null,
+          "direction_changes": 0
+        },
+        "front_right_paw": {
+          "measurement": "front_right_paw",
+          "valid_frame_percentage": 2.272727,
+          "valid_pair_percentage": 0.571429,
+          "valid_measurement_count": 1,
+          "observed_pair_seconds": 0.0334,
+          "movement_bout_count": 0,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_speed": 0.178955,
+          "direction_changes": 0
+        },
+        "minimum_direction_changes_per_paw": 3
+      },
+      "limitations": [
+        "Alternating paw contact is not measured; this does not confirm kneading.",
+        "Insufficient consecutive-pair coverage",
+        "Observed pair time covers too little of the interval",
+        "Required landmarks have insufficient joint frame coverage",
+        "Too few valid consecutive measurements",
+        "Too little observed pair time"
+      ],
+      "interval_seconds": {
+        "start": 0.0,
+        "end": 5.866633
+      }
+    }
+  ],
+  "intervals": [
+    {
+      "start_seconds": 0.0,
+      "end_seconds": 3.0,
+      "frames_processed": 90,
+      "measurements": {
+        "body": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 15.555556,
+          "valid_pair_percentage": 10.11236,
+          "valid_measurement_count": 9,
+          "observed_pair_seconds": 0.3002,
+          "observed_time_percentage": 10.118987,
+          "movement_direction_changes": 3,
+          "movement_bout_count": 0,
+          "active_time_percentage": 55.562958,
+          "longest_stationary_duration_seconds": 0.0334,
+          "motion_threshold": 0.02,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": 1.933344,
+          "maximum_displacement_pixels": 6.560295,
+          "total_distance_pixels": 17.400099,
+          "maximum_excursion_pixels": 6.046247,
+          "average_speed_pixels_per_second": 57.96169,
+          "maximum_speed_pixels_per_second": 197.005848,
+          "median_speed_pixels_per_second": 29.697856,
+          "average_speed_diagonals_per_second": 0.039467
+        },
+        "head_relative": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 15.555556,
+          "valid_pair_percentage": 10.11236,
+          "valid_measurement_count": 9,
+          "observed_pair_seconds": 0.3002,
+          "observed_time_percentage": 10.118987,
+          "movement_direction_changes": 3,
+          "movement_bout_count": 0,
+          "active_time_percentage": 100.0,
+          "longest_stationary_duration_seconds": 0.0,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": 8.176943,
+          "maximum_displacement_pixels": 16.24603,
+          "total_distance_pixels": 73.592483,
+          "maximum_excursion_pixels": 22.219854,
+          "average_speed_pixels_per_second": 245.144847,
+          "maximum_speed_pixels_per_second": 486.408085,
+          "median_speed_pixels_per_second": 221.598409,
+          "average_speed_diagonals_per_second": 0.166924
+        },
+        "head_orientation": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage"
+          ],
+          "valid_frame_percentage": 56.666667,
+          "valid_pair_percentage": 50.561798,
+          "valid_measurement_count": 45,
+          "observed_pair_seconds": 1.4999,
+          "observed_time_percentage": 50.557859,
+          "movement_direction_changes": 5,
+          "movement_bout_count": 2,
+          "active_time_percentage": 93.332889,
+          "longest_stationary_duration_seconds": 0.0667,
+          "motion_threshold": 15.0,
+          "threshold_units": "degrees/second",
+          "average_angular_speed_degrees_per_second": 136.613088,
+          "maximum_angular_speed_degrees_per_second": 389.743336,
+          "maximum_excursion_degrees": 43.265382,
+          "angular_direction_reversals": 5
+        },
+        "head_orientation_relative_to_body": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 15.555556,
+          "valid_pair_percentage": 10.11236,
+          "valid_measurement_count": 9,
+          "observed_pair_seconds": 0.3002,
+          "observed_time_percentage": 10.118987,
+          "movement_direction_changes": 1,
+          "movement_bout_count": 0,
+          "active_time_percentage": 100.0,
+          "longest_stationary_duration_seconds": 0.0,
+          "motion_threshold": 15.0,
+          "threshold_units": "degrees/second",
+          "average_angular_speed_degrees_per_second": 129.126392,
+          "maximum_angular_speed_degrees_per_second": 286.030734,
+          "maximum_excursion_degrees": 12.018571,
+          "angular_direction_reversals": 1
+        },
+        "left_ear_orientation_relative_to_head": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage"
+          ],
+          "valid_frame_percentage": 56.666667,
+          "valid_pair_percentage": 50.561798,
+          "valid_measurement_count": 45,
+          "observed_pair_seconds": 1.4999,
+          "observed_time_percentage": 50.557859,
+          "movement_direction_changes": 14,
+          "movement_bout_count": 3,
+          "active_time_percentage": 100.0,
+          "longest_stationary_duration_seconds": 0.0334,
+          "motion_threshold": 15.0,
+          "threshold_units": "degrees/second",
+          "average_angular_speed_degrees_per_second": 261.816894,
+          "maximum_angular_speed_degrees_per_second": 868.436106,
+          "maximum_excursion_degrees": 43.760201,
+          "angular_direction_reversals": 14
+        },
+        "right_ear_orientation_relative_to_head": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage"
+          ],
+          "valid_frame_percentage": 56.666667,
+          "valid_pair_percentage": 50.561798,
+          "valid_measurement_count": 45,
+          "observed_pair_seconds": 1.4999,
+          "observed_time_percentage": 50.557859,
+          "movement_direction_changes": 16,
+          "movement_bout_count": 2,
+          "active_time_percentage": 91.112741,
+          "longest_stationary_duration_seconds": 0.0334,
+          "motion_threshold": 15.0,
+          "threshold_units": "degrees/second",
+          "average_angular_speed_degrees_per_second": 180.500963,
+          "maximum_angular_speed_degrees_per_second": 591.495179,
+          "maximum_excursion_degrees": 23.643272,
+          "angular_direction_reversals": 16
+        },
+        "tail_relative": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 1.111111,
+          "valid_pair_percentage": 0.0,
+          "valid_measurement_count": 0,
+          "observed_pair_seconds": 0,
+          "observed_time_percentage": 0.0,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": null,
+          "longest_stationary_duration_seconds": null,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": null,
+          "maximum_displacement_pixels": null,
+          "total_distance_pixels": null,
+          "maximum_excursion_pixels": null,
+          "average_speed_pixels_per_second": null,
+          "maximum_speed_pixels_per_second": null,
+          "median_speed_pixels_per_second": null,
+          "average_speed_diagonals_per_second": null
+        },
+        "tail_orientation_relative_to_body": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 0.0,
+          "valid_pair_percentage": 0.0,
+          "valid_measurement_count": 0,
+          "observed_pair_seconds": 0,
+          "observed_time_percentage": 0.0,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": null,
+          "longest_stationary_duration_seconds": null,
+          "motion_threshold": 15.0,
+          "threshold_units": "degrees/second",
+          "average_angular_speed_degrees_per_second": null,
+          "maximum_angular_speed_degrees_per_second": null,
+          "maximum_excursion_degrees": null,
+          "angular_direction_reversals": 0
+        },
+        "front_left_paw": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 0.0,
+          "valid_pair_percentage": 0.0,
+          "valid_measurement_count": 0,
+          "observed_pair_seconds": 0,
+          "observed_time_percentage": 0.0,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": null,
+          "longest_stationary_duration_seconds": null,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": null,
+          "maximum_displacement_pixels": null,
+          "total_distance_pixels": null,
+          "maximum_excursion_pixels": null,
+          "average_speed_pixels_per_second": null,
+          "maximum_speed_pixels_per_second": null,
+          "median_speed_pixels_per_second": null,
+          "average_speed_diagonals_per_second": null
+        },
+        "front_right_paw": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 2.222222,
+          "valid_pair_percentage": 1.123596,
+          "valid_measurement_count": 1,
+          "observed_pair_seconds": 0.0334,
+          "observed_time_percentage": 1.12583,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": 100.0,
+          "longest_stationary_duration_seconds": 0.0,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": 8.777976,
+          "maximum_displacement_pixels": 8.777976,
+          "total_distance_pixels": 8.777976,
+          "maximum_excursion_pixels": 8.777976,
+          "average_speed_pixels_per_second": 262.81365,
+          "maximum_speed_pixels_per_second": 262.81365,
+          "median_speed_pixels_per_second": 262.81365,
+          "average_speed_diagonals_per_second": 0.178955
+        },
+        "back_left_paw": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 0.0,
+          "valid_pair_percentage": 0.0,
+          "valid_measurement_count": 0,
+          "observed_pair_seconds": 0,
+          "observed_time_percentage": 0.0,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": null,
+          "longest_stationary_duration_seconds": null,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": null,
+          "maximum_displacement_pixels": null,
+          "total_distance_pixels": null,
+          "maximum_excursion_pixels": null,
+          "average_speed_pixels_per_second": null,
+          "maximum_speed_pixels_per_second": null,
+          "median_speed_pixels_per_second": null,
+          "average_speed_diagonals_per_second": null
+        },
+        "back_right_paw": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 0.0,
+          "valid_pair_percentage": 0.0,
+          "valid_measurement_count": 0,
+          "observed_pair_seconds": 0,
+          "observed_time_percentage": 0.0,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": null,
+          "longest_stationary_duration_seconds": null,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": null,
+          "maximum_displacement_pixels": null,
+          "total_distance_pixels": null,
+          "maximum_excursion_pixels": null,
+          "average_speed_pixels_per_second": null,
+          "maximum_speed_pixels_per_second": null,
+          "median_speed_pixels_per_second": null,
+          "average_speed_diagonals_per_second": null
+        }
+      },
+      "candidates": [
+        {
+          "label": "body_moving",
+          "rule_id": "body_moving",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "body",
+            "valid_frame_percentage": 15.555556,
+            "valid_pair_percentage": 10.11236,
+            "valid_measurement_count": 9,
+            "observed_pair_seconds": 0.3002,
+            "movement_bout_count": 0,
+            "motion_threshold": 0.02,
+            "threshold_units": "image diagonals/second",
+            "average_speed": 0.039467
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        },
+        {
+          "label": "head_relative_motion",
+          "rule_id": "head_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "head_relative",
+            "valid_frame_percentage": 15.555556,
+            "valid_pair_percentage": 10.11236,
+            "valid_measurement_count": 9,
+            "observed_pair_seconds": 0.3002,
+            "movement_bout_count": 0,
+            "motion_threshold": 0.01,
+            "threshold_units": "image diagonals/second",
+            "average_speed": 0.166924
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        },
+        {
+          "label": "head_orientation_change_in_image",
+          "rule_id": "head_orientation_change_in_image",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "head_orientation",
+            "valid_frame_percentage": 56.666667,
+            "valid_pair_percentage": 50.561798,
+            "valid_measurement_count": 45,
+            "observed_pair_seconds": 1.4999,
+            "movement_bout_count": 2,
+            "motion_threshold": 15.0,
+            "threshold_units": "degrees/second",
+            "average_speed": 136.613088
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Required landmarks have insufficient joint frame coverage"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        },
+        {
+          "label": "head_orientation_change_relative_to_body",
+          "rule_id": "head_orientation_change_relative_to_body",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "head_orientation_relative_to_body",
+            "valid_frame_percentage": 15.555556,
+            "valid_pair_percentage": 10.11236,
+            "valid_measurement_count": 9,
+            "observed_pair_seconds": 0.3002,
+            "movement_bout_count": 0,
+            "motion_threshold": 15.0,
+            "threshold_units": "degrees/second",
+            "average_speed": 129.126392
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        },
+        {
+          "label": "left_ear_relative_motion",
+          "rule_id": "left_ear_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "left_ear_orientation_relative_to_head",
+            "valid_frame_percentage": 56.666667,
+            "valid_pair_percentage": 50.561798,
+            "valid_measurement_count": 45,
+            "observed_pair_seconds": 1.4999,
+            "movement_bout_count": 3,
+            "motion_threshold": 15.0,
+            "threshold_units": "degrees/second",
+            "average_speed": 261.816894
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Required landmarks have insufficient joint frame coverage"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        },
+        {
+          "label": "right_ear_relative_motion",
+          "rule_id": "right_ear_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "right_ear_orientation_relative_to_head",
+            "valid_frame_percentage": 56.666667,
+            "valid_pair_percentage": 50.561798,
+            "valid_measurement_count": 45,
+            "observed_pair_seconds": 1.4999,
+            "movement_bout_count": 2,
+            "motion_threshold": 15.0,
+            "threshold_units": "degrees/second",
+            "average_speed": 180.500963
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Required landmarks have insufficient joint frame coverage"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        },
+        {
+          "label": "tail_relative_motion",
+          "rule_id": "tail_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "tail_relative",
+            "valid_frame_percentage": 1.111111,
+            "valid_pair_percentage": 0.0,
+            "valid_measurement_count": 0,
+            "observed_pair_seconds": 0,
+            "movement_bout_count": 0,
+            "motion_threshold": 0.01,
+            "threshold_units": "image diagonals/second",
+            "average_speed": null
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Tail-base subtraction removes translation, but body rotation can still move this vector.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        },
+        {
+          "label": "front_left_paw_relative_motion",
+          "rule_id": "front_left_paw_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "front_left_paw",
+            "valid_frame_percentage": 0.0,
+            "valid_pair_percentage": 0.0,
+            "valid_measurement_count": 0,
+            "observed_pair_seconds": 0,
+            "movement_bout_count": 0,
+            "motion_threshold": 0.01,
+            "threshold_units": "image diagonals/second",
+            "average_speed": null
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        },
+        {
+          "label": "front_right_paw_relative_motion",
+          "rule_id": "front_right_paw_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "front_right_paw",
+            "valid_frame_percentage": 2.222222,
+            "valid_pair_percentage": 1.123596,
+            "valid_measurement_count": 1,
+            "observed_pair_seconds": 0.0334,
+            "movement_bout_count": 0,
+            "motion_threshold": 0.01,
+            "threshold_units": "image diagonals/second",
+            "average_speed": 0.178955
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        },
+        {
+          "label": "back_left_paw_relative_motion",
+          "rule_id": "back_left_paw_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "back_left_paw",
+            "valid_frame_percentage": 0.0,
+            "valid_pair_percentage": 0.0,
+            "valid_measurement_count": 0,
+            "observed_pair_seconds": 0,
+            "movement_bout_count": 0,
+            "motion_threshold": 0.01,
+            "threshold_units": "image diagonals/second",
+            "average_speed": null
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        },
+        {
+          "label": "back_right_paw_relative_motion",
+          "rule_id": "back_right_paw_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "back_right_paw",
+            "valid_frame_percentage": 0.0,
+            "valid_pair_percentage": 0.0,
+            "valid_measurement_count": 0,
+            "observed_pair_seconds": 0,
+            "movement_bout_count": 0,
+            "motion_threshold": 0.01,
+            "threshold_units": "image diagonals/second",
+            "average_speed": null
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        },
+        {
+          "label": "body_stationary",
+          "rule_id": "body_stationary",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "A continuous low-speed run stays within the configured radius for the minimum duration.",
+          "score": null,
+          "evidence": {
+            "measurement": "body",
+            "longest_stationary_duration_seconds": 0.0334,
+            "minimum_duration_seconds": 1.0,
+            "maximum_radius_diagonals": 0.01,
+            "speed_threshold_diagonals_per_second": 0.02,
+            "valid_frame_percentage": 15.555556
+          },
+          "limitations": [
+            "This describes a stationary interval, not stillness throughout the clip or inactivity of all body parts.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        },
+        {
+          "label": "tail_oscillation_candidate",
+          "rule_id": "tail_oscillation_candidate",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "Body-relative tail angle has enough reversals, excursion and sustained motion.",
+          "score": null,
+          "evidence": {
+            "measurement": "tail_orientation_relative_to_body",
+            "valid_frame_percentage": 0.0,
+            "valid_pair_percentage": 0.0,
+            "valid_measurement_count": 0,
+            "observed_pair_seconds": 0,
+            "movement_bout_count": 0,
+            "motion_threshold": 15.0,
+            "threshold_units": "degrees/second",
+            "average_speed": null,
+            "angular_direction_reversals": 0,
+            "maximum_excursion_degrees": null,
+            "minimum_reversals": 3,
+            "minimum_excursion_degrees": 20.0
+          },
+          "limitations": [
+            "An exploratory oscillation cue; it does not establish tail swishing, emotion, or intent.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        },
+        {
+          "label": "repetitive_front_paw_motion_candidate",
+          "rule_id": "repetitive_front_paw_motion_candidate",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "Both torso-relative front paws repeatedly change direction in sustained movement bouts.",
+          "score": null,
+          "evidence": {
+            "front_left_paw": {
+              "measurement": "front_left_paw",
+              "valid_frame_percentage": 0.0,
+              "valid_pair_percentage": 0.0,
+              "valid_measurement_count": 0,
+              "observed_pair_seconds": 0,
+              "movement_bout_count": 0,
+              "motion_threshold": 0.01,
+              "threshold_units": "image diagonals/second",
+              "average_speed": null,
+              "direction_changes": 0
+            },
+            "front_right_paw": {
+              "measurement": "front_right_paw",
+              "valid_frame_percentage": 2.222222,
+              "valid_pair_percentage": 1.123596,
+              "valid_measurement_count": 1,
+              "observed_pair_seconds": 0.0334,
+              "movement_bout_count": 0,
+              "motion_threshold": 0.01,
+              "threshold_units": "image diagonals/second",
+              "average_speed": 0.178955,
+              "direction_changes": 0
+            },
+            "minimum_direction_changes_per_paw": 3
+          },
+          "limitations": [
+            "Alternating paw contact is not measured; this does not confirm kneading.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 0.0,
+            "end": 3.0
+          }
+        }
+      ]
+    },
+    {
+      "start_seconds": 3.0,
+      "end_seconds": 5.866633,
+      "frames_processed": 86,
+      "measurements": {
+        "body": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 8.139535,
+          "valid_pair_percentage": 3.529412,
+          "valid_measurement_count": 3,
+          "observed_pair_seconds": 0.1,
+          "observed_time_percentage": 3.529453,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": 33.3,
+          "longest_stationary_duration_seconds": 0.0667,
+          "motion_threshold": 0.02,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": 2.387672,
+          "maximum_displacement_pixels": 6.350266,
+          "total_distance_pixels": 7.163016,
+          "maximum_excursion_pixels": 6.391596,
+          "average_speed_pixels_per_second": 71.630157,
+          "maximum_speed_pixels_per_second": 190.698669,
+          "median_speed_pixels_per_second": 22.53003,
+          "average_speed_diagonals_per_second": 0.048774
+        },
+        "head_relative": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 8.139535,
+          "valid_pair_percentage": 3.529412,
+          "valid_measurement_count": 3,
+          "observed_pair_seconds": 0.1,
+          "observed_time_percentage": 3.529453,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": 100.0,
+          "longest_stationary_duration_seconds": 0.0,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": 12.9695,
+          "maximum_displacement_pixels": 14.31359,
+          "total_distance_pixels": 38.9085,
+          "maximum_excursion_pixels": 38.034363,
+          "average_speed_pixels_per_second": 389.084997,
+          "maximum_speed_pixels_per_second": 428.550599,
+          "median_speed_pixels_per_second": 413.838765,
+          "average_speed_diagonals_per_second": 0.264935
+        },
+        "head_orientation": {
+          "data_sufficient": true,
+          "insufficient_data_reasons": [],
+          "valid_frame_percentage": 77.906977,
+          "valid_pair_percentage": 74.117647,
+          "valid_measurement_count": 63,
+          "observed_pair_seconds": 2.0999,
+          "observed_time_percentage": 74.11499,
+          "movement_direction_changes": 8,
+          "movement_bout_count": 3,
+          "active_time_percentage": 80.956236,
+          "longest_stationary_duration_seconds": 0.0666,
+          "motion_threshold": 15.0,
+          "threshold_units": "degrees/second",
+          "average_angular_speed_degrees_per_second": 123.648356,
+          "maximum_angular_speed_degrees_per_second": 763.618947,
+          "maximum_excursion_degrees": 40.750034,
+          "angular_direction_reversals": 8
+        },
+        "head_orientation_relative_to_body": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 8.139535,
+          "valid_pair_percentage": 3.529412,
+          "valid_measurement_count": 3,
+          "observed_pair_seconds": 0.1,
+          "observed_time_percentage": 3.529453,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": 100.0,
+          "longest_stationary_duration_seconds": 0.0,
+          "motion_threshold": 15.0,
+          "threshold_units": "degrees/second",
+          "average_angular_speed_degrees_per_second": 84.300219,
+          "maximum_angular_speed_degrees_per_second": 169.150102,
+          "maximum_excursion_degrees": 8.430022,
+          "angular_direction_reversals": 0
+        },
+        "left_ear_orientation_relative_to_head": {
+          "data_sufficient": true,
+          "insufficient_data_reasons": [],
+          "valid_frame_percentage": 76.744186,
+          "valid_pair_percentage": 72.941176,
+          "valid_measurement_count": 62,
+          "observed_pair_seconds": 2.0666,
+          "observed_time_percentage": 72.939682,
+          "movement_direction_changes": 23,
+          "movement_bout_count": 5,
+          "active_time_percentage": 93.544953,
+          "longest_stationary_duration_seconds": 0.0334,
+          "motion_threshold": 15.0,
+          "threshold_units": "degrees/second",
+          "average_angular_speed_degrees_per_second": 238.191925,
+          "maximum_angular_speed_degrees_per_second": 779.336624,
+          "maximum_excursion_degrees": 32.579508,
+          "angular_direction_reversals": 23
+        },
+        "right_ear_orientation_relative_to_head": {
+          "data_sufficient": true,
+          "insufficient_data_reasons": [],
+          "valid_frame_percentage": 75.581395,
+          "valid_pair_percentage": 71.764706,
+          "valid_measurement_count": 61,
+          "observed_pair_seconds": 2.0333,
+          "observed_time_percentage": 71.764374,
+          "movement_direction_changes": 22,
+          "movement_bout_count": 3,
+          "active_time_percentage": 88.53096,
+          "longest_stationary_duration_seconds": 0.0334,
+          "motion_threshold": 15.0,
+          "threshold_units": "degrees/second",
+          "average_angular_speed_degrees_per_second": 181.198771,
+          "maximum_angular_speed_degrees_per_second": 774.617214,
+          "maximum_excursion_degrees": 50.985669,
+          "angular_direction_reversals": 22
+        },
+        "tail_relative": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 10.465116,
+          "valid_pair_percentage": 7.058824,
+          "valid_measurement_count": 6,
+          "observed_pair_seconds": 0.2,
+          "observed_time_percentage": 7.058907,
+          "movement_direction_changes": 3,
+          "movement_bout_count": 1,
+          "active_time_percentage": 100.0,
+          "longest_stationary_duration_seconds": 0.0334,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": 4.04826,
+          "maximum_displacement_pixels": 11.354206,
+          "total_distance_pixels": 24.289558,
+          "maximum_excursion_pixels": 6.670578,
+          "average_speed_pixels_per_second": 121.44779,
+          "maximum_speed_pixels_per_second": 340.967147,
+          "median_speed_pixels_per_second": 105.867204,
+          "average_speed_diagonals_per_second": 0.082696
+        },
+        "tail_orientation_relative_to_body": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 6.976744,
+          "valid_pair_percentage": 3.529412,
+          "valid_measurement_count": 3,
+          "observed_pair_seconds": 0.1,
+          "observed_time_percentage": 3.529453,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": 66.6,
+          "longest_stationary_duration_seconds": 0.0334,
+          "motion_threshold": 15.0,
+          "threshold_units": "degrees/second",
+          "average_angular_speed_degrees_per_second": 52.358234,
+          "maximum_angular_speed_degrees_per_second": 87.059538,
+          "maximum_excursion_degrees": 5.235823,
+          "angular_direction_reversals": 0
+        },
+        "front_left_paw": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 0.0,
+          "valid_pair_percentage": 0.0,
+          "valid_measurement_count": 0,
+          "observed_pair_seconds": 0,
+          "observed_time_percentage": 0.0,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": null,
+          "longest_stationary_duration_seconds": null,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": null,
+          "maximum_displacement_pixels": null,
+          "total_distance_pixels": null,
+          "maximum_excursion_pixels": null,
+          "average_speed_pixels_per_second": null,
+          "maximum_speed_pixels_per_second": null,
+          "median_speed_pixels_per_second": null,
+          "average_speed_diagonals_per_second": null
+        },
+        "front_right_paw": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 2.325581,
+          "valid_pair_percentage": 0.0,
+          "valid_measurement_count": 0,
+          "observed_pair_seconds": 0,
+          "observed_time_percentage": 0.0,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": null,
+          "longest_stationary_duration_seconds": null,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": null,
+          "maximum_displacement_pixels": null,
+          "total_distance_pixels": null,
+          "maximum_excursion_pixels": null,
+          "average_speed_pixels_per_second": null,
+          "maximum_speed_pixels_per_second": null,
+          "median_speed_pixels_per_second": null,
+          "average_speed_diagonals_per_second": null
+        },
+        "back_left_paw": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 0.0,
+          "valid_pair_percentage": 0.0,
+          "valid_measurement_count": 0,
+          "observed_pair_seconds": 0,
+          "observed_time_percentage": 0.0,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": null,
+          "longest_stationary_duration_seconds": null,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": null,
+          "maximum_displacement_pixels": null,
+          "total_distance_pixels": null,
+          "maximum_excursion_pixels": null,
+          "average_speed_pixels_per_second": null,
+          "maximum_speed_pixels_per_second": null,
+          "median_speed_pixels_per_second": null,
+          "average_speed_diagonals_per_second": null
+        },
+        "back_right_paw": {
+          "data_sufficient": false,
+          "insufficient_data_reasons": [
+            "Required landmarks have insufficient joint frame coverage",
+            "Insufficient consecutive-pair coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time",
+            "Observed pair time covers too little of the interval"
+          ],
+          "valid_frame_percentage": 0.0,
+          "valid_pair_percentage": 0.0,
+          "valid_measurement_count": 0,
+          "observed_pair_seconds": 0,
+          "observed_time_percentage": 0.0,
+          "movement_direction_changes": 0,
+          "movement_bout_count": 0,
+          "active_time_percentage": null,
+          "longest_stationary_duration_seconds": null,
+          "motion_threshold": 0.01,
+          "threshold_units": "image diagonals/second",
+          "average_displacement_pixels": null,
+          "maximum_displacement_pixels": null,
+          "total_distance_pixels": null,
+          "maximum_excursion_pixels": null,
+          "average_speed_pixels_per_second": null,
+          "maximum_speed_pixels_per_second": null,
+          "median_speed_pixels_per_second": null,
+          "average_speed_diagonals_per_second": null
+        }
+      },
+      "candidates": [
+        {
+          "label": "body_moving",
+          "rule_id": "body_moving",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "body",
+            "valid_frame_percentage": 8.139535,
+            "valid_pair_percentage": 3.529412,
+            "valid_measurement_count": 3,
+            "observed_pair_seconds": 0.1,
+            "movement_bout_count": 0,
+            "motion_threshold": 0.02,
+            "threshold_units": "image diagonals/second",
+            "average_speed": 0.048774
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        },
+        {
+          "label": "head_relative_motion",
+          "rule_id": "head_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "head_relative",
+            "valid_frame_percentage": 8.139535,
+            "valid_pair_percentage": 3.529412,
+            "valid_measurement_count": 3,
+            "observed_pair_seconds": 0.1,
+            "movement_bout_count": 0,
+            "motion_threshold": 0.01,
+            "threshold_units": "image diagonals/second",
+            "average_speed": 0.264935
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        },
+        {
+          "label": "head_orientation_change_in_image",
+          "rule_id": "head_orientation_change_in_image",
+          "rule_version": "1",
+          "status": "detected",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "head_orientation",
+            "valid_frame_percentage": 77.906977,
+            "valid_pair_percentage": 74.117647,
+            "valid_measurement_count": 63,
+            "observed_pair_seconds": 2.0999,
+            "movement_bout_count": 3,
+            "motion_threshold": 15.0,
+            "threshold_units": "degrees/second",
+            "average_speed": 123.648356
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior."
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        },
+        {
+          "label": "head_orientation_change_relative_to_body",
+          "rule_id": "head_orientation_change_relative_to_body",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "head_orientation_relative_to_body",
+            "valid_frame_percentage": 8.139535,
+            "valid_pair_percentage": 3.529412,
+            "valid_measurement_count": 3,
+            "observed_pair_seconds": 0.1,
+            "movement_bout_count": 0,
+            "motion_threshold": 15.0,
+            "threshold_units": "degrees/second",
+            "average_speed": 84.300219
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        },
+        {
+          "label": "left_ear_relative_motion",
+          "rule_id": "left_ear_relative_motion",
+          "rule_version": "1",
+          "status": "detected",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "left_ear_orientation_relative_to_head",
+            "valid_frame_percentage": 76.744186,
+            "valid_pair_percentage": 72.941176,
+            "valid_measurement_count": 62,
+            "observed_pair_seconds": 2.0666,
+            "movement_bout_count": 5,
+            "motion_threshold": 15.0,
+            "threshold_units": "degrees/second",
+            "average_speed": 238.191925
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior."
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        },
+        {
+          "label": "right_ear_relative_motion",
+          "rule_id": "right_ear_relative_motion",
+          "rule_version": "1",
+          "status": "detected",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "right_ear_orientation_relative_to_head",
+            "valid_frame_percentage": 75.581395,
+            "valid_pair_percentage": 71.764706,
+            "valid_measurement_count": 61,
+            "observed_pair_seconds": 2.0333,
+            "movement_bout_count": 3,
+            "motion_threshold": 15.0,
+            "threshold_units": "degrees/second",
+            "average_speed": 181.198771
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior."
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        },
+        {
+          "label": "tail_relative_motion",
+          "rule_id": "tail_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "tail_relative",
+            "valid_frame_percentage": 10.465116,
+            "valid_pair_percentage": 7.058824,
+            "valid_measurement_count": 6,
+            "observed_pair_seconds": 0.2,
+            "movement_bout_count": 1,
+            "motion_threshold": 0.01,
+            "threshold_units": "image diagonals/second",
+            "average_speed": 0.082696
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Tail-base subtraction removes translation, but body rotation can still move this vector.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        },
+        {
+          "label": "front_left_paw_relative_motion",
+          "rule_id": "front_left_paw_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "front_left_paw",
+            "valid_frame_percentage": 0.0,
+            "valid_pair_percentage": 0.0,
+            "valid_measurement_count": 0,
+            "observed_pair_seconds": 0,
+            "movement_bout_count": 0,
+            "motion_threshold": 0.01,
+            "threshold_units": "image diagonals/second",
+            "average_speed": null
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        },
+        {
+          "label": "front_right_paw_relative_motion",
+          "rule_id": "front_right_paw_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "front_right_paw",
+            "valid_frame_percentage": 2.325581,
+            "valid_pair_percentage": 0.0,
+            "valid_measurement_count": 0,
+            "observed_pair_seconds": 0,
+            "movement_bout_count": 0,
+            "motion_threshold": 0.01,
+            "threshold_units": "image diagonals/second",
+            "average_speed": null
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        },
+        {
+          "label": "back_left_paw_relative_motion",
+          "rule_id": "back_left_paw_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "back_left_paw",
+            "valid_frame_percentage": 0.0,
+            "valid_pair_percentage": 0.0,
+            "valid_measurement_count": 0,
+            "observed_pair_seconds": 0,
+            "movement_bout_count": 0,
+            "motion_threshold": 0.01,
+            "threshold_units": "image diagonals/second",
+            "average_speed": null
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        },
+        {
+          "label": "back_right_paw_relative_motion",
+          "rule_id": "back_right_paw_relative_motion",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "At least one sustained movement bout crosses the recorded speed threshold.",
+          "score": null,
+          "evidence": {
+            "measurement": "back_right_paw",
+            "valid_frame_percentage": 0.0,
+            "valid_pair_percentage": 0.0,
+            "valid_measurement_count": 0,
+            "observed_pair_seconds": 0,
+            "movement_bout_count": 0,
+            "motion_threshold": 0.01,
+            "threshold_units": "image diagonals/second",
+            "average_speed": null
+          },
+          "limitations": [
+            "Projected motion is not a confirmed behavior.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        },
+        {
+          "label": "body_stationary",
+          "rule_id": "body_stationary",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "A continuous low-speed run stays within the configured radius for the minimum duration.",
+          "score": null,
+          "evidence": {
+            "measurement": "body",
+            "longest_stationary_duration_seconds": 0.0667,
+            "minimum_duration_seconds": 1.0,
+            "maximum_radius_diagonals": 0.01,
+            "speed_threshold_diagonals_per_second": 0.02,
+            "valid_frame_percentage": 8.139535
+          },
+          "limitations": [
+            "This describes a stationary interval, not stillness throughout the clip or inactivity of all body parts.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        },
+        {
+          "label": "tail_oscillation_candidate",
+          "rule_id": "tail_oscillation_candidate",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "Body-relative tail angle has enough reversals, excursion and sustained motion.",
+          "score": null,
+          "evidence": {
+            "measurement": "tail_orientation_relative_to_body",
+            "valid_frame_percentage": 6.976744,
+            "valid_pair_percentage": 3.529412,
+            "valid_measurement_count": 3,
+            "observed_pair_seconds": 0.1,
+            "movement_bout_count": 0,
+            "motion_threshold": 15.0,
+            "threshold_units": "degrees/second",
+            "average_speed": 52.358234,
+            "angular_direction_reversals": 0,
+            "maximum_excursion_degrees": 5.235823,
+            "minimum_reversals": 3,
+            "minimum_excursion_degrees": 20.0
+          },
+          "limitations": [
+            "An exploratory oscillation cue; it does not establish tail swishing, emotion, or intent.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        },
+        {
+          "label": "repetitive_front_paw_motion_candidate",
+          "rule_id": "repetitive_front_paw_motion_candidate",
+          "rule_version": "1",
+          "status": "insufficient_data",
+          "rule": "Both torso-relative front paws repeatedly change direction in sustained movement bouts.",
+          "score": null,
+          "evidence": {
+            "front_left_paw": {
+              "measurement": "front_left_paw",
+              "valid_frame_percentage": 0.0,
+              "valid_pair_percentage": 0.0,
+              "valid_measurement_count": 0,
+              "observed_pair_seconds": 0,
+              "movement_bout_count": 0,
+              "motion_threshold": 0.01,
+              "threshold_units": "image diagonals/second",
+              "average_speed": null,
+              "direction_changes": 0
+            },
+            "front_right_paw": {
+              "measurement": "front_right_paw",
+              "valid_frame_percentage": 2.325581,
+              "valid_pair_percentage": 0.0,
+              "valid_measurement_count": 0,
+              "observed_pair_seconds": 0,
+              "movement_bout_count": 0,
+              "motion_threshold": 0.01,
+              "threshold_units": "image diagonals/second",
+              "average_speed": null,
+              "direction_changes": 0
+            },
+            "minimum_direction_changes_per_paw": 3
+          },
+          "limitations": [
+            "Alternating paw contact is not measured; this does not confirm kneading.",
+            "Insufficient consecutive-pair coverage",
+            "Observed pair time covers too little of the interval",
+            "Required landmarks have insufficient joint frame coverage",
+            "Too few valid consecutive measurements",
+            "Too little observed pair time"
+          ],
+          "interval_seconds": {
+            "start": 3.0,
+            "end": 5.866633
+          }
+        }
+      ]
+    }
+  ],
+  "analysis_settings": {
+    "experimental_behavior_candidates": false,
+    "confidence_threshold": 0.6,
+    "segment_seconds": 3.0,
+    "max_intervals": 60,
+    "smoothing_window": 3,
+    "minimum_frame_coverage": 0.6,
+    "minimum_pair_coverage": 0.5,
+    "minimum_valid_pairs": 3,
+    "minimum_observed_seconds": 0.5,
+    "maximum_gap_factor": 1.5,
+    "minimum_axis_diagonals": 0.005,
+    "isolated_spike_speed_diagonals_per_second": 4.0,
+    "body_motion_diagonals_per_second": 0.02,
+    "relative_motion_diagonals_per_second": 0.01,
+    "angular_motion_degrees_per_second": 15.0,
+    "angular_deadband_degrees": 2.0,
+    "direction_change_degrees": 60.0,
+    "minimum_bout_seconds": 0.2,
+    "bout_exit_threshold_ratio": 0.7,
+    "stationary_duration_seconds": 1.0,
+    "stationary_radius_diagonals": 0.01,
+    "tail_minimum_reversals": 3,
+    "tail_minimum_excursion_degrees": 20.0,
+    "paw_minimum_direction_changes": 3,
+    "play_minimum_direction_changes": 2,
+    "nose_paw_distance_body_lengths": 0.25,
+    "grooming_minimum_cooccurrence": 0.3,
+    "landmark_sources": {
+      "torso_front": "back_base",
+      "torso_rear": "back_end",
+      "nose": "nose",
+      "left_ear_base": "left_earbase",
+      "right_ear_base": "right_earbase",
+      "left_ear_tip": "left_earend",
+      "right_ear_tip": "right_earend",
+      "tail_base": "tail_base",
+      "tail_tip": "tail_end",
+      "front_left_paw": "front_left_paw",
+      "front_right_paw": "front_right_paw",
+      "back_left_paw": "back_left_paw",
+      "back_right_paw": "back_right_paw"
+    },
+    "rule_version": "1",
+    "actual_interval_seconds": 3.0,
+    "smoothing": "Centered coordinate median within consecutive valid runs; missing values remain missing",
+    "body_reference": "Fixed midpoint of front and rear trunk landmarks; both required",
+    "head_and_paw_reference": "Torso-centred, rotated into the torso image-plane axis",
+    "ear_reference": "Ear angle minus head-axis angle",
+    "tail_reference": "Tip minus base for translation; angular oscillation measured relative to torso",
+    "displacement_definition": "Distance between consecutive valid observations, not endpoint displacement",
+    "quality_denominator": "All received frames/pairs in the interval; temporal gaps also reduce observed time"
+  },
+  "warnings": [],
+  "limitations": [
+    "All positions and angles are 2D projections; occlusion and viewpoint affect measurements.",
+    "Camera motion and zoom are not estimated or corrected; body displacement is movement in the image.",
+    "Image-diagonal normalization handles image resizing, not camera distance or real-world scale.",
+    "Landmark likelihood is a model score, not a calibrated probability of correct behavior recognition.",
+    "Rule thresholds are engineering starting values, not validated feline behavior standards.",
+    "Median smoothing and isolated-spike filtering can suppress real rapid movements; estimates depend on these settings.",
+    "These measurements cannot establish gaze, attention, emotion, intent, health, contact, or licking."
+  ]
+}
