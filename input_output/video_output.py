@@ -1,4 +1,5 @@
-import serial, time, shared_state # Ensure you have a shared_state.py file to hold the latest_analysis dictionary
+import serial, time
+from . import shared_state # Ensure you have a shared_state.py file to hold the latest_analysis dictionary
 
 # Replace this with your Mac's actual USB port name (find it in Arduino IDE > Tools > Port)
 # Typical Mac examples: '/dev/cu.usbserial-1410' or '/dev/cu.usbmodem14101'

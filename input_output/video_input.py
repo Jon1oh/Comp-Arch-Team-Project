@@ -1,4 +1,5 @@
-import os, uuid, subprocess, video_output, shared_state
+import os, uuid, subprocess, video_output
+from . import shared_state
 from flask import Flask, request, jsonify, render_template_string
 from werkzeug.utils import secure_filename
 

@@ -66537,9 +66537,9 @@
     }
   ],
   "processing_time": {
-    "preparation_seconds": 3.8,
-    "inference_seconds": 108.04,
-    "export_seconds": 0.15,
-    "total_seconds": 112.0
+    "preparation_seconds": 2.65,
+    "inference_seconds": 109.92,
+    "export_seconds": 0.2,
+    "total_seconds": 112.77
   }
 }

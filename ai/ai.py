@@ -50,27 +50,19 @@ def get_ai_output_retry(prompt):
     except Exception as error:
         print("The API is still unavailable.")
         return False
+    
 
 def validate_ai_output(ai_output):
-    try:
-        result = json.loads(ai_output) # store ai_output in a JSON object
-        required_fields = [
-            "behaviour",
-            "body_language_meaning",
-            "explanation",
-            "supporting_observations",
-            "confidence",
-            "data_quality"
-        ]
-
-        for field in required_fields:
-            if field not in result:
-                raise ValueError(f"Missing field: {field}")
-        return result
-
-    except (json.JSONDecodeError, ValueError) as error:
-        logging.error("Failed to parse AI response: %s", error)
+    if not isinstance(ai_output, str):
+        print("Invalid AI output: Expected a JSON string.")
         return None
+
+    try:
+        result = json.loads(ai_output)
+        return result
+    except json.JSONDecodeError:
+        print("Invalid JSON returned by Gemini.")
+        return None    
     
 
 def find_json_file():
@@ -101,9 +93,7 @@ def analyze_data(behaviour_data):
     prompt = build_prompt(behaviour_data) # get the prompt
     
     try:
-        print("Analyzing cat behavior data...")        
         ai_output = get_ai_output(prompt) # get the AI output from Gemini
-        print("Cat behavior analysis complete. Here is the output:\n")
     except Exception:
         print("Gemini failed to interpret the data!")
         ai_output = get_ai_output_retry(prompt)
