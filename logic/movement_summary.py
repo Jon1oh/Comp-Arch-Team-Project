@@ -7,16 +7,10 @@ Rules describe projected movement, not confirmed behavior, emotion, or health.
 """
 
 from __future__ import annotations
-
-import argparse
+import argparse, json, math, sys, statistics
 from collections import Counter
 from dataclasses import asdict, dataclass
-import json
-import math
 from pathlib import Path
-import statistics
-import sys
-
 
 SCHEMA_VERSION = "movement-summary/1"
 RULE_VERSION = "1"

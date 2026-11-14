@@ -1,10 +1,6 @@
-import os
-import uuid
-import subprocess
+import os, uuid, subprocess, video_output, shared_state
 from flask import Flask, request, jsonify, render_template_string
 from werkzeug.utils import secure_filename
-import video_output
-import shared_state
 
 app = Flask(__name__)
 UPLOAD_DIR = "temp_video_staging"

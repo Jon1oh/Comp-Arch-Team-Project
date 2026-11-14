@@ -1,1 +1,0 @@
-# stores configuration settings for the program
