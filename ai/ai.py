@@ -1,6 +1,8 @@
 from google import genai
 from dotenv import load_dotenv
 import os, logging, json
+import json
+import re
 
 # hide warning messages from the Gemini SDK which uses Python's logging module
 load_dotenv()
@@ -44,7 +46,7 @@ def get_ai_output(prompt):
     return response.text
 
 def get_ai_output_retry(prompt):
-    print(f"Retrying connection to Google {os.getenv("GEMINI_MODEL")} API once...")
+    print(f"Retrying connection to Google {os.getenv('GEMINI_MODEL')} API once...")
     try:
         return get_ai_output(prompt)
     except Exception as error:
@@ -58,11 +60,18 @@ def validate_ai_output(ai_output):
         return None
 
     try:
-        result = json.loads(ai_output)
+        # Clean up markdown code blocks if Gemini includes them
+        cleaned_output = ai_output.strip()
+        if cleaned_output.startswith("```"):
+            cleaned_output = re.sub(r"^```(?:json)?\s*", "", cleaned_output)
+            cleaned_output = re.sub(r"\s*```$", "", cleaned_output)
+            
+        result = json.loads(cleaned_output)
         return result
-    except json.JSONDecodeError:
-        print("Invalid JSON returned by Gemini.")
-        return None    
+    except json.JSONDecodeError as e:
+        print(f"Invalid JSON returned by Gemini: {e}")
+        print(f"Raw text was:\n{ai_output}")
+        return None   
     
 
 def find_json_file():
