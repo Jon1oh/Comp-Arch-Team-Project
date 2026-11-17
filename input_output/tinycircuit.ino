@@ -262,7 +262,7 @@ void drawCurrentPage() {
   // Top Header
   display.setFont(liberationSans_8ptFontInfo);
   display.setCursor(12, 1);
-  display.print("CAT BEHAVIOUR");
+  display.print("   ANALYSER  ");
   display.drawLine(2, 11, 94, 11, TS_8b_White);
 
   if (currentPage == 0) {
@@ -289,7 +289,7 @@ void drawCurrentPage() {
   else if (currentPage == 1) {
     display.setFont(liberationSans_10ptFontInfo);
     display.setCursor(2, 13);
-    display.print("OBSERVATIONS:");
+    display.print("OBSERVATION");
 
     display.setFont(liberationSans_8ptFontInfo);
     int yPos = 26;
@@ -310,7 +310,7 @@ void drawCurrentPage() {
   else if (currentPage == 2) {
     display.setFont(liberationSans_10ptFontInfo);
     display.setCursor(2, 13);
-    display.print("RELIABILITY:");
+    display.print("RELIABILITY");
 
     display.setFont(liberationSans_8ptFontInfo);
     display.setCursor(2, 28);
