@@ -69,7 +69,7 @@ void wrapByPixelWidth(String text, String lines[], int &lineCount, int maxWidthP
         remaining = (nextSpace == -1) ? "" : remaining.substring(nextSpace + 1);
         remaining.trim();
       } else {
-        break; // Next word would clip; wrap it to the next line
+        break;
       }
     }
 
@@ -80,6 +80,7 @@ void wrapByPixelWidth(String text, String lines[], int &lineCount, int maxWidthP
 
 void setup() {
   SerialUSB.begin(9600);
+  SerialUSB.setTimeout(50); // Prevents 1-second blocking stalls during serial reads
   while (!SerialUSB && millis() < 3000);
 
   Wire.begin();
@@ -105,12 +106,20 @@ void loop() {
       display.setCursor(14, 26);
       display.print("Analysing");
     } 
-    else {
+    else if (raw == "RESET") {
+      isComplete = false;
+      isAnalysing = false;
+      currentPage = 0;
+      expScrollOffset = 0;
+      obsScrollOffset = 0;
+      drawStartupScreen();
+    }
+    else if (raw.indexOf('|') > 0) {
       int firstPipe = raw.indexOf('|');
       int secondPipe = raw.indexOf('|', firstPipe + 1);
       int thirdPipe = raw.indexOf('|', secondPipe + 1);
 
-      if (firstPipe > 0) {
+      if (firstPipe > 0 && secondPipe > firstPipe && thirdPipe > secondPipe) {
         pageData[0] = raw.substring(0, firstPipe);
 
         // 1. Pixel-accurate wrap for Explanation (90px safe width)
@@ -181,13 +190,13 @@ void loop() {
         obsScrollOffset = 0;
         drawCurrentPage();
       }
-      // Bottom Right: Scroll down line-by-line (loops back to top of text if at bottom)
+      // Bottom Right: Scroll down line-by-line (loops back to top if at bottom)
       else if (buttons == TSButtonLowerRight) {
         if (currentPage == 0 && expLineCount > VISIBLE_LINES) {
           if (expScrollOffset + VISIBLE_LINES < expLineCount) {
             expScrollOffset++;
           } else {
-            expScrollOffset = 0; // Wrap back to top of text
+            expScrollOffset = 0;
           }
           drawCurrentPage();
         } 
@@ -195,15 +204,14 @@ void loop() {
           if (obsScrollOffset + VISIBLE_LINES < obsLineCount) {
             obsScrollOffset++;
           } else {
-            obsScrollOffset = 0; // Wrap back to top of text
+            obsScrollOffset = 0;
           }
           drawCurrentPage();
         }
       }
-      // Bottom Left: Reset to startup screen
+      // Bottom Left: Reset TinyScreen+ AND signal Python/iOS to start a new session
       else if (buttons == TSButtonLowerLeft) {
-        SerialUSB.println("RESET"); // Send reset signal back to Mac
-        
+        SerialUSB.println("RESET");
         isComplete = false;
         isAnalysing = false;
         currentPage = 0;
@@ -254,7 +262,7 @@ void drawCurrentPage() {
   // Top Header
   display.setFont(liberationSans_8ptFontInfo);
   display.setCursor(12, 1);
-  display.print("   ANALYSER  ");
+  display.print("CAT BEHAVIOUR");
   display.drawLine(2, 11, 94, 11, TS_8b_White);
 
   if (currentPage == 0) {
@@ -273,7 +281,6 @@ void drawCurrentPage() {
       }
     }
 
-    // Visual indicator at bottom-right if more lines exist below
     if (expScrollOffset + VISIBLE_LINES < expLineCount) {
       display.setCursor(88, 52);
       display.print("v");
@@ -282,7 +289,7 @@ void drawCurrentPage() {
   else if (currentPage == 1) {
     display.setFont(liberationSans_10ptFontInfo);
     display.setCursor(2, 13);
-    display.print("OBSERVATION");
+    display.print("OBSERVATIONS:");
 
     display.setFont(liberationSans_8ptFontInfo);
     int yPos = 26;
@@ -303,7 +310,7 @@ void drawCurrentPage() {
   else if (currentPage == 2) {
     display.setFont(liberationSans_10ptFontInfo);
     display.setCursor(2, 13);
-    display.print("RELIABILITY");
+    display.print("RELIABILITY:");
 
     display.setFont(liberationSans_8ptFontInfo);
     display.setCursor(2, 28);

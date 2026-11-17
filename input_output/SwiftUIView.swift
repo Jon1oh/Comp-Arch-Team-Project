@@ -3,124 +3,210 @@ import PhotosUI
 import AVFoundation
 import UniformTypeIdentifiers
 
+enum AppScreenState {
+    case waiting
+    case analysing
+    case results
+}
+
 struct ContentView: View {
+    @State private var screenState: AppScreenState = .waiting
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var isShowingCamera = false
-    @State private var uploadStatus = "Waiting for video..."
+    @State private var statusSubtitle = "Waiting for video"
     @State private var behaviorResult = ""
     @State private var descriptionResult = ""
     @State private var pollingTimer: Timer? = nil
     
-    // Change this to your wifi's IP address as required
+    // Change this to your Wi-Fi's IP address as required
     let serverBaseURL = "http://192.168.1.79:5001"
     
     var body: some View {
-        VStack(spacing: 30) {
-            Text("Animal Behavior AI")
-                .font(.largeTitle)
-                .fontWeight(.bold)
+        VStack(spacing: 28) {
+            Spacer()
             
-            // Output Display
-            VStack(spacing: 10) {
-                Text(uploadStatus)
+            // MARK: - Screen 1: Waiting for Video
+            if screenState == .waiting {
+                Text("PET BEHAVIOUR\nANALYSER")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                
+                Text(statusSubtitle)
+                    .font(.headline)
                     .foregroundColor(.gray)
                 
-                if !behaviorResult.isEmpty {
-                    Text(behaviorResult)
-                        .font(.title)
-                        .foregroundColor(behaviorResult == "REJECTED" || behaviorResult == "ERROR" ? .red : .green)
-                        .fontWeight(.heavy)
+                VStack(spacing: 16) {
+                    PhotosPicker(selection: $selectedItem, matching: .videos) {
+                        Text("Video")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(width: 220)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                    }
+                    .onChange(of: selectedItem) { newItem in
+                        handlePhotoLibrarySelection(item: newItem)
+                    }
+                    
+                    Button(action: {
+                        isShowingCamera = true
+                    }) {
+                        Text("Record")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(width: 220)
+                            .background(Color.orange)
+                            .cornerRadius(10)
+                    }
+                }
+            }
+            
+            // MARK: - Screen 2: Analysing (No Cancel Button)
+            else if screenState == .analysing {
+                Text("PET BEHAVIOUR\nANALYSER")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                
+                VStack(spacing: 12) {
+                    ProgressView()
+                        .scaleEffect(1.2)
+                    Text("ANALYSING...")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    Text(statusSubtitle)
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
+                .padding(.vertical, 10)
+            }
+            
+            // MARK: - Screen 3: Analysis Results + Back
+            else if screenState == .results {
+                Text("ANALYSIS")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
+                VStack(spacing: 10) {
+                    if !behaviorResult.isEmpty {
+                        Text(behaviorResult)
+                            .font(.title2)
+                            .fontWeight(.heavy)
+                            .foregroundColor(behaviorResult == "REJECTED" || behaviorResult == "ERROR" ? .red : .green)
+                    }
                     
                     Text(descriptionResult)
                         .font(.body)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
                 }
+                
+                VStack(spacing: 6) {
+                    Text("Please check TinyScreen for more analysis info.")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("Click Back to start a new analysis.")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.horizontal)
+                
+                Button(action: {
+                    resetSession()
+                }) {
+                    Text("BACK")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 220)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
             }
-            .frame(height: 150)
             
-            // Button 1: Upload from Library
-            PhotosPicker(selection: $selectedItem, matching: .videos) {
-                Text("Select Video")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(width: 220)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-            }
-            .onChange(of: selectedItem) { newItem in
-                handlePhotoLibrarySelection(item: newItem)
-            }
-            
-            // Button 2: Record Live
-            Button(action: {
-                isShowingCamera = true
-            }) {
-                Text("Record Live Video")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(width: 220)
-                    .background(Color.orange)
-                    .cornerRadius(10)
-            }
-            .sheet(isPresented: $isShowingCamera) {
-                CameraView(
-                    isPresented: $isShowingCamera,
-                    uploadStatus: $uploadStatus,
-                    onVideoRecorded: { rawVideoURL in
-                        processLiveVideo(inputURL: rawVideoURL)
-                    }
-                )
-            }
+            Spacer()
         }
         .padding()
+        .sheet(isPresented: $isShowingCamera) {
+            CameraView(
+                isPresented: $isShowingCamera,
+                uploadStatus: $statusSubtitle,
+                onVideoRecorded: { rawVideoURL in
+                    processLiveVideo(inputURL: rawVideoURL)
+                }
+            )
+        }
         .onAppear {
             startPollingForResults()
         }
+    }
+    
+    // MARK: - Session Reset Logic
+    
+    func resetSession() {
+        selectedItem = nil
+        behaviorResult = ""
+        descriptionResult = ""
+        statusSubtitle = "Waiting for video"
+        screenState = .waiting
+        
+        // Notify Python server & TinyScreen+ to reset
+        guard let url = URL(string: "\(serverBaseURL)/api/reset") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        URLSession.shared.dataTask(with: request).resume()
     }
     
     // MARK: - Video Processing Logic
     
     func handlePhotoLibrarySelection(item: PhotosPickerItem?) {
         guard let item = item else { return }
-        uploadStatus = "Loading from library..."
+        screenState = .analysing
+        statusSubtitle = "Loading from library..."
         
         item.loadTransferable(type: VideoFile.self) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let videoFile?):
-                    self.uploadStatus = "Transcoding library video to MP4..."
-                    
+                    self.statusSubtitle = "Transcoding video to MP4..."
                     self.transcodeToMP4(inputURL: videoFile.url) { newMP4URL in
                         DispatchQueue.main.async {
                             if let finalMP4 = newMP4URL {
                                 self.uploadVideoToServer(videoURL: finalMP4)
                             } else {
-                                self.uploadStatus = "Transcoding failed. Upload aborted."
+                                self.statusSubtitle = "Transcoding failed."
+                                self.screenState = .waiting
                             }
                         }
                     }
-                    
                 case .failure(let error):
-                    self.uploadStatus = "Failed to load video: \(error.localizedDescription)"
+                    self.statusSubtitle = "Failed to load: \(error.localizedDescription)"
+                    self.screenState = .waiting
                 default:
-                    self.uploadStatus = "Failed to load video."
+                    self.statusSubtitle = "Failed to load video."
+                    self.screenState = .waiting
                 }
             }
         }
     }
     
     func processLiveVideo(inputURL: URL) {
-        uploadStatus = "Transcoding to MP4..."
+        screenState = .analysing
+        statusSubtitle = "Transcoding to MP4..."
         
         transcodeToMP4(inputURL: inputURL) { newMP4URL in
             DispatchQueue.main.async {
                 if let finalMP4 = newMP4URL {
                     self.uploadVideoToServer(videoURL: finalMP4)
                 } else {
-                    self.uploadStatus = "Transcoding failed. Upload aborted."
+                    self.statusSubtitle = "Transcoding failed."
+                    self.screenState = .waiting
                 }
             }
         }
@@ -129,7 +215,7 @@ struct ContentView: View {
     // MARK: - Networking Logic
     
     func uploadVideoToServer(videoURL: URL) {
-        uploadStatus = "Uploading to server..."
+        statusSubtitle = "Uploading to server..."
         behaviorResult = ""
         descriptionResult = ""
         
@@ -154,11 +240,11 @@ struct ContentView: View {
         URLSession.shared.uploadTask(with: request, from: data) { responseData, response, error in
             DispatchQueue.main.async {
                 if let error = error {
-                    self.uploadStatus = "Network Error: \(error.localizedDescription)"
+                    self.statusSubtitle = "Network Error: \(error.localizedDescription)"
+                    self.screenState = .waiting
                     return
                 }
-                self.uploadStatus = "Processing on server..."
-                self.startPollingForResults()
+                self.statusSubtitle = "Processing on server..."
             }
         }.resume()
     }
@@ -177,18 +263,20 @@ struct ContentView: View {
                     
                     DispatchQueue.main.async {
                         if status == "complete" || status == "error" {
-                            self.behaviorResult = json["behavior"] as? String ?? ""
-                            self.descriptionResult = json["description"] as? String ?? ""
-                            self.uploadStatus = (status == "complete") ? "Analysis Complete!" : "Pipeline Error"
+                            if self.screenState == .analysing || self.screenState == .results {
+                                self.behaviorResult = json["behavior"] as? String ?? ""
+                                self.descriptionResult = json["description"] as? String ?? ""
+                                self.screenState = .results
+                            }
                         } else if status == "waiting" {
-                            if !self.behaviorResult.isEmpty || self.uploadStatus != "Waiting for video..." {
+                            // Syncs if TinyScreen+ physical reset button was pressed
+                            if self.screenState == .results {
                                 self.behaviorResult = ""
                                 self.descriptionResult = ""
                                 self.selectedItem = nil
-                                self.uploadStatus = "Waiting for video..."
+                                self.statusSubtitle = "Waiting for video"
+                                self.screenState = .waiting
                             }
-                        } else if status == "analysing" {
-                            self.uploadStatus = "Processing on server..."
                         }
                     }
                 }
@@ -261,7 +349,7 @@ struct CameraView: UIViewControllerRepresentable {
         
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             parent.isPresented = false
-            parent.uploadStatus = "Waiting for video..."
+            parent.uploadStatus = "Waiting for video"
         }
     }
 }

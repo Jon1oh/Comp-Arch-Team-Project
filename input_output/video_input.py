@@ -50,7 +50,6 @@ def ingest_video():
         staged_filepath = stage_uploaded_video(request.files['video'])
         print(f"Video ready at: {staged_filepath}")
 
-        # Import and run the pipeline here to avoid circular imports at the top
         from run import run_pipeline
         thread = threading.Thread(target=run_pipeline, args=(staged_filepath,))
         thread.start()
@@ -68,6 +67,12 @@ def ingest_video():
 @app.route('/api/get_analysis', methods=['GET'])
 def get_analysis():
     return jsonify(shared_state.latest_analysis)
+
+@app.route('/api/reset', methods=['POST'])
+def reset_session():
+    print("[App] Reset requested from iOS app!")
+    video_output.reset_all()
+    return jsonify({"status": "waiting"}), 200
 
 if not hasattr(shared_state, 'latest_analysis'):
     shared_state.latest_analysis = {"status": "waiting", "behavior": "", "description": ""}
