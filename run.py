@@ -1,48 +1,51 @@
 import sys, argparse, logging
 from pathlib import Path
-from analysis.dlc_video_processor import process_video
-from ai.ai import analyze_data
-from input_output import video_output
 
+# Add directories so Python can locate the modules
 PROJECT_ROOT = Path(__file__).resolve().parent
 DLC_DIR = PROJECT_ROOT / "analysis" / "DeepLabCut-Processing"
 INPUT_OUTPUT_DIR = PROJECT_ROOT / "input_output"
 
-# Add directories so Python can locate the modules
 sys.path.insert(0, str(DLC_DIR))
 sys.path.insert(0, str(INPUT_OUTPUT_DIR))
+
+# Import your pipeline components
+from analysis.dlc_video_processor import process_video
+from logic.movement_summary import analyze_dataset, to_ai_evidence
+from ai.ai import analyze_data
+from input_output import video_output
 
 def run_pipeline(video_path):
     try:
         print("\n========== CAT BEHAVIOUR ANALYSER ==========\n")
         
-        # Step 1: Notify TinyScreen that analysis has started
+        # Step 0: Notify displays
         video_output.broadcast_results("analysing")
 
-        # Step 2: Process video using DeepLabCut
-        print("[1/3] Processing video with DeepLabCut...")
+        # Step 1: DeepLabCut (Raw Coordinates)
+        print("[1/4] Processing video with DeepLabCut...")
+        raw_keypoints = process_video(video_path)
 
-        keypoint_data = process_video(video_path)
+        # Step 2: Movement Summary (Behavior Logic)
+        print("[2/4] Generating movement logic summary...")
+        full_summary = analyze_dataset(raw_keypoints)
+        ai_evidence = to_ai_evidence(full_summary)
 
-        # Step 3: Send keypoint data for AI analysis
-        print("\n[2/3] Analysing animal behaviour...")
-        
-        ai_result = analyze_data(keypoint_data)
+        # Step 3: Gemini AI Interpretation
+        print("\n[3/4] Analysing animal behaviour...")
+        ai_result = analyze_data(ai_evidence)
         if ai_result is None:
             raise RuntimeError("AI analysis failed.")
 
-        # Step 4: Display results
-        print("\n[3/3] Analysis complete! Here is the output:")
-        print("Behaviour:", ai_result["behaviour"])
-        print("Body Language:", ai_result["body_language_meaning"])
-        print("Explanation:", ai_result["explanation"])
-        print("Confidence:", ai_result["confidence"])
-        print("Data Quality:", ai_result["data_quality"])
+        print("\n[4/4] Analysis complete! Here is the output:")
+        print("Behaviour:", ai_result.get("behaviour"))
+        print("Explanation:", ai_result.get("explanation"))
 
-        # Step 5: Send results to output component
+        # Step 4: Route outputs (TinyScreen gets detail, App gets summary)
         video_output.broadcast_results("complete", ai_result)
-
+        
         print("\n========== PIPELINE FINISHED ==========\n")
+        
         return ai_result
 
     except Exception:
@@ -55,8 +58,12 @@ if __name__ == "__main__":
     parser.add_argument("--video", type=Path, help="Path to the input video")
     args = parser.parse_args()
 
-    if not args.video.is_file():
-        parser.error(f"Video not found: {args.video}")
-
-    logging.basicConfig(level=logging.INFO)
-    run_pipeline(args.video)
+    if args.video:
+        if not args.video.is_file():
+            parser.error(f"Video not found: {args.video}")
+        logging.basicConfig(level=logging.INFO)
+        run_pipeline(args.video)
+    else:
+        from input_output.video_input import app
+        print("\nStarting macOS Flask Server on http://192.168.1.79:5001 ...")
+        app.run(host='0.0.0.0', port=5001, debug=True, use_reloader=False)
