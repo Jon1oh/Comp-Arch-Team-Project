@@ -2,161 +2,246 @@
 #include <SPI.h>
 #include <TinyScreen.h>
 
-// Initialize the TinyScreen
 TinyScreen display = TinyScreen(TinyScreenPlus);
 
-// Global State Variables
-String pageData[4] = {"", "", "", ""};
+const int MAX_LINES = 12;
+const int VISIBLE_LINES = 3; // Fits 3 rows at Y = 26, 38, 50
+
+String expLines[MAX_LINES];
+int expLineCount = 0;
+int expScrollOffset = 0;
+
+String obsLines[MAX_LINES];
+int obsLineCount = 0;
+int obsScrollOffset = 0;
+
+String pageData[5] = {"", "", "", "", ""}; // [0]=Behavior, [3]=Conf, [4]=Data
 int currentPage = 0;
+
 bool isComplete = false;
 uint8_t lastButtons = 0;
 
-// New Animation Variables
 bool isAnalysing = false;
 unsigned long lastAnimTime = 0;
 int animFrame = 0;
 
-void setup() {
-  // Start USB Serial communication at 9600 baud
-  Serial.begin(9600);
+// Splits text by exact pixel width so words never overflow the 96px screen
+void wrapByPixelWidth(String text, String lines[], int &lineCount, int maxWidthPx) {
+  display.setFont(liberationSans_8ptFontInfo);
+  text.trim();
+  lineCount = 0;
 
-  // Initialize the OLED display
+  while (text.length() > 0 && lineCount < MAX_LINES) {
+    int spaceIdx = text.indexOf(' ');
+    String firstWord = (spaceIdx == -1) ? text : text.substring(0, spaceIdx);
+
+    // Fallback: if a single word is wider than the entire screen, split it cleanly
+    char wordBuf[40];
+    firstWord.toCharArray(wordBuf, 40);
+    if (display.getPrintWidth(wordBuf) > maxWidthPx) {
+      int splitPos = firstWord.length();
+      while (splitPos > 1) {
+        String sub = firstWord.substring(0, splitPos);
+        sub.toCharArray(wordBuf, 40);
+        if (display.getPrintWidth(wordBuf) <= maxWidthPx) break;
+        splitPos--;
+      }
+      lines[lineCount++] = firstWord.substring(0, splitPos);
+      text = text.substring(splitPos);
+      text.trim();
+      continue;
+    }
+
+    // Greedily pack words onto the current line while under maxWidthPx
+    String currentLine = firstWord;
+    String remaining = (spaceIdx == -1) ? "" : text.substring(spaceIdx + 1);
+    remaining.trim();
+
+    while (remaining.length() > 0) {
+      int nextSpace = remaining.indexOf(' ');
+      String nextWord = (nextSpace == -1) ? remaining : remaining.substring(0, nextSpace);
+      String candidate = currentLine + " " + nextWord;
+
+      char candBuf[64];
+      candidate.toCharArray(candBuf, 64);
+      if (display.getPrintWidth(candBuf) <= maxWidthPx) {
+        currentLine = candidate;
+        remaining = (nextSpace == -1) ? "" : remaining.substring(nextSpace + 1);
+        remaining.trim();
+      } else {
+        break; // Next word would clip; wrap it to the next line
+      }
+    }
+
+    lines[lineCount++] = currentLine;
+    text = remaining;
+  }
+}
+
+void setup() {
+  SerialUSB.begin(9600);
+  while (!SerialUSB && millis() < 3000);
+
   Wire.begin();
   display.begin();
-  
-  // Configure screen settings
   display.setBrightness(10);
-  display.setFont(liberationSans_10ptFontInfo); 
-  display.fontColor(TS_8b_White, TS_8b_Black); 
-  
-  // Draw the initial animated standby screen
+  display.fontColor(TS_8b_White, TS_8b_Black);
   drawStartupScreen();
 }
 
 void loop() {
-  // 1. Listen for new data from Python
-  if (Serial.available() > 0) {
-    String raw = Serial.readStringUntil('\n');
+  if (SerialUSB.available() > 0) {
+    String raw = SerialUSB.readStringUntil('\n');
     raw.trim();
-    
+
     if (raw == "ANALYSING") {
       isComplete = false;
       isAnalysing = true;
       animFrame = 0;
       lastAnimTime = millis();
+
+      display.clearWindow(0, 0, 96, 64);
+      display.setFont(liberationSans_10ptFontInfo);
+      display.setCursor(14, 26);
+      display.print("Analysing");
     } 
     else {
-      // Parse the 4 pieces of data separated by '|'
       int firstPipe = raw.indexOf('|');
       int secondPipe = raw.indexOf('|', firstPipe + 1);
       int thirdPipe = raw.indexOf('|', secondPipe + 1);
-      
+
       if (firstPipe > 0) {
         pageData[0] = raw.substring(0, firstPipe);
-        pageData[1] = raw.substring(firstPipe + 1, secondPipe);
-        pageData[2] = raw.substring(secondPipe + 1, thirdPipe);
-        pageData[3] = raw.substring(thirdPipe + 1);
-        
+
+        // 1. Pixel-accurate wrap for Explanation (90px safe width)
+        String fullExp = raw.substring(firstPipe + 1, secondPipe);
+        wrapByPixelWidth(fullExp, expLines, expLineCount, 90);
+        expScrollOffset = 0;
+
+        // 2. Pixel-accurate wrap for Observations (90px safe width)
+        String fullObs = raw.substring(secondPipe + 1, thirdPipe);
+        wrapByPixelWidth(fullObs, obsLines, obsLineCount, 90);
+        obsScrollOffset = 0;
+
+        // 3. Reliability parsing
+        String relField = raw.substring(thirdPipe + 1);
+        relField.trim();
+        int splitIdx = relField.indexOf('|');
+        if (splitIdx < 0) splitIdx = relField.indexOf("Data:");
+
+        if (splitIdx > 0) {
+          pageData[3] = relField.substring(0, splitIdx);
+          pageData[4] = relField.substring(splitIdx);
+          pageData[3].trim();
+          pageData[4].trim();
+        } else {
+          pageData[3] = relField;
+          pageData[4] = "";
+        }
+
         isComplete = true;
-        isAnalysing = false; // Turn off the analyzing animation
+        isAnalysing = false;
         currentPage = 0;
         drawCurrentPage();
       }
     }
   }
 
-  // 2. Animate the "Analysing..." screen smoothly while waiting
-  if (isAnalysing) {
-    if (millis() - lastAnimTime > 500) { // Update every 500 milliseconds
+  if (isAnalysing && !isComplete) {
+    if (millis() - lastAnimTime > 500) {
       lastAnimTime = millis();
-      animFrame = (animFrame + 1) % 4; // Cycles through 0, 1, 2, 3
-      
+      animFrame = (animFrame + 1) % 4;
+
       display.clearWindow(0, 0, 96, 64);
-      display.setCursor(16, 26);
+      display.setFont(liberationSans_10ptFontInfo);
+      display.setCursor(14, 26);
       display.print("Analysing");
-      
-      // Add the animated dots based on the current frame
-      for(int i = 0; i < animFrame; i++) {
+
+      for (int i = 0; i < animFrame; i++) {
         display.print(".");
       }
     }
   }
 
-  // 3. Listen for physical button presses
   if (isComplete) {
     uint8_t buttons = display.getButtons();
-    
-    // If a button is pressed and it wasn't pressed in the last loop
+
     if (buttons && !lastButtons) {
-      
+      // Upper Right: Next category page
       if (buttons == TSButtonUpperRight) {
-        // TOP RIGHT: Go to next page
-        currentPage = (currentPage + 1) % 3; 
+        currentPage = (currentPage + 1) % 3;
+        expScrollOffset = 0;
+        obsScrollOffset = 0;
         drawCurrentPage();
       }
+      // Upper Left: Previous category page
       else if (buttons == TSButtonUpperLeft) {
-        // TOP LEFT: Go to previous page
-        if (currentPage == 0) {
-          currentPage = 2; // Loop backward from Main Analysis to Reliability
-        } else {
-          currentPage--;   
-        }
+        currentPage = (currentPage == 0) ? 2 : currentPage - 1;
+        expScrollOffset = 0;
+        obsScrollOffset = 0;
         drawCurrentPage();
       }
+      // Bottom Right: Scroll down line-by-line (loops back to top of text if at bottom)
       else if (buttons == TSButtonLowerRight) {
-        // BOTTOM RIGHT: Jump straight back to Main Analysis (Page 0)
-        currentPage = 0;
-        drawCurrentPage();
+        if (currentPage == 0 && expLineCount > VISIBLE_LINES) {
+          if (expScrollOffset + VISIBLE_LINES < expLineCount) {
+            expScrollOffset++;
+          } else {
+            expScrollOffset = 0; // Wrap back to top of text
+          }
+          drawCurrentPage();
+        } 
+        else if (currentPage == 1 && obsLineCount > VISIBLE_LINES) {
+          if (obsScrollOffset + VISIBLE_LINES < obsLineCount) {
+            obsScrollOffset++;
+          } else {
+            obsScrollOffset = 0; // Wrap back to top of text
+          }
+          drawCurrentPage();
+        }
       }
+      // Bottom Left: Reset to startup screen
       else if (buttons == TSButtonLowerLeft) {
-        // BOTTOM LEFT: End session and return to Home Screen
-        isComplete = false; 
+        isComplete = false;
         isAnalysing = false;
         currentPage = 0;
+        expScrollOffset = 0;
+        obsScrollOffset = 0;
         drawStartupScreen();
       }
-      
     }
     lastButtons = buttons;
-    delay(50); // Small delay to prevent button bouncing
+    delay(50);
   }
 }
 
 void drawStartupScreen() {
   display.clearWindow(0, 0, 96, 64);
   
-  // Phase 1: Title Reveal (Split into 3 lines to fit the 96px width perfectly)
-  
-  // Center "PET"
+  display.setFont(liberationSans_10ptFontInfo);
   display.setCursor(38, 10); 
   display.print("PET");
   delay(600); 
   
-  // Center "BEHAVIOUR"
   display.setCursor(12, 26);
   display.print("BEHAVIOUR");
   delay(600); 
   
-  // Center "ANALYSER"
   display.setCursor(18, 42);
   display.print("ANALYSER");
-  delay(2000); // Hold for 2 seconds to let the user read it
+  delay(2000); 
   
-  
-  // Phase 2: Instruction Reveal (Centered X-coordinates)
   display.clearWindow(0, 0, 96, 64);
   
-  // Center "Upload video"
+  display.setFont(liberationSans_10ptFontInfo);
   display.setCursor(12, 12);
   display.print("Upload video");
   delay(600); 
   
-  // Center "in app"
   display.setCursor(28, 28);
   display.print("in app");
   delay(600); 
   
-  // Center "to start"
   display.setCursor(24, 44);
   display.print("to start");
 }
@@ -164,39 +249,65 @@ void drawStartupScreen() {
 void drawCurrentPage() {
   display.clearWindow(0, 0, 96, 64);
 
-  // Universal Top Header
-  display.setCursor(8, 0); 
-  display.print("CAT BEHAVIOUR");
-  display.drawLine(4, 12, 92, 12, TS_8b_White); // Top separator line
+  // Top Header
+  display.setFont(liberationSans_8ptFontInfo);
+  display.setCursor(12, 1);
+  display.print("   ANALYSER  ");
+  display.drawLine(2, 11, 94, 11, TS_8b_White);
 
-  // Page Specific Content
   if (currentPage == 0) {
-    // MAIN SCREEN: Alert + Reasoning
-    display.setCursor(24, 16); 
-    display.print(pageData[0]); // The Short Label (e.g., "ALERT")
-    
-    display.setCursor(0, 28);
-    display.print(pageData[1]); // The Explanation
+    display.setFont(liberationSans_10ptFontInfo);
+    display.setCursor(16, 13);
+    display.print(pageData[0]);
 
-    display.drawLine(4, 50, 92, 50, TS_8b_White); // Bottom separator line
-    
-    display.setCursor(12, 54);
-    display.print("Analysis complete");
+    display.setFont(liberationSans_8ptFontInfo);
+    int yPos = 26;
+    for (int i = 0; i < VISIBLE_LINES; i++) {
+      int lineIdx = expScrollOffset + i;
+      if (lineIdx < expLineCount) {
+        display.setCursor(2, yPos);
+        display.print(expLines[lineIdx]);
+        yPos += 12;
+      }
+    }
+
+    // Visual indicator at bottom-right if more lines exist below
+    if (expScrollOffset + VISIBLE_LINES < expLineCount) {
+      display.setCursor(88, 52);
+      display.print("v");
+    }
   }
   else if (currentPage == 1) {
-    // PAGE 2: Observations
-    display.setCursor(0, 16);
-    display.print("OBSERVATIONS:");
-    
-    display.setCursor(0, 28);
-    display.print(pageData[2]);
+    display.setFont(liberationSans_10ptFontInfo);
+    display.setCursor(2, 13);
+    display.print("OBSERVATION");
+
+    display.setFont(liberationSans_8ptFontInfo);
+    int yPos = 26;
+    for (int i = 0; i < VISIBLE_LINES; i++) {
+      int lineIdx = obsScrollOffset + i;
+      if (lineIdx < obsLineCount) {
+        display.setCursor(2, yPos);
+        display.print(obsLines[lineIdx]);
+        yPos += 12;
+      }
+    }
+
+    if (obsScrollOffset + VISIBLE_LINES < obsLineCount) {
+      display.setCursor(88, 52);
+      display.print("v");
+    }
   }
   else if (currentPage == 2) {
-    // PAGE 3: Reliability
-    display.setCursor(0, 16);
-    display.print("RELIABILITY:");
-    
-    display.setCursor(0, 28);
+    display.setFont(liberationSans_10ptFontInfo);
+    display.setCursor(2, 13);
+    display.print("RELIABILITY");
+
+    display.setFont(liberationSans_8ptFontInfo);
+    display.setCursor(2, 28);
     display.print(pageData[3]);
+
+    display.setCursor(2, 42);
+    display.print(pageData[4]);
   }
 }
