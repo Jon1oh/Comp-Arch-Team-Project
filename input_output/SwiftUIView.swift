@@ -11,12 +11,12 @@ struct ContentView: View {
     @State private var descriptionResult = ""
     @State private var pollingTimer: Timer? = nil
     
-    // Your Mac's static local network IP
+    // Change this to your wifi's IP address as required
     let serverBaseURL = "http://192.168.1.79:5001"
     
     var body: some View {
         VStack(spacing: 30) {
-            Text("Cat Behavior AI") //change title of app here
+            Text("Animal Behavior AI")
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
@@ -76,6 +76,9 @@ struct ContentView: View {
             }
         }
         .padding()
+        .onAppear {
+            startPollingForResults()
+        }
     }
     
     // MARK: - Video Processing Logic
@@ -88,7 +91,6 @@ struct ContentView: View {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let videoFile?):
-                    // Update UI and route the library file through the transcoder
                     self.uploadStatus = "Transcoding library video to MP4..."
                     
                     self.transcodeToMP4(inputURL: videoFile.url) { newMP4URL in
@@ -164,7 +166,7 @@ struct ContentView: View {
     func startPollingForResults() {
         pollingTimer?.invalidate()
         
-        pollingTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { _ in
+        pollingTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
             guard let url = URL(string: "\(serverBaseURL)/api/get_analysis") else { return }
             
             URLSession.shared.dataTask(with: url) { data, response, error in
@@ -178,13 +180,15 @@ struct ContentView: View {
                             self.behaviorResult = json["behavior"] as? String ?? ""
                             self.descriptionResult = json["description"] as? String ?? ""
                             self.uploadStatus = (status == "complete") ? "Analysis Complete!" : "Pipeline Error"
-                            self.pollingTimer?.invalidate() // Stop asking once we have a result
                         } else if status == "waiting" {
-                            // Clear UI if physical button on TinyScreen dismissed it
-                            self.behaviorResult = ""
-                            self.descriptionResult = ""
-                            self.uploadStatus = "Waiting for video..."
-                            self.pollingTimer?.invalidate()
+                            if !self.behaviorResult.isEmpty || self.uploadStatus != "Waiting for video..." {
+                                self.behaviorResult = ""
+                                self.descriptionResult = ""
+                                self.selectedItem = nil
+                                self.uploadStatus = "Waiting for video..."
+                            }
+                        } else if status == "analysing" {
+                            self.uploadStatus = "Processing on server..."
                         }
                     }
                 }
@@ -263,18 +267,16 @@ struct CameraView: UIViewControllerRepresentable {
 }
 
 // MARK: - Custom Transferable Struct
-// Translates the locked photo library file into a usable file for the app
+
 struct VideoFile: Transferable {
     let url: URL
     
     static var transferRepresentation: some TransferRepresentation {
         FileRepresentation(importedContentType: .movie) { received in
-            // Create a safe temporary path for the app to use
             let copyURL = FileManager.default.temporaryDirectory
                 .appendingPathComponent(UUID().uuidString)
                 .appendingPathExtension("mp4")
             
-            // Copy the video from the locked library into the app
             try FileManager.default.copyItem(at: received.file, to: copyURL)
             return VideoFile(url: copyURL)
         }

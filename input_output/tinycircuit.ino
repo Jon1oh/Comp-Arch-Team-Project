@@ -202,6 +202,8 @@ void loop() {
       }
       // Bottom Left: Reset to startup screen
       else if (buttons == TSButtonLowerLeft) {
+        SerialUSB.println("RESET"); // Send reset signal back to Mac
+        
         isComplete = false;
         isAnalysing = false;
         currentPage = 0;
